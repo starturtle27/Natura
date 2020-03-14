@@ -959,11 +959,11 @@ public class NContent implements IFuelHandler
 
         for (int i = 0; i < 13; i++)
         {
-            addShapedRecipeFirst(recipes, new ItemStack(fenceGates[i], 1, i), "s#s", "s#s", '#', new ItemStack(planks, 1, i), 's', new ItemStack(stickItem, 1, i));
-            addShapedRecipeFirst(recipes, new ItemStack(buttons[i], 1, i), "#", '#', new ItemStack(planks, 1, i));
-            addShapedRecipeFirst(recipes, new ItemStack(pressurePlates[i], 1, i), "##", '#', new ItemStack(planks, 1, i));
-            addShapedRecipeFirst(recipes, new ItemStack(stairs[i], 4, i), "#  ", "## ", "###", '#', new ItemStack(planks, 1, i));
-            addShapedRecipeFirst(recipes, new ItemStack(trapdoors[i], 2, i), "###", "###", '#', new ItemStack(planks, 1, i));
+            addShapedRecipeFirst(recipes, new ItemStack(fenceGates[i], 1), "s#s", "s#s", '#', new ItemStack(planks, 1, i), 's', new ItemStack(stickItem, 1, i));
+            addShapedRecipeFirst(recipes, new ItemStack(buttons[i], 1), "#", '#', new ItemStack(planks, 1, i));
+            addShapedRecipeFirst(recipes, new ItemStack(pressurePlates[i], 1), "##", '#', new ItemStack(planks, 1, i));
+            addShapedRecipeFirst(recipes, new ItemStack(stairs[i], 4), "#  ", "## ", "###", '#', new ItemStack(planks, 1, i));
+            addShapedRecipeFirst(recipes, new ItemStack(trapdoors[i], 2), "###", "###", '#', new ItemStack(planks, 1, i));
         }
         for (int i = 0; i < 8; i++)
             addShapedRecipeFirst(recipes, new ItemStack(plankSlab1, 6, i), "###", '#', new ItemStack(planks, 1, i));
