@@ -1,6 +1,4 @@
-itemGroup.natura.plants=Rośliny Natury
-itemGroup.natura.trees=Drzewa Natury
-itemGroup.natura.nether=Piekło Natury
+itemGroup.natura.plants=Natury
 
 item.natura.spawnegg.name=Przywołaj
 

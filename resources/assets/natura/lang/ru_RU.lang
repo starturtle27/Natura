@@ -1,6 +1,4 @@
-itemGroup.natura.plants=Natura: Растения
-itemGroup.natura.trees=Natura: Деревья
-itemGroup.natura.nether=Natura: Нижний мир
+itemGroup.natura.plants=Natura
 
 item.natura.spawnegg.name=Призвать существо - 
 

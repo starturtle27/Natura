@@ -74,15 +74,11 @@ public class Natura
 
         PHNatura.initProps(evt.getSuggestedConfigurationFile());
         NaturaTab.tab = new TabTools("natura.plants");
-        NaturaTab.woodTab = new TabTools("natura.trees");
-        NaturaTab.netherTab = new TabTools("natura.nether");
 
         content = new NContent();
         content.preInit();
         content.addOredictSupport();
-        NaturaTab.tab.init(new ItemStack(NContent.boneBag, 0));
-        NaturaTab.woodTab.init(new ItemStack(NContent.floraSapling, 1, 3));
-        NaturaTab.netherTab.init(new ItemStack(NContent.floraSapling, 1, 5));
+        NaturaTab.tab.init(new ItemStack(NContent.floraSapling, 1, 3));
 
         pulsar.preInit(evt);
     }
