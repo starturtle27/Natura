@@ -8,12 +8,15 @@
 
 buildscript {
     repositories {
-        mavenCentral()
+        maven {
+            name = "mavenCentral"
+            url = "https://repo1.maven.org/maven2/"
+        }
         maven {
             name = 'ForgeFS'
             url = 'http://files.minecraftforge.net/maven'
         }
-	maven {
+	    maven {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
@@ -46,6 +49,10 @@ repositories {
 
 
 apply plugin: 'forge'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 group = 'mods.natura'
 
 // define the properties file
@@ -129,21 +136,3 @@ artifacts {
     archives devjar
     archives sourcesjar
 }
-
-task("uploadJars", dependsOn:"reobf") {
-    
-    description = "uploads JARs"
-
-    if (project.hasProperty("local_maven")) {
-	    apply plugin: 'maven'
-            uploadArchives {
-                repositories {
-                    mavenDeployer {
-                        repository(url: "file://${local_maven}")
-                }
-            }
-        }
-    }
-}
-
-
