@@ -148,17 +148,16 @@ public class NLeaves extends BlockLeaves
     public IIcon[] fancyIcons;
 
     @Override
+    public boolean isOpaqueCube ()
+    {
+        return Blocks.leaves.isOpaqueCube();
+    }
+
+    @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIcon (int side, int metadata)
     {
-        int meta = metadata % 4;
-        if (metadata == 3)
-            meta = 0;
-
-        if (field_150121_P)
-            return fancyIcons[meta];
-        else
-            return fastIcons[meta];
+        return (Blocks.leaves.isOpaqueCube() ? fastIcons : fancyIcons)[metadata % 4];
     }
 
     @SideOnly(Side.CLIENT)

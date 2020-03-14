@@ -65,28 +65,7 @@ public class BerryBush extends BlockLeavesBase implements IPlantable
     @SideOnly(Side.CLIENT)
     public IIcon getIcon (int side, int metadata)
     {
-        if (field_150121_P)
-        {
-            if (metadata < 12)
-            {
-                return fancyIcons[metadata % 4];
-            }
-            else
-            {
-                return fancyIcons[metadata % 4 + 4];
-            }
-        }
-        else
-        {
-            if (metadata < 12)
-            {
-                return fastIcons[metadata % 4];
-            }
-            else
-            {
-                return fastIcons[metadata % 4 + 4];
-            }
-        }
+    	return (Blocks.leaves.isOpaqueCube() ? fastIcons : fancyIcons)[metadata % 4 + (metadata < 12 ? 0 : 4)];
     }
 
     /* Bushes are stored by size then type */
@@ -218,12 +197,6 @@ public class BerryBush extends BlockLeavesBase implements IPlantable
         return false;
     }
 
-    public void setGraphicsLevel (boolean flag)
-    {
-        field_150121_P = flag;
-        //this.blockIndexInTexture = this.icon + (flag ? 0 : 32);
-    }
-
     @Override
     public boolean renderAsNormalBlock ()
     {
@@ -236,17 +209,37 @@ public class BerryBush extends BlockLeavesBase implements IPlantable
         return BerryRender.berryModel;
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public boolean shouldSideBeRendered (IBlockAccess iblockaccess, int i, int j, int k, int l)
+    public boolean shouldSideBeRendered (IBlockAccess blockAccess, int x, int y, int z, int side)
     {
-        if (l > 7 || field_150121_P)
-        {
-            return super.shouldSideBeRendered(iblockaccess, i, j, k, l);
-        }
-        else
-        {
+        Block block = blockAccess.getBlock(x, y, z);
+        //If the block touching the side is same type of bush and not fully grown then render side.
+        if (block == this & blockAccess.getBlockMetadata(x, y, z) < 8) {
             return true;
+        //If this block is fully grown and is touching a bush (fast mode) or solid block then don't render (Would be way less complex if metadata was passed in)
+        } else if ((Blocks.leaves.isOpaqueCube() & block == this) | block.isOpaqueCube()) {
+            switch(side) {
+            case 0://-y
+                return false;
+            case 1://+y
+                if (blockAccess.getBlockMetadata(x, y - 1, z) > 7) return false;
+                break;
+            case 2://-z
+                if (blockAccess.getBlockMetadata(x, y, z + 1) > 7) return false;
+                break;
+            case 3://+z
+                if (blockAccess.getBlockMetadata(x, y, z - 1) > 7) return false;
+                break;
+            case 4://-x
+                if (blockAccess.getBlockMetadata(x + 1, y, z) > 7) return false;
+                break;
+            case 5://+x
+                if (blockAccess.getBlockMetadata(x - 1, y, z) > 7) return false;
+            }
         }
+        //If none of the above then render side.
+        return true;
     }
 
     /* Bush growth */
