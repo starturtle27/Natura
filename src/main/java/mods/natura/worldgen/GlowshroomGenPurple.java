@@ -180,27 +180,27 @@ public class GlowshroomGenPurple extends WorldGenerator
 
                                 Block block = world.getBlock(posX, posY, posZ);
 
-                                if ((meta != 0 || y >= y + height - 1) && (block == null || block.canBeReplacedByLeaves(world, posX, posY, posZ)))
+                                if ((meta != 0 || y >= y + height - 1) && (block == null || block == Blocks.fire || block.canBeReplacedByLeaves(world, posX, posY, posZ)))
                                 {
-                                    world.setBlock(posX, posY, posZ, NContent.glowshroomPurple, meta, 0);
+                                	setBlockAndNotifyAdequately(world, posX, posY, posZ, NContent.glowshroomPurple, meta);
                                 }
                             }
                         }
                     }
 
-                    world.setBlock(x - 2, y + height - 1, z - 2, NContent.glowshroomPurple, 1, 0);
-                    world.setBlock(x + 2, y + height - 1, z - 2, NContent.glowshroomPurple, 3, 0);
-                    world.setBlock(x - 2, y + height - 1, z + 2, NContent.glowshroomPurple, 7, 0);
-                    world.setBlock(x + 2, y + height - 1, z + 2, NContent.glowshroomPurple, 9, 0);
+                    setBlockAndNotifyAdequately(world, x - 2, y + height - 1, z - 2, NContent.glowshroomPurple, 1);
+                    setBlockAndNotifyAdequately(world, x + 2, y + height - 1, z - 2, NContent.glowshroomPurple, 3);
+                    setBlockAndNotifyAdequately(world, x - 2, y + height - 1, z + 2, NContent.glowshroomPurple, 7);
+                    setBlockAndNotifyAdequately(world, x + 2, y + height - 1, z + 2, NContent.glowshroomPurple, 9);
 
                     for (posY = 0; posY < height; ++posY)
                     {
                         Block block = world.getBlock(x, y + posY, z);
                         ;
 
-                        if (block == null || block.canBeReplacedByLeaves(world, x, y + posY, z))
+                        if (block == null || block == Blocks.fire || block.canBeReplacedByLeaves(world, x, y + posY, z))
                         {
-                            world.setBlock(x, y + posY, z, NContent.glowshroomPurple, 10, 0);
+                        	setBlockAndNotifyAdequately(world, x, y + posY, z, NContent.glowshroomPurple, 10);
                         }
                     }
 

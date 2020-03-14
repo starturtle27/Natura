@@ -194,10 +194,10 @@ public class GlowshroomGenBlueGreen extends WorldGenerator
 
                                 Block block = world.getBlock(posX, posY, posZ);
 
-                                if ((meta != 0 || y >= y + height - 1) && (block == null || block.canBeReplacedByLeaves(world, posX, posY, posZ)))
+                                if ((meta != 0 || y >= y + height - 1) && (block == null || block == Blocks.fire || block.canBeReplacedByLeaves(world, posX, posY, posZ)))
                                 {
                                     Block localID = type == 1 ? NContent.glowshroomBlue : NContent.glowshroomGreen;
-                                    world.setBlock(posX, posY, posZ, localID, meta, 0);
+                                    setBlockAndNotifyAdequately(world, posX, posY, posZ, localID, meta);
                                 }
                             }
                         }
@@ -207,10 +207,10 @@ public class GlowshroomGenBlueGreen extends WorldGenerator
                     {
                         Block block = world.getBlock(x, y + posY, z);
 
-                        if (block == null || block.canBeReplacedByLeaves(world, x, y + posY, z))
+                        if (block == null || block == Blocks.fire || block.canBeReplacedByLeaves(world, x, y + posY, z))
                         {
                             Block localID = type == 1 ? NContent.glowshroomBlue : NContent.glowshroomGreen;
-                            world.setBlock(x, y + posY, z, localID, 10, 0);
+                            setBlockAndNotifyAdequately(world, x, y + posY, z, localID, 10);
                         }
                     }
 
