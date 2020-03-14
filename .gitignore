@@ -26,3 +26,8 @@ Thumbs.db
 /.classpath
 /.project
 /.settings/
+#gradle stuff
+gradlew
+gradlew.bat
+/gradle/
+/eclipse/
