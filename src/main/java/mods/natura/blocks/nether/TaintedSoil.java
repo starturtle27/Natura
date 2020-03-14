@@ -1,5 +1,7 @@
 package mods.natura.blocks.nether;
 
+import static net.minecraftforge.common.util.ForgeDirection.UP;
+
 import mods.natura.blocks.NBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -39,8 +41,8 @@ public class TaintedSoil extends NBlock
         return super.canSustainPlant(world, x, y, z, direction, plant);
     }
 
-    public boolean isFireSource (World world, int x, int y, int z, int metadata, ForgeDirection side)
-    {
-        return true;
+    @Override
+    public boolean isFireSource(World world, int x, int y, int z, ForgeDirection side) {
+    	return side == UP;
     }
 }
