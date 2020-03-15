@@ -41,12 +41,6 @@ public class AlternateWorkbench extends BlockWorkbench
         return sideIcons[metadata];
     }
 
-    @Override
-    public boolean renderAsNormalBlock ()
-    {
-        return false;
-    }
-
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockIcons (IIconRegister iconRegister)

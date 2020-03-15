@@ -51,12 +51,6 @@ public class AlternateBookshelf extends BlockBookshelf
     }
 
     @Override
-    public boolean renderAsNormalBlock ()
-    {
-        return false;
-    }
-
-    @Override
     public float getEnchantPowerBonus (World world, int x, int y, int z)
     {
         return 1f;
