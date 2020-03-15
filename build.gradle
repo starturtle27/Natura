@@ -96,7 +96,7 @@ task buildInfo {
         ext.buildNum = "DEV"
     }
 }
-version = "${minecraft.version}-${project.buildInfo.buildNum}.${project.buildInfo.revision}"
+version = "2.3.0-dev"
 
 sourceSets {
     main {
