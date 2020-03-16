@@ -41,9 +41,7 @@ public class CropBlock extends BlockBush implements IGrowable {
         return (meta < 4) ? 0 : 4;
     }
 
-    /**
-     * Ticks the block if it's been scheduled
-     */
+    /* Ticks the block if it's been scheduled */
     @Override
     public void updateTick(World world, int x, int y, int z, Random random) {
         this.checkAndDropBlock(world, x, y, z);
@@ -60,6 +58,15 @@ public class CropBlock extends BlockBush implements IGrowable {
                     world.setBlockMetadataWithNotify(x, y, z, meta, 2);
                 }
             }
+        }
+    }
+
+    /* checks if the block can stay, if not drop as item */
+    @Override
+    protected void checkAndDropBlock(World world, int x, int y, int z) {
+        if (world.getBlock(x, y - 1, z) == Blocks.dirt) {
+            this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+            world.setBlock(x, y, z, getBlockById(0), 0, 2);
         }
     }
 
@@ -98,7 +105,7 @@ public class CropBlock extends BlockBush implements IGrowable {
         }
     }
 
-    /* Right-click harvests berries */
+    /* Right-click harvests crops */
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
         /*if (world.isRemote)
@@ -144,9 +151,7 @@ public class CropBlock extends BlockBush implements IGrowable {
         return icons[meta];
     }
 
-    /**
-     * The type of render function that is called for this block
-     */
+    /* The type of render function that is called for this block */
     @Override
     public int getRenderType() {
         return CropRender.model;
@@ -180,7 +185,7 @@ public class CropBlock extends BlockBush implements IGrowable {
         return 1;
     }
 
-    /** Drops the block items with a specified chance of dropping the specified items */
+    /* Drops the block items with a specified chance of dropping the specified items */
     @Override
     public void dropBlockAsItemWithChance(World world, int par2, int par3, int par4, int par5, float par6, int par7) {
         super.dropBlockAsItemWithChance(world, par2, par3, par4, par5, par6, 0);
@@ -218,9 +223,9 @@ public class CropBlock extends BlockBush implements IGrowable {
 
     /*@Override
     public int quantityDropped(int meta, int fortune, Random random) {
-    	if (meta % 4 == 0)
-    		return 1+random.nextInt(fortune+1);
-    	return random.nextInt(meta/4);
+        if (meta % 4 == 0)
+            return 1+random.nextInt(fortune+1);
+        return random.nextInt(meta/4);
     }*/
 
     
@@ -232,8 +237,8 @@ public class CropBlock extends BlockBush implements IGrowable {
     }
 
     @Override
-    public int getDamageValue(World par1World, int par2, int par3, int par4) {
-        return seedDamageDropped(par1World.getBlockMetadata(par2, par3, par4));
+    public int getDamageValue(World world, int x, int y, int z) {
+        return seedDamageDropped(world.getBlockMetadata(x, y, z));
     }
 
     @Override
