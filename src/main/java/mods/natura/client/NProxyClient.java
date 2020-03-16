@@ -1,5 +1,8 @@
 package mods.natura.client;
 
+import org.lwjgl.opengl.GL11;
+
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import mods.natura.client.entity.FlameSpiderBabyRender;
 import mods.natura.client.entity.FlameSpiderRender;
 import mods.natura.client.entity.FusewoodArrowRender;
@@ -19,16 +22,9 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.util.ResourceLocation;
 
-import org.lwjgl.opengl.GL11;
-
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.FMLCommonHandler;
-
-public class NProxyClient extends NProxyCommon
-{
+public class NProxyClient extends NProxyCommon {
     @Override
-    public void registerRenderer ()
-    {
+    public void registerRenderer() {
         RenderingRegistry.registerBlockHandler(new BerryRender());
         RenderingRegistry.registerBlockHandler(new SaguaroRenderer());
         RenderingRegistry.registerBlockHandler(new CropRender());
@@ -43,13 +39,10 @@ public class NProxyClient extends NProxyCommon
         RenderingRegistry.registerEntityRenderingHandler(BabyHeatscarSpider.class, new FlameSpiderBabyRender());
 
         Minecraft mc = Minecraft.getMinecraft();
-        try
-        {
+        try {
             GrassColorizerAlternate.setBlueGrassBiomeColorizer(TextureUtil.readImageData(mc.getResourceManager(), bluegrass));
             GrassColorizerAlternate.setOrangeGrassBiomeColorizer(TextureUtil.readImageData(mc.getResourceManager(), orangegrass));
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -57,8 +50,7 @@ public class NProxyClient extends NProxyCommon
     private static final ResourceLocation bluegrass = new ResourceLocation("natura", "textures/misc/bluegrasscolor.png");
     private static final ResourceLocation orangegrass = new ResourceLocation("natura", "textures/misc/orangegrasscolor.png");
 
-    public static void renderStandardInvBlock (RenderBlocks renderblocks, Block block, int meta)
-    {
+    public static void renderStandardInvBlock(RenderBlocks renderblocks, Block block, int meta) {
         Tessellator tessellator = Tessellator.instance;
         GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
         tessellator.startDrawingQuads();
@@ -88,8 +80,4 @@ public class NProxyClient extends NProxyCommon
         GL11.glTranslatef(0.5F, 0.5F, 0.5F);
     }
 
-    /*public File getMinecraftDir ()
-    {
-        return Minecraft.getMinecraftDir();
-    }*/
 }

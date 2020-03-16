@@ -2,6 +2,8 @@ package mods.natura.blocks.overrides;
 
 import java.util.List;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import mods.natura.client.FenceRender;
 import mods.natura.common.NContent;
 import net.minecraft.block.Block;
@@ -15,76 +17,58 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-public class AlternateFence extends BlockFence
-{
-    public AlternateFence(Material par3Material)
-    {
-        super("", par3Material);
+public class AlternateFence extends BlockFence {
+    public AlternateFence(Material material) {
+        super("", material);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon (int side, int metadata)
-    {
+    public IIcon getIcon(int side, int metadata) {
         return NContent.planks.getIcon(side, metadata);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons (IIconRegister iconRegister)
-    {
+    public void registerBlockIcons(IIconRegister iconRegister) {
     }
 
     @Override
-    public int damageDropped (int meta)
-    {
+    public int damageDropped(int meta) {
         return meta;
-    }
-
-    public static boolean isIdAFence (int par0)
-    {
-        return true;
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubBlocks (Item par1, CreativeTabs tabs, List list)
-    {
+    public void getSubBlocks (Item item, CreativeTabs tabs, List list) {
         for (int i = 0; i < NContent.woodTextureNames.length; i++)
-            list.add(new ItemStack(par1, 1, i));
+            list.add(new ItemStack(item, 1, i));
     }
 
     @Override
-    public boolean canPlaceTorchOnTop (World world, int x, int y, int z)
-    {
+    public boolean canPlaceTorchOnTop(World world, int x, int y, int z) {
         return true;
     }
 
     @Override
-    public int getRenderType ()
-    {
+    public int getRenderType() {
         return FenceRender.model;
     }
 
     @Override
-    public boolean canConnectFenceTo (IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
-    {
-        Block l = par1IBlockAccess.getBlock(par2, par3, par4);
+    public boolean canConnectFenceTo(IBlockAccess blockAccess, int x, int y, int z) {
+        Block block = blockAccess.getBlock(x, y, z);
 
-        if (l != this)
-        {
-            if (l == null)
+        if (block != this) {
+            if (block == null)
                 return false;
-            if (l.getMaterial().isOpaque() && l.renderAsNormalBlock())
-                return l.getMaterial() != Material.plants;
-            return (l instanceof BlockFenceGate);
-        }
-        else
-        {
+            if (block.getMaterial().isOpaque() && block.renderAsNormalBlock())
+                return block.getMaterial() != Material.plants;
+            return (block instanceof BlockFenceGate);
+        } else {
             return true;
         }
     }
+
 }

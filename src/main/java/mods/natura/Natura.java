@@ -2,7 +2,21 @@ package mods.natura;
 
 import java.util.Random;
 
-import cpw.mods.fml.common.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.Event.Result;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import mantle.lib.TabTools;
 import mantle.pulsar.control.PulseManager;
 import mods.natura.common.NContent;
@@ -35,22 +49,8 @@ import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.world.ChunkDataEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.Event.Result;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-
 @Mod(modid = "Natura", name = "Natura", version = "2.2.0", acceptedMinecraftVersions = "[1.7.10]", dependencies = "required-after:Mantle")
-public class Natura
-{
+public class Natura {
     /* Proxies for sides, used for graphics processing */
     @SidedProxy(clientSide = "mods.natura.client.NProxyClient", serverSide = "mods.natura.common.NProxyCommon")
     public static NProxyCommon proxy;
@@ -65,8 +65,7 @@ public class Natura
     public static final PulseManager pulsar = new PulseManager(modID, "Natura-Dynamic");
 
     @EventHandler
-    public void preInit (FMLPreInitializationEvent evt)
-    {
+    public void preInit(FMLPreInitializationEvent evt) {
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -88,27 +87,23 @@ public class Natura
     public static BaseTreeWorldgen trees;
 
     @EventHandler
-    public void init (FMLInitializationEvent evt)
-    {
+    public void init(FMLInitializationEvent evt) {
         GameRegistry.registerWorldGenerator(crops = new BaseCropWorldgen(), 20); // TODO 1.7 Find correct weight (param 2)
         GameRegistry.registerWorldGenerator(clouds = new BaseCloudWorldgen(), 20); // TODO 1.7 Find correct weight (param 2)
         GameRegistry.registerWorldGenerator(trees = new BaseTreeWorldgen(), 20); // TODO 1.7 Find correct weight (param 2)
 
         proxy.registerRenderer();
-        proxy.addNames();
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new NGuiHandler());
 
         GameRegistry.registerFuelHandler(content);
 
-        if (PHNatura.overrideNether)
-        {
+        if (PHNatura.overrideNether) {
             DimensionManager.unregisterProviderType(-1);
             DimensionManager.registerProviderType(-1, NetheriteWorldProvider.class, true);
         }
         MinecraftForge.EVENT_BUS.register(WorldHandler.instance);
 
-        if (retrogen)
-        {
+        if (retrogen) {
             FMLCommonHandler.instance().bus().register(new TickHandlerWorld());
         }
 
@@ -119,30 +114,23 @@ public class Natura
     }
 
     @EventHandler
-    public void postInit (FMLPostInitializationEvent evt)
-    {
+    public void postInit(FMLPostInitializationEvent evt) {
         content.createEntities();
         content.modIntegration();
 
         pulsar.postInit(evt);
     }
+
     @SubscribeEvent
-    public void bonemealEvent (BonemealEvent event)
-    {
-        if (!event.world.isRemote && !event.isCanceled() && event.getResult() != Result.ALLOW)
-        {
-            if (event.block == NContent.glowshroom)
-            {
+    public void bonemealEvent(BonemealEvent event) {
+        if (!event.world.isRemote && !event.isCanceled() && event.getResult() != Result.ALLOW) {
+            if (event.block == NContent.glowshroom) {
                 if (NContent.glowshroom.fertilizeMushroom(event.world, event.x, event.y, event.z, event.world.rand))
                     event.setResult(Result.ALLOW);
-            }
-            if (event.block == NContent.berryBush)
-            {
+            } else if (event.block == NContent.berryBush) {
                 if (NContent.berryBush.boneFertilize(event.world, event.x, event.y, event.z, event.world.rand))
                     event.setResult(Result.ALLOW);
-            }
-            if (event.block == NContent.netherBerryBush)
-            {
+            } else if (event.block == NContent.netherBerryBush) {
                 if (NContent.netherBerryBush.boneFertilize(event.world, event.x, event.y, event.z, event.world.rand))
                     event.setResult(Result.ALLOW);
             }
@@ -150,22 +138,17 @@ public class Natura
     }
 
     @SubscribeEvent
-    public void interactEvent (EntityInteractEvent event)
-    {
+    public void interactEvent(EntityInteractEvent event) {
         //if (event.target == null)
-        if (event.target instanceof EntityCow || event.target instanceof EntitySheep)
-        {
+        if (event.target instanceof EntityCow || event.target instanceof EntitySheep) {
             ItemStack equipped = event.entityPlayer.getCurrentEquippedItem();
             EntityAnimal creature = (EntityAnimal) event.target;
-            if (equipped != null && equipped.getItem() == NContent.plantItem && equipped.getItemDamage() == 0 && creature.getGrowingAge() == 0 && !creature.isInLove())
-            {
+            if (equipped != null && equipped.getItem() == NContent.plantItem && equipped.getItemDamage() == 0 && creature.getGrowingAge() == 0 && !creature.isInLove()) {
                 EntityPlayer player = event.entityPlayer;
-                if (!player.capabilities.isCreativeMode)
-                {
+                if (!player.capabilities.isCreativeMode) {
                     --equipped.stackSize;
 
-                    if (equipped.stackSize <= 0)
-                    {
+                    if (equipped.stackSize <= 0) {
                         player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
                     }
                 }
@@ -176,15 +159,10 @@ public class Natura
     }
 
     @SubscribeEvent
-    public void spawnEvent (EntityJoinWorldEvent event)
-    {
-        if (event.entity instanceof EntityCow || event.entity instanceof EntitySheep)
-        {
+    public void spawnEvent(EntityJoinWorldEvent event) {
+        if (event.entity instanceof EntityCow || event.entity instanceof EntitySheep) {
             ((EntityLiving) event.entity).tasks.addTask(3, new EntityAITempt((EntityCreature) event.entity, 0.25F, NContent.plantItem, false));
-        }
-
-        if (event.entity instanceof EntityChicken)
-        {
+        } else if (event.entity instanceof EntityChicken) {
             ((EntityLiving) event.entity).tasks.addTask(3, new EntityAITempt((EntityCreature) event.entity, 0.25F, NContent.seeds, false));
         }
     }
@@ -192,11 +170,11 @@ public class Natura
     public static boolean retrogen;
 
     @SubscribeEvent
-    public void chunkDataSave (ChunkDataEvent.Save event)
-    {
+    public void chunkDataSave (ChunkDataEvent.Save event) {
         event.getData().setBoolean("Natura.Retrogen", true);
     }
 
     NContent content;
     public static Random random = new Random();
+
 }

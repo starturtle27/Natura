@@ -1,17 +1,15 @@
 package mods.natura.plugins.fmp;
 
-import mods.natura.common.NContent;
-import net.minecraft.block.Block;
 import codechicken.microblock.BlockMicroMaterial;
 import codechicken.microblock.MicroMaterialRegistry;
+import mods.natura.common.NContent;
+import net.minecraft.block.Block;
 
-public class ForgeMultiPart
-{
+public class ForgeMultiPart {
 
     public static final String modId = "ForgeMultipart";
 
-    public static void registerBlocks ()
-    {
+    public static void registerBlocks() {
         registerBlock(NContent.bloodwood);
         registerBlock(NContent.willow);
         registerBlock(NContent.planks, 0, 12);
@@ -25,34 +23,28 @@ public class ForgeMultiPart
     }
 
     //For blocks with metadata values only
-    public static void registerBlock (Block block, int metastart, int metaend)
-    {
-        for (int meta = metastart; meta <= metaend; meta++)
-        {
+    public static void registerBlock(Block block, int metastart, int metaend) {
+        for (int meta = metastart; meta <= metaend; meta++) {
             String identifier = new String(block.getUnlocalizedName());
             MicroMaterialRegistry.registerMaterial(new BlockMicroMaterial(block, meta), identifier + meta);
         }
     }
 
     //For blocks without metadata values only.
-    public static void registerBlock (Block block)
-    {
+    public static void registerBlock(Block block) {
         BlockMicroMaterial.createAndRegister(block, 0);
     }
 
     //For blocks with metadata values and special MicroMaterial only
-    public static void registerBlock (Block block, int metastart, int metaend, MicroMaterialRegistry.IMicroMaterial material)
-    {
-        for (int meta = metastart; meta <= metaend; meta++)
-        {
+    public static void registerBlock(Block block, int metastart, int metaend, MicroMaterialRegistry.IMicroMaterial material) {
+        for (int meta = metastart; meta <= metaend; meta++) {
             String identifier = new String(block.getUnlocalizedName());
             MicroMaterialRegistry.registerMaterial(material, identifier + meta);
         }
     }
 
     //For blocks without metadata values and special MicroMaterial only.
-    public static void registerBlock (Block block, MicroMaterialRegistry.IMicroMaterial material)
-    {
+    public static void registerBlock(Block block, MicroMaterialRegistry.IMicroMaterial material) {
         MicroMaterialRegistry.registerMaterial(material, new String(block.getUnlocalizedName()));
     }
 

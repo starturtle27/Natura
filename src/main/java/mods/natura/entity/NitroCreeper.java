@@ -62,20 +62,20 @@ public class NitroCreeper extends EntityCreeper
     }
 
     @Override
-    public void writeEntityToNBT (NBTTagCompound par1NBTTagCompound)
+    public void writeEntityToNBT (NBTTagCompound tagCompound)
     {
-        super.writeEntityToNBT(par1NBTTagCompound);
-        par1NBTTagCompound.setShort("Fuse", (short) this.fuseTime);
+        super.writeEntityToNBT(tagCompound);
+        tagCompound.setShort("Fuse", (short) this.fuseTime);
     }
 
     @Override
-    public void readEntityFromNBT (NBTTagCompound par1NBTTagCompound)
+    public void readEntityFromNBT (NBTTagCompound tagCompound)
     {
-        super.readEntityFromNBT(par1NBTTagCompound);
+        super.readEntityFromNBT(tagCompound);
 
-        if (par1NBTTagCompound.hasKey("Fuse"))
+        if (tagCompound.hasKey("Fuse"))
         {
-            this.fuseTime = par1NBTTagCompound.getShort("Fuse");
+            this.fuseTime = tagCompound.getShort("Fuse");
         }
     }
 
@@ -129,45 +129,45 @@ public class NitroCreeper extends EntityCreeper
     }
 
     @Override
-    public float getCreeperFlashIntensity (float par1)
+    public float getCreeperFlashIntensity (float intensity)
     {
-        return (this.lastActiveTime + (this.timeSinceIgnited - this.lastActiveTime) * par1) / (this.fuseTime - 2);
+        return (this.lastActiveTime + (this.timeSinceIgnited - this.lastActiveTime) * intensity) / (this.fuseTime - 2);
     }
 
     @Override
-    protected void dropFewItems (boolean par1, int par2)
+    protected void dropFewItems (boolean hitByPlayer, int lootingLevel)
     {
-        Item j = this.getDropItem();
+        Item dropItem = this.getDropItem();
 
-        if (j != null)
+        if (dropItem != null)
         {
-            int k = this.rand.nextInt(4) + 2;
+            int dropCount = this.rand.nextInt(4) + 2;
 
-            if (par2 > 0)
+            if (lootingLevel > 0)
             {
-                k += this.rand.nextInt(par2 + 1);
+            	dropCount += this.rand.nextInt(lootingLevel + 1);
             }
 
-            for (int l = 0; l < k; ++l)
+            for (int l = 0; l < dropCount; ++l)
             {
-                this.dropItem(j, 1);
+                this.dropItem(dropItem, 1);
             }
         }
 
         if (this.getPowered())
         {
-            if (j != null)
+            if (dropItem != null)
             {
-                int k = this.rand.nextInt(40) + 20;
+                int dropCount = this.rand.nextInt(40) + 20;
 
-                if (par2 > 0)
+                if (lootingLevel > 0)
                 {
-                    k += this.rand.nextInt(par2 * 6 + 1);
+                	dropCount += this.rand.nextInt(lootingLevel * 6 + 1);
                 }
 
-                for (int l = 0; l < k; ++l)
+                for (int l = 0; l < dropCount; ++l)
                 {
-                    this.dropItem(j, 1);
+                    this.dropItem(dropItem, 1);
                 }
             }
 

@@ -5,8 +5,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 import powercrystals.minefactoryreloaded.api.IFactoryPlantable;
 import powercrystals.minefactoryreloaded.api.ReplacementBlock;
 
@@ -15,25 +15,22 @@ import powercrystals.minefactoryreloaded.api.ReplacementBlock;
  * so one instance per source ID.
  */
 
-public class PlantableStandard implements IFactoryPlantable
-{
+public class PlantableStandard implements IFactoryPlantable {
     protected Item _sourceId;
     protected Block _plantedBlockId;
 
-    public PlantableStandard(Item sourceId, Block plantedBlockId)
-    {
+    public PlantableStandard(Item sourceId, Block plantedBlockId) {
         this._sourceId = sourceId;
         this._plantedBlockId = plantedBlockId;
     }
     public boolean canBePlanted(ItemStack stack, boolean forFermenting) {
         return true;//TODO figure out what on earth this is supposed to be
     }
+
     @Override
-    public boolean canBePlantedHere (World world, int x, int y, int z, ItemStack stack)
-    {
+    public boolean canBePlantedHere(World world, int x, int y, int z, ItemStack stack) {
         Block groundId = world.getBlock(x, y - 1, z);
-        if (!world.isAirBlock(x, y, z))
-        {
+        if (!world.isAirBlock(x, y, z)) {
             return false;
         }
         return (_plantedBlockId.canPlaceBlockAt(world, x, y, z) && _plantedBlockId.canBlockStay(world, x, y, z))
@@ -42,33 +39,29 @@ public class PlantableStandard implements IFactoryPlantable
     }
 
     @Override
-    public void prePlant (World world, int x, int y, int z, ItemStack stack)
-    {
+    public void prePlant(World world, int x, int y, int z, ItemStack stack) {
         return;
     }
 
     @Override
-    public void postPlant (World world, int x, int y, int z, ItemStack stack)
-    {
+    public void postPlant(World world, int x, int y, int z, ItemStack stack) {
         return;
     }
     @Override
-    public ReplacementBlock getPlantedBlock (World world, int x, int y, int z, ItemStack stack)
-    {
-        if (stack.getItem() != _sourceId)
-        {
+    public ReplacementBlock getPlantedBlock(World world, int x, int y, int z, ItemStack stack) {
+        if (stack.getItem() != _sourceId) {
             return new ReplacementBlock(Blocks.air);
         }
         return new ReplacementBlock(_plantedBlockId).setMeta(getMeta(stack));
-
     }
 
     @Override
-    public Item getSeed ()
-    {
+    public Item getSeed() {
         return _sourceId;
     }
-    public int getMeta (ItemStack i) {
+
+    public int getMeta(ItemStack i) {
         return i.getItemDamage();
     }
+
 }

@@ -2,20 +2,18 @@ package mods.natura.plugins.waila;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mods.natura.blocks.crops.CropBlock;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
-public class NaturaCropDataProvider implements IWailaDataProvider
-{
+public class NaturaCropDataProvider implements IWailaDataProvider {
 
     @Override
-    public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config)
-    {
+    public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
         Block block = accessor.getBlock(); 
         if (accessor.getBlock() instanceof CropBlock) {
             int meta = accessor.getMetadata();
@@ -27,20 +25,16 @@ public class NaturaCropDataProvider implements IWailaDataProvider
     }
 
     @Override
-    public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config)
-    {
+    public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         return currenttip;
     }
 
     @Override
-    public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config)
-    {
-        if (config.getConfig("general.showcrop"))
-        {
+    public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        if (config.getConfig("general.showcrop")) {
             Block block = accessor.getBlock();
 
-            if (block instanceof CropBlock)
-            {
+            if (block instanceof CropBlock) {
                 int meta = accessor.getMetadata();
                 float startGrowth = ((CropBlock)block).getStartGrowth(meta);
                 float maxGrowth = ((CropBlock)block).getMaxGrowth(meta) - startGrowth;
@@ -48,21 +42,19 @@ public class NaturaCropDataProvider implements IWailaDataProvider
 
                 growthValue = ((meta - startGrowth) / maxGrowth) * 100.0F;
 
-                if (growthValue < 100.0)
+                if (growthValue < 100.0) {
                     currenttip.add(StatCollector.translateToLocalFormatted("tooltip.waila.growth.percentage", growthValue));
-                else
+                } else {
                     currenttip.add(StatCollector.translateToLocal("tooltip.waila.growth.mature"));
-
+                }
                 return currenttip;
             }
         }
-
         return currenttip;
     }
 
     @Override
-    public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config)
-    {
+    public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         return currenttip;
     }
 

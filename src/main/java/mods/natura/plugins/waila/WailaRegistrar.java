@@ -4,8 +4,7 @@ import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import mods.natura.blocks.crops.CropBlock;
 
-public class WailaRegistrar
-{
+public class WailaRegistrar {
     
     public static void wailaCallback (IWailaRegistrar registrar) {
         IWailaDataProvider cropProvider = new NaturaCropDataProvider();

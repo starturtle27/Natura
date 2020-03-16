@@ -2,6 +2,9 @@ package mods.natura.items;
 
 import java.util.List;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import mods.natura.common.PHNatura;
 import mods.natura.entity.BabyHeatscarSpider;
 import mods.natura.entity.HeatscarSpider;
 import mods.natura.entity.ImpEntity;
@@ -18,8 +21,6 @@ import net.minecraft.util.Facing;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class SpawnEgg extends Item
 {
@@ -68,10 +69,12 @@ public class SpawnEgg extends Item
     }
 
     @Override
-    public void getSubItems (Item id, CreativeTabs tab, List list)
+    public void getSubItems (Item item, CreativeTabs tab, List list)
     {
-        for (int i = 0; i < mobNames.length; i++)
-            list.add(new ItemStack(id, 1, i));
+        if (PHNatura.enableImps) list.add(new ItemStack(item, 1, 0));
+        if (PHNatura.enableHeatscarSpiders) list.add(new ItemStack(item, 1, 1));
+        if (PHNatura.enableNitroCreepers) list.add(new ItemStack(item, 1, 2));
+        if (PHNatura.enableHeatscarSpiders) list.add(new ItemStack(item, 1, 3));
     }
 
     @Override
@@ -114,20 +117,28 @@ public class SpawnEgg extends Item
         switch (damage)
         {
         case 0:
-            entity = new ImpEntity(world);
-            spawnEntity(posX, posY, posZ, entity, world);
+            if (PHNatura.enableImps) {
+        	    entity = new ImpEntity(world);
+                spawnEntity(posX, posY, posZ, entity, world);
+            }
             break;
         case 1:
-            entity = new HeatscarSpider(world);
-            spawnEntity(posX, posY, posZ, entity, world);
+            if (PHNatura.enableHeatscarSpiders) {
+                entity = new HeatscarSpider(world);
+                spawnEntity(posX, posY, posZ, entity, world);
+            }
             break;
         case 2:
-            entity = new NitroCreeper(world);
-            spawnEntity(posX, posY, posZ, entity, world);
+            if (PHNatura.enableNitroCreepers) {
+                entity = new NitroCreeper(world);
+                spawnEntity(posX, posY, posZ, entity, world);
+            }
             break;
         case 3:
-            entity = new BabyHeatscarSpider(world);
-            spawnEntity(posX, posY, posZ, entity, world);
+            if (PHNatura.enableHeatscarSpiders) {
+                entity = new BabyHeatscarSpider(world);
+                spawnEntity(posX, posY, posZ, entity, world);
+            }
             break;
         }
         return entity;

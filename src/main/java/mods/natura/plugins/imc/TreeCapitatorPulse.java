@@ -1,5 +1,8 @@
 package mods.natura.plugins.imc;
 
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.registry.GameData;
 import mantle.pulsar.pulse.Handler;
 import mantle.pulsar.pulse.Pulse;
 import mods.natura.common.NContent;
@@ -7,19 +10,14 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.registry.GameData;
 
 @Pulse(id = "Natura TreeCapitator Compatibility", modsRequired = TreeCapitatorPulse.modId)
-public class TreeCapitatorPulse
-{
+public class TreeCapitatorPulse {
 
     public static final String modId = "Treecapitator";
 
     @Handler
-    public void init (FMLInitializationEvent evt)
-    {
+    public void init (FMLInitializationEvent evt) {
         NBTTagCompound tpModCfg = new NBTTagCompound();
         tpModCfg.setString("modID", "Natura");
         tpModCfg.setString("axeIDList", String.format("%s; %s; %s; %s; %s", getUniqueName(NContent.ghostwoodAxe), getUniqueName(NContent.bloodwoodAxe), getUniqueName(NContent.darkwoodAxe),
@@ -109,13 +107,12 @@ public class TreeCapitatorPulse
 
     }
 
-    public static String getUniqueName (Block block)
-    {
+    public static String getUniqueName (Block block) {
         return GameData.getBlockRegistry().getNameForObject(block);
     }
 
-    public static String getUniqueName (Item item)
-    {
+    public static String getUniqueName (Item item) {
         return GameData.getItemRegistry().getNameForObject(item);
     }
+
 }

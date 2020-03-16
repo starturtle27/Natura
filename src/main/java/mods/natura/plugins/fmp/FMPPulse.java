@@ -6,19 +6,14 @@ import mantle.pulsar.pulse.Pulse;
 import mods.natura.Natura;
 
 @Pulse(id = "Natura FMP Compatibility", modsRequired = ForgeMultiPart.modId)
-public class FMPPulse
-{
+public class FMPPulse {
     
     @Handler
-    public void init (FMLInitializationEvent evt)
-    {
-        try
-        {
+    public void init (FMLInitializationEvent evt) {
+        try {
             Natura.logger.debug("[FMP] Registering Natura decorative blocks with FMP.");
             ForgeMultiPart.registerBlocks();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             Natura.logger.catching(e);
         }
     }

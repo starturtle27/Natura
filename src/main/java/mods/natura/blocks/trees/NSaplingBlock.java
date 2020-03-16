@@ -3,7 +3,8 @@ package mods.natura.blocks.trees;
 import java.util.List;
 import java.util.Random;
 
-import mods.natura.Natura;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import mods.natura.common.NContent;
 import mods.natura.common.NaturaTab;
 import mods.natura.worldgen.BloodTreeLargeGen;
@@ -26,10 +27,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class NSaplingBlock extends BlockSapling
 {
