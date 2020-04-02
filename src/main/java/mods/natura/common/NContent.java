@@ -154,24 +154,29 @@ public class NContent implements IFuelHandler {
         heatSand = new HeatSand().setBlockName("HeatSand");//.setLightLevel(0.375f);
         heatSand.setHarvestLevel("shovel", 0);
         GameRegistry.registerBlock(heatSand, "heatsand");
-
-        netherrackFurnace = new NetherrackFurnaceBlock().setHardness(3.5F).setCreativeTab(NaturaTab.tab).setBlockName("furnace.netherrack");
-        GameRegistry.registerBlock(netherrackFurnace, "NetherFurnace");
-        GameRegistry.registerTileEntity(NetherrackFurnaceLogic.class, "netherrackFurnace");
+        if (PHNatura.enableNetherFurnaces) {
+            netherrackFurnace = new NetherrackFurnaceBlock().setHardness(3.5F).setCreativeTab(NaturaTab.tab).setBlockName("furnace.netherrack");
+            GameRegistry.registerBlock(netherrackFurnace, "NetherFurnace");
+            GameRegistry.registerTileEntity(NetherrackFurnaceLogic.class, "netherrackFurnace");
+        }
         respawnObelisk = new RespawnObelisk(Material.wood).setHardness(1.0F).setResistance(1000000F).setCreativeTab(NaturaTab.tab).setBlockName("nether.obelisk");
         GameRegistry.registerBlock(respawnObelisk, "Obelisk");
-        netherGlass = (NetherGlass) new NetherGlass().setHardness(1.0F).setResistance(3000F).setStepSound(Block.soundTypeGlass).setCreativeTab(NaturaTab.tab).setBlockName("nether.glass");
-        GameRegistry.registerBlock(netherGlass, NetherGlassItem.class, "NetherGlass");
+        if (PHNatura.enableNetherGlass) {
+            netherGlass = (NetherGlass) new NetherGlass().setHardness(1.0F).setResistance(3000F).setStepSound(Block.soundTypeGlass).setCreativeTab(NaturaTab.tab).setBlockName("nether.glass");
+            GameRegistry.registerBlock(netherGlass, NetherGlassItem.class, "NetherGlass");
+        }
 
         //Blaze Rails
-        brailPowered = new BlazeRailPowered(false).setHardness(0.7F).setBlockName("blazerail.powered").setBlockTextureName("natura:brail_golden");
-        GameRegistry.registerBlock(brailPowered, "BrailPowered");
-        brailDetector = new BlazeRailDetector().setHardness(0.7F).setBlockName("blazerail.detector").setBlockTextureName("natura:brail_detector");
-        GameRegistry.registerBlock(brailDetector, "BrailDetector");
-        brail = new BlazeRail().setHardness(0.7F).setBlockName("blazerail").setBlockTextureName("natura:brail_normal");
-        GameRegistry.registerBlock(brail, "Blazerail");
-        brailActivator = new BlazeRailPowered(true).setHardness(0.7F).setBlockName("blazerail.activator").setBlockTextureName("natura:brail_activator");
-        GameRegistry.registerBlock(brailActivator, "BrailActivator");
+        if (PHNatura.enableBlazeRails) {
+            brailPowered = new BlazeRailPowered(false).setHardness(0.7F).setBlockName("blazerail.powered").setBlockTextureName("natura:brail_golden");
+            GameRegistry.registerBlock(brailPowered, "BrailPowered");
+            brailDetector = new BlazeRailDetector().setHardness(0.7F).setBlockName("blazerail.detector").setBlockTextureName("natura:brail_detector");
+            GameRegistry.registerBlock(brailDetector, "BrailDetector");
+            brail = new BlazeRail().setHardness(0.7F).setBlockName("blazerail").setBlockTextureName("natura:brail_normal");
+            GameRegistry.registerBlock(brail, "Blazerail");
+            brailActivator = new BlazeRailPowered(true).setHardness(0.7F).setBlockName("blazerail.activator").setBlockTextureName("natura:brail_activator");
+            GameRegistry.registerBlock(brailActivator, "BrailActivator");
+        }
 
         /*piston = (NetherPistonBase) new NetherPistonBase(PHNatura.piston, false).setBlockName("nether.piston");
         GameRegistry.registerBlock(piston, "natura.piston");
@@ -179,14 +184,22 @@ public class NContent implements IFuelHandler {
         GameRegistry.registerBlock(pistonSticky, "natura.piston.sticky");
         pistonExtension = new NetherPistonExtension(PHNatura.pistonExtension);
         GameRegistry.registerBlock(pistonExtension, "natura.piston.extension");*/
-        netherHopper = (BlazeHopper) new BlazeHopper().setHardness(3.0F).setResistance(8.0F).setCreativeTab(NaturaTab.tab).setBlockName("nether.hopper");
-        GameRegistry.registerBlock(netherHopper, "NetherHopper");
-        netherPressurePlate = new AlternatePressurePlate("netherrack", Material.rock, Sensitivity.mobs).setHardness(0.5F).setStepSound(Block.soundTypeStone).setBlockName("pressurePlate");
-        GameRegistry.registerBlock(netherPressurePlate, "NetherPressurePlate");
-        netherButton = new NetherrackButton().setHardness(0.5F).setStepSound(Block.soundTypeStone).setBlockName("button");
-        GameRegistry.registerBlock(netherButton, "NetherButton");
-        netherLever = new NetherLever().setHardness(0.5F).setStepSound(Block.soundTypeWood).setBlockName("lever").setBlockTextureName("natura:nlever");
-        GameRegistry.registerBlock(netherLever, "NetherLever");
+        if (PHNatura.enableBlazeHoppers) {
+            netherHopper = (BlazeHopper) new BlazeHopper().setHardness(3.0F).setResistance(8.0F).setCreativeTab(NaturaTab.tab).setBlockName("nether.hopper");
+            GameRegistry.registerBlock(netherHopper, "NetherHopper");
+        }
+        if (PHNatura.enableNetherPressurePlates) {
+            netherPressurePlate = new AlternatePressurePlate("netherrack", Material.rock, Sensitivity.mobs).setHardness(0.5F).setStepSound(Block.soundTypeStone).setBlockName("pressurePlate");
+            GameRegistry.registerBlock(netherPressurePlate, "NetherPressurePlate");
+        }
+        if (PHNatura.enableNetherButtons) {
+            netherButton = new NetherrackButton().setHardness(0.5F).setStepSound(Block.soundTypeStone).setBlockName("button");
+            GameRegistry.registerBlock(netherButton, "NetherButton");
+        }
+        if (PHNatura.enableNetherLevers) {
+            netherLever = new NetherLever().setHardness(0.5F).setStepSound(Block.soundTypeWood).setBlockName("lever").setBlockTextureName("natura:nlever");
+            GameRegistry.registerBlock(netherLever, "NetherLever");
+        }
 
         //Nether plants
         thornVines = new ThornVines().setBlockName("Thornvines").setLightLevel(0.625f);
@@ -789,21 +802,39 @@ public class NContent implements IFuelHandler {
         //Nether blocks
         GameRegistry.addShapelessRecipe(new ItemStack(Blocks.soul_sand, 1, 0), heatSand, taintedSoil);
 
-        GameRegistry.addRecipe(new ItemStack(netherrackFurnace), "###", "# #", "###", '#', Blocks.netherrack);
+        if (PHNatura.enableNetherFurnaces) {
+            GameRegistry.addRecipe(new ItemStack(netherrackFurnace), "###", "# #", "###", '#', Blocks.netherrack);
+        }
         GameRegistry.addRecipe(new ItemStack(respawnObelisk), "###", "# #", "###", '#', new ItemStack(tree, 1, 2));
-        FurnaceRecipes.smelting().func_151394_a(new ItemStack(Blocks.soul_sand, 1, 0), new ItemStack(netherGlass, 1, 0), 0.3f);
-        FurnaceRecipes.smelting().func_151394_a(new ItemStack(heatSand, 1, 0), new ItemStack(netherGlass, 1, 1), 0.3f);
+        if (PHNatura.enableNetherGlass) {
+            FurnaceRecipes.smelting().func_151394_a(new ItemStack(Blocks.soul_sand, 1, 0), new ItemStack(netherGlass, 1, 0), 0.3f);
+            FurnaceRecipes.smelting().func_151394_a(new ItemStack(heatSand, 1, 0), new ItemStack(netherGlass, 1, 1), 0.3f);
+        }
 
         //Blaze Rails
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(brailPowered, 6), "X X", "X#X", "XRX", 'X', Items.blaze_rod, 'R', "dustRedstone", '#', new ItemStack(darkTree, 1, 1)));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(brailActivator, 6), "XSX", "X#X", "XSX", 'X', Items.blaze_rod, '#', Blocks.redstone_torch, 'S', "stickWood"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(brail, 16), "X X", "X#X", "X X", 'X', Items.blaze_rod, '#', "stickWood"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(brailDetector, 6), "X X", "X#X", "XRX", 'X', Items.blaze_rod, 'R', "dustRedstone", '#', netherPressurePlate));
+        if (PHNatura.enableBlazeRails) {
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(brailPowered, 6), "X X", "X#X", "XRX", 'X', Items.blaze_rod, 'R', "dustRedstone", '#', new ItemStack(darkTree, 1, 1)));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(brailActivator, 6), "XSX", "X#X", "XSX", 'X', Items.blaze_rod, '#', Blocks.redstone_torch, 'S', "stickWood"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(brail, 16), "X X", "X#X", "X X", 'X', Items.blaze_rod, '#', "stickWood"));
+            if (PHNatura.enableNetherPressurePlates) {
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(brailDetector, 6), "X X", "X#X", "XRX", 'X', Items.blaze_rod, 'R', "dustRedstone", '#', netherPressurePlate));
+            } else {
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(brailDetector, 6), "X X", "X#X", "XRX", 'X', Items.blaze_rod, 'R', "dustRedstone", '#', Blocks.stone_pressure_plate));
+            }
+        }
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(netherHopper), "# #", "#C#", " # ", '#', new ItemStack(Items.blaze_rod), 'C', "chestWood"));
-        GameRegistry.addRecipe(new ItemStack(netherPressurePlate), "##", '#', stackSingleNetherrack);
-        GameRegistry.addRecipe(new ItemStack(netherButton), "#", '#', stackSingleNetherrack);
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(netherLever), "S", "#", '#', stackSingleNetherrack, 'S', "stickWood"));
+        if (PHNatura.enableBlazeHoppers) {
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(netherHopper), "# #", "#C#", " # ", '#', new ItemStack(Items.blaze_rod), 'C', "chestWood"));
+        }
+        if (PHNatura.enableNetherPressurePlates) {
+            GameRegistry.addRecipe(new ItemStack(netherPressurePlate), "##", '#', stackSingleNetherrack);
+        }
+        if (PHNatura.enableNetherButtons) {
+            GameRegistry.addRecipe(new ItemStack(netherButton), "#", '#', stackSingleNetherrack);
+        }
+        if (PHNatura.enableNetherLevers) {
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(netherLever), "S", "#", '#', stackSingleNetherrack, 'S', "stickWood"));
+        }
 
         //Overworld plants
         FurnaceRecipes.smelting().func_151394_a(new ItemStack(saguaro, 1, 0), new ItemStack(Items.dye, 1, 2), 0.2F);
@@ -864,7 +895,7 @@ public class NContent implements IFuelHandler {
         //Wooden Stairs
         if (PHNatura.enableWoodenTrapdoors) {
             Block[] stairs = new Block[] { stairEucalyptus, stairSakura, stairGhostwood, stairRedwood, stairBloodwood, stairHopseed, stairMaple, stairSilverbell,
-            		stairAmaranth, stairTiger, stairWillow, stairDarkwood, stairFusewood };
+                    stairAmaranth, stairTiger, stairWillow, stairDarkwood, stairFusewood };
             for (int i = 0; i < 13; i++) {
                 addShapedRecipeFirst(recipes, new ItemStack(stairs[i], 4), "#  ", "## ", "###", '#', new ItemStack(planks, 1, i));
             }
@@ -1178,9 +1209,11 @@ public class NContent implements IFuelHandler {
 
         //Nether blocks
         OreDictionary.registerOre("taintedSoil", new ItemStack(taintedSoil, 1));
-        OreDictionary.registerOre("glassSoul", new ItemStack(netherGlass, 1, 0));
-        OreDictionary.registerOre("glass", new ItemStack(netherGlass, 1, 0));
-        OreDictionary.registerOre("glass", new ItemStack(netherGlass, 1, 1));
+        if (PHNatura.enableNetherGlass) {
+            OreDictionary.registerOre("glassSoul", new ItemStack(netherGlass, 1, 0));
+            OreDictionary.registerOre("glass", new ItemStack(netherGlass, 1, 0));
+            OreDictionary.registerOre("glass", new ItemStack(netherGlass, 1, 1));
+        }
 
         //Saplings
         OreDictionary.registerOre("treeSapling", new ItemStack(rareSapling, 1, OreDictionary.WILDCARD_VALUE));

@@ -6,18 +6,17 @@ import cpw.mods.fml.common.Loader;
 import mods.natura.Natura;
 import net.minecraftforge.common.config.Configuration;
 
-public class PHNatura
-{
+public class PHNatura {
 
-    public static void initProps (File confFile)
-    {
+    public static void initProps (File confFile) {
         //Category names
-        String catDisabler = "disabler";
-        String catWorldgen = "worldgen";
-        String catMobChanges = "mob changes";
-        String catGeneral = "general";
+        final String catDisabler = "disabler";
+        final String catWorldgen = "worldgen";
+        final String catMobChanges = "mob changes";
+        final String catGeneral = "general";
 
-        String catWoodProducts = "wood products";
+        final String catWoodProducts = "wood products";
+        final String catNetherProducts = "nether products";
 
         /* [Forge] Configuration class, used as config method */
         Configuration config = new Configuration(confFile);
@@ -162,6 +161,14 @@ public class PHNatura
         enableWoodenStairs = config.get(catWoodProducts, "Enable Wooden Stairs", true).getBoolean(true);
         enableWoodenTrapdoors = config.get(catWoodProducts, "Enable Wooden Trapdoors", true).getBoolean(true);
         enableWoodenWorkbenches = config.get(catWoodProducts, "Enable Wooden Workbenches", true).getBoolean(true);
+        
+        enableBlazeHoppers = config.get(catNetherProducts, "Enable Blaze Hoppers", true).getBoolean(true);
+        enableBlazeRails = config.get(catNetherProducts, "Enable Blaze Rails", true).getBoolean(true);
+        enableNetherButtons = config.get(catNetherProducts, "Enable Netherack Buttons", true).getBoolean(true);
+        enableNetherFurnaces = config.get(catNetherProducts, "Enable Netherack Furnaces", true).getBoolean(true);
+        enableNetherGlass = config.get(catNetherProducts, "Enable Nether Glass", true).getBoolean(true);
+        enableNetherLevers = config.get(catNetherProducts, "Enable Netherack Levers", true).getBoolean(true);
+        enableNetherPressurePlates = config.get(catNetherProducts, "Enable Netherack Pressure Plates", true).getBoolean(true);
 
         seaLevel = config.get(catGeneral, "Sea level", 64).getInt(64);
 
@@ -304,4 +311,14 @@ public class PHNatura
     public static boolean enableWoodenStairs;
     public static boolean enableWoodenTrapdoors;
     public static boolean enableWoodenWorkbenches;
+
+    //Nether products
+
+    public static boolean enableBlazeHoppers;
+    public static boolean enableBlazeRails;
+    public static boolean enableNetherButtons;
+    public static boolean enableNetherFurnaces;
+    public static boolean enableNetherGlass;
+    public static boolean enableNetherLevers;
+    public static boolean enableNetherPressurePlates;
 }
