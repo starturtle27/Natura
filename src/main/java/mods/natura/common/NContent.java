@@ -1106,7 +1106,6 @@ public class NContent implements IFuelHandler {
         GameRegistry.addRecipe(new ItemStack(netherquartzAxe, 1, 0), "##", "#s", " s", '#', new ItemStack(Blocks.quartz_block, 1, OreDictionary.WILDCARD_VALUE), 's', new ItemStack(stickItem, 1, 2));
     }
 
-
     public void addShapedRecipeFirst (List recipeList, ItemStack itemstack, Object... objArray) {
         String var3 = "";
         int var4 = 0;
@@ -1164,29 +1163,20 @@ public class NContent implements IFuelHandler {
         recipeList.add(0, var17);
     }
 
-
-    public void addShapelessRecipeFirst (List recipeList, ItemStack par1ItemStack, Object... par2ArrayOfObj)
-    {
+    public void addShapelessRecipeFirst (List recipeList, ItemStack par1ItemStack, Object... par2ArrayOfObj) {
         ArrayList arraylist = new ArrayList();
         Object[] aobject = par2ArrayOfObj;
         int i = par2ArrayOfObj.length;
 
-        for (int j = 0; j < i; ++j)
-        {
+        for (int j = 0; j < i; ++j) {
             Object object1 = aobject[j];
 
-            if (object1 instanceof ItemStack)
-            {
+            if (object1 instanceof ItemStack) {
                 arraylist.add(((ItemStack) object1).copy());
-            }
-            else if (object1 instanceof Item)
-            {
+            } else if (object1 instanceof Item) {
                 arraylist.add(new ItemStack((Item) object1));
-            }
-            else
-            {
-                if (!(object1 instanceof Block))
-                {
+            } else {
+                if (!(object1 instanceof Block)) {
                     throw new RuntimeException("Invalid shapeless recipe!");
                 }
 
@@ -1200,7 +1190,6 @@ public class NContent implements IFuelHandler {
     /*public void addLoot () {
         //ChestGenHooks.getInfo(ChestGenHooks.BONUS_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(VanityBlocksStorage.StorageBlock,0,0),3,5,6));
     }*/
-
 
     public void addOredictSupport () {
         //Vanilla
@@ -1337,8 +1326,6 @@ public class NContent implements IFuelHandler {
         OreDictionary.registerOre("stickWood", new ItemStack(stickItem, 1, OreDictionary.WILDCARD_VALUE));
     }
 
-
-
     public void createEntities() {
         if (PHNatura.anyMobsEnabled) {
             BiomeGenBase[] nether = BiomeDictionary.getBiomesForType(BiomeDictionary.Type.NETHER);
@@ -1363,7 +1350,6 @@ public class NContent implements IFuelHandler {
 
         EntityRegistry.registerModEntity(FusewoodArrow.class, "FusewoodArrow", 3, Natura.instance, 64, 3, true);
     }
-
 
     public void modIntegration() {
         try {
