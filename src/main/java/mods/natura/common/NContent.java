@@ -1308,12 +1308,18 @@ public class NContent implements IFuelHandler {
         OreDictionary.registerOre("seedBarley", new ItemStack(seeds, 1, 0));
         OreDictionary.registerOre("seedCotton", new ItemStack(seeds, 1, 1));
 
+        OreDictionary.registerOre("cropCactusfruit", new ItemStack(seedFood, 1, 0));
+
         //Berries
+        OreDictionary.registerOre("listAllfruit", new ItemStack(berryItem, 1, OreDictionary.WILDCARD_VALUE));
+        OreDictionary.registerOre("listAllberry", new ItemStack(berryItem, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("cropRaspberry", new ItemStack(berryItem, 1, 0));
         OreDictionary.registerOre("cropBlueberry", new ItemStack(berryItem, 1, 1));
         OreDictionary.registerOre("cropBlackberry", new ItemStack(berryItem, 1, 2));
         OreDictionary.registerOre("cropMaloberry", new ItemStack(berryItem, 1, 3));
 
+        OreDictionary.registerOre("listAllfruit", new ItemStack(netherBerryItem, 1, OreDictionary.WILDCARD_VALUE));
+        OreDictionary.registerOre("listAllberry", new ItemStack(netherBerryItem, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("cropBlightberry", new ItemStack(netherBerryItem, 1, 0));
         OreDictionary.registerOre("cropDuskberry", new ItemStack(netherBerryItem, 1, 1));
         OreDictionary.registerOre("cropSkyberry", new ItemStack(netherBerryItem, 1, 2));
