@@ -1193,8 +1193,8 @@ public class NContent implements IFuelHandler {
 
     public void addOredictSupport () {
         //Vanilla
-        OreDictionary.registerOre("chestWood", new ItemStack(Blocks.chest));
-        OreDictionary.registerOre("bowlWood", new ItemStack(Items.bowl, 1, 0));
+        OreDictionary.registerOre("chestWood", new ItemStack(Blocks.chest, 1));
+        OreDictionary.registerOre("bowlWood", new ItemStack(Items.bowl, 1));
 
         //Nether blocks
         OreDictionary.registerOre("taintedSoil", new ItemStack(taintedSoil, 1));
@@ -1232,6 +1232,9 @@ public class NContent implements IFuelHandler {
         }
 
         //Wooden Bookshelves
+        if (PHNatura.enableWoodenBookshelves) {
+            OreDictionary.registerOre("bookshelfWood", new ItemStack(alternateBookshelf, 1, OreDictionary.WILDCARD_VALUE));
+        }
 
         //Wooden Stairs
         if (PHNatura.enableWoodenStairs) {
@@ -1274,14 +1277,65 @@ public class NContent implements IFuelHandler {
         }
 
         //Wooden Fences
+        if (PHNatura.enableWoodenFences) {
+            OreDictionary.registerOre("fenceWood", new ItemStack(alternateFence, 1, OreDictionary.WILDCARD_VALUE));
+        }
 
         //Wooden Fence Gates
+        if (PHNatura.enableWoodenFenceGates) {
+            OreDictionary.registerOre("fenceGateWood", new ItemStack(fenceGateEucalyptus, 1));
+            OreDictionary.registerOre("fenceGateWood", new ItemStack(fenceGateSakura, 1));
+            OreDictionary.registerOre("fenceGateWood", new ItemStack(fenceGateGhostwood, 1));
+            OreDictionary.registerOre("fenceGateWood", new ItemStack(fenceGateRedwood, 1));
+            OreDictionary.registerOre("fenceGateWood", new ItemStack(fenceGateBloodwood, 1));
+            OreDictionary.registerOre("fenceGateWood", new ItemStack(fenceGateHopseed, 1));
+            OreDictionary.registerOre("fenceGateWood", new ItemStack(fenceGateMaple, 1));
+            OreDictionary.registerOre("fenceGateWood", new ItemStack(fenceGateSilverbell, 1));
+            OreDictionary.registerOre("fenceGateWood", new ItemStack(fenceGateAmaranth, 1));
+            OreDictionary.registerOre("fenceGateWood", new ItemStack(fenceGateTiger, 1));
+            OreDictionary.registerOre("fenceGateWood", new ItemStack(fenceGateWillow, 1));
+            OreDictionary.registerOre("fenceGateWood", new ItemStack(fenceGateDarkwood, 1));
+            OreDictionary.registerOre("fenceGateWood", new ItemStack(fenceGateFusewood, 1));
+        }
 
         //Wooden Pressure Plates
+        if (PHNatura.enableWoodenPressurePlates) {
+            OreDictionary.registerOre("pressurePlateWood", new ItemStack(pressurePlateEucalyptus, 1));
+            OreDictionary.registerOre("pressurePlateWood", new ItemStack(pressurePlateSakura, 1));
+            OreDictionary.registerOre("pressurePlateWood", new ItemStack(pressurePlateGhostwood, 1));
+            OreDictionary.registerOre("pressurePlateWood", new ItemStack(pressurePlateRedwood, 1));
+            OreDictionary.registerOre("pressurePlateWood", new ItemStack(pressurePlateBloodwood, 1));
+            OreDictionary.registerOre("pressurePlateWood", new ItemStack(pressurePlateHopseed, 1));
+            OreDictionary.registerOre("pressurePlateWood", new ItemStack(pressurePlateMaple, 1));
+            OreDictionary.registerOre("pressurePlateWood", new ItemStack(pressurePlateSilverbell, 1));
+            OreDictionary.registerOre("pressurePlateWood", new ItemStack(pressurePlateAmaranth, 1));
+            OreDictionary.registerOre("pressurePlateWood", new ItemStack(pressurePlateTiger, 1));
+            OreDictionary.registerOre("pressurePlateWood", new ItemStack(pressurePlateWillow, 1));
+            OreDictionary.registerOre("pressurePlateWood", new ItemStack(pressurePlateDarkwood, 1));
+            OreDictionary.registerOre("pressurePlateWood", new ItemStack(pressurePlateFusewood, 1));
+        }
 
         //Wooden Buttons
+        if (PHNatura.enableWoodenButtons) {
+            OreDictionary.registerOre("buttonWood", new ItemStack(buttonEucalyptus, 1));
+            OreDictionary.registerOre("buttonWood", new ItemStack(buttonSakura, 1));
+            OreDictionary.registerOre("buttonWood", new ItemStack(buttonGhostwood, 1));
+            OreDictionary.registerOre("buttonWood", new ItemStack(buttonRedwood, 1));
+            OreDictionary.registerOre("buttonWood", new ItemStack(buttonBloodwood, 1));
+            OreDictionary.registerOre("buttonWood", new ItemStack(buttonHopseed, 1));
+            OreDictionary.registerOre("buttonWood", new ItemStack(buttonMaple, 1));
+            OreDictionary.registerOre("buttonWood", new ItemStack(buttonSilverbell, 1));
+            OreDictionary.registerOre("buttonWood", new ItemStack(buttonAmaranth, 1));
+            OreDictionary.registerOre("buttonWood", new ItemStack(buttonTiger, 1));
+            OreDictionary.registerOre("buttonWood", new ItemStack(buttonWillow, 1));
+            OreDictionary.registerOre("buttonWood", new ItemStack(buttonDarkwood, 1));
+            OreDictionary.registerOre("buttonWood", new ItemStack(buttonFusewood, 1));
+        }
 
         //Wooden Doors
+        if (PHNatura.enableWoodenDoors) {
+            OreDictionary.registerOre("doorWood", new ItemStack(doorItem, 1, OreDictionary.WILDCARD_VALUE));
+        }
 
         //Other items
         OreDictionary.registerOre("cropBarley", new ItemStack(plantItem, 1, 0));
