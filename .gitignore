@@ -28,3 +28,4 @@ Thumbs.db
 /.settings/
 #gradle stuff
 /eclipse/
+*.bat
