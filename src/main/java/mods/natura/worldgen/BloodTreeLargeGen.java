@@ -41,7 +41,7 @@ public class BloodTreeLargeGen extends WorldGenerator
                 break;
             }
             height++;
-        } while (height <= 120);
+        } while (height <= world.provider.getActualHeight());
         return ret;
     }
 
@@ -53,12 +53,12 @@ public class BloodTreeLargeGen extends WorldGenerator
         for (int yPos = 0; yPos < treeHeight+2; yPos++)
         {
             int range = 1;
-            
+
             if (yPos == 0)
                 range = 0;
             else if (yPos >= treeHeight -2)
                 range = 3;
-            
+
             for (int xPos = 0-range; xPos < 2+range; xPos++)
             {
                 for (int zPos = 0-range; zPos < 2+range; zPos++)
