@@ -37,7 +37,7 @@ public class BaseCloudWorldgen implements IWorldGenerator {
     CloudGen largesulfurcloud;
     CloudGen hugesulfurcloud;
 
-    public BaseCloudWorldgen () {
+    public BaseCloudWorldgen() {
         smallcloud = new CloudGen(NContent.cloud, 0, 10, false);
         mediumcloud = new CloudGen(NContent.cloud, 0, 20, false);
         largecloud = new CloudGen(NContent.cloud, 0, 30, false);
@@ -59,14 +59,13 @@ public class BaseCloudWorldgen implements IWorldGenerator {
     }
 
     @Override
-    public void generate (Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
-        //Overworld
+    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
+        // Overworld
         int xCh, yCh, zCh;
         int xChunk = chunkX * 16 + 8, zChunk = chunkZ * 16 + 8;
         BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(xChunk + 16, zChunk + 16);
 
-        if (PHNatura.generateOverworldClouds && biome.rainfall > 0.15f && random.nextInt(PHNatura.cloudSpawnRarity) == 0 && world.provider.dimensionId != 1 && shouldGenerateInDim(
-                world.provider.dimensionId)) {
+        if (PHNatura.generateOverworldClouds && biome.rainfall > 0.15f && random.nextInt(PHNatura.cloudSpawnRarity) == 0 && world.provider.dimensionId != 1 && shouldGenerateInDim(world.provider.dimensionId)) {
             xCh = xChunk + random.nextInt(16);
             zCh = zChunk + random.nextInt(16);
             yCh = random.nextInt(PHNatura.cloudSpawnRange) + PHNatura.cloudSpawnHeight;
@@ -82,7 +81,7 @@ public class BaseCloudWorldgen implements IWorldGenerator {
             }
         }
 
-        //End Generation
+        // End Generation
         if (PHNatura.generateDarkClouds && biome == BiomeGenBase.sky && world.provider.dimensionId == 1 && random.nextInt(4) == 0 && shouldGenerateDarkInDim(world.provider.dimensionId)) {
             xCh = xChunk + random.nextInt(16);
             zCh = zChunk + random.nextInt(16);
@@ -101,7 +100,7 @@ public class BaseCloudWorldgen implements IWorldGenerator {
             }
         }
 
-        //Nether
+        // Nether
         if (world.provider.isHellWorld) {
             if (PHNatura.generateAshClouds && random.nextInt(PHNatura.ashSpawnRarity) == 0) {
                 xCh = xChunk + random.nextInt(16);
@@ -137,7 +136,7 @@ public class BaseCloudWorldgen implements IWorldGenerator {
         }
     }
 
-    public boolean shouldGenerateInDim (int dim) {
+    public boolean shouldGenerateInDim(int dim) {
         for (int i : PHNatura.cloudBlacklist) {
             if (dim == i) {
                 return false;
@@ -146,7 +145,7 @@ public class BaseCloudWorldgen implements IWorldGenerator {
         return true;
     }
 
-    public boolean shouldGenerateSulfurInDim (int dim) {
+    public boolean shouldGenerateSulfurInDim(int dim) {
         for (int i : PHNatura.sulfurCloudBlacklist) {
             if (dim == i) {
                 return false;
@@ -155,7 +154,7 @@ public class BaseCloudWorldgen implements IWorldGenerator {
         return true;
     }
 
-    public boolean shouldGenerateDarkInDim (int dim) {
+    public boolean shouldGenerateDarkInDim(int dim) {
         for (int i : PHNatura.darkCloudBlacklist) {
             if (dim == i) {
                 return false;

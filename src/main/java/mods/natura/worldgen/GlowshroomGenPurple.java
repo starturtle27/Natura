@@ -49,7 +49,7 @@ public class GlowshroomGenPurple extends WorldGenerator
                         {
                             Block block = world.getBlock(posY, blockID, range);
 
-                            if (posX != 0 && block != null && !block.isLeaves(world, posY, blockID, range))
+                            if (posX != 0 && !block.isLeaves(world, posY, blockID, range))
                             {
                                 flag = false;
                             }
@@ -180,7 +180,7 @@ public class GlowshroomGenPurple extends WorldGenerator
 
                                 Block block = world.getBlock(posX, posY, posZ);
 
-                                if ((meta != 0 || y >= y + height - 1) && (block == null || block == Blocks.fire || block.canBeReplacedByLeaves(world, posX, posY, posZ)))
+                                if ((meta != 0 || y >= y + height - 1) && (block == Blocks.fire || block.canBeReplacedByLeaves(world, posX, posY, posZ)))
                                 {
                                 	setBlockAndNotifyAdequately(world, posX, posY, posZ, NContent.glowshroomPurple, meta);
                                 }
@@ -196,9 +196,8 @@ public class GlowshroomGenPurple extends WorldGenerator
                     for (posY = 0; posY < height; ++posY)
                     {
                         Block block = world.getBlock(x, y + posY, z);
-                        ;
 
-                        if (block == null || block == Blocks.fire || block.canBeReplacedByLeaves(world, x, y + posY, z))
+                        if (block == Blocks.fire || block.canBeReplacedByLeaves(world, x, y + posY, z))
                         {
                         	setBlockAndNotifyAdequately(world, x, y + posY, z, NContent.glowshroomPurple, 10);
                         }

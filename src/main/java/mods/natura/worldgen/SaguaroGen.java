@@ -11,53 +11,50 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class SaguaroGen extends WorldGenerator
-{
+public class SaguaroGen extends WorldGenerator {
     boolean useHeight;
+    
+    private final int saguaroMeta;
+    private final Block saguaroBlock;
 
-    public SaguaroGen(Block saguaro, int metadata, boolean notify)
-    {
+    public SaguaroGen(Block saguaroBlock, int saguaroMeta, boolean useHeight) {
         super(true);
-        useHeight = notify;
+        this.saguaroBlock = saguaroBlock;
+        this.saguaroMeta = saguaroMeta;
+        this.useHeight = useHeight;
     }
 
     @Override
-    public boolean generate (World world, Random random, int x, int y, int z)
-    {
+    public boolean generate (World world, Random random, int x, int y, int z) {
         int yPos = findGround(world, x, y, z, useHeight);
         Block currentID = world.getBlock(x, yPos, z);
-        if (!world.isAirBlock(x, yPos, z))
-        {
-            if (currentID == NContent.saguaro)
-            {
+        if (!world.isAirBlock(x, yPos, z)) {
+            if (currentID == saguaroBlock) {
                 Block block = world.getBlock(x, yPos - 1, z);
-                if (block == null || !block.canSustainPlant(world, x, yPos - 1, z, ForgeDirection.UP, (IPlantable) NContent.saguaro))
+                if (!block.canSustainPlant(world, x, yPos - 1, z, ForgeDirection.UP, (IPlantable) saguaroBlock)) {
                     return false;
-            }
-            else
+                }
+            } else {
                 return false;
-        }
-        else
-        {
+            }
+        } else {
             Block block = world.getBlock(x, yPos - 1, z);
-            if (block == null || !block.canSustainPlant(world, x, yPos - 1, z, ForgeDirection.UP, (IPlantable) NContent.saguaro))
-            {
+            if (!block.canSustainPlant(world, x, yPos - 1, z, ForgeDirection.UP, (IPlantable) saguaroBlock)) {
                 return false;
             }
         }
 
-        if (random.nextInt(20) == 0)
+        if (random.nextInt(20) == 0) {
             generateCactusTree(world, random, x, yPos, z);
-        else
+        } else {
             generateSmallCactus(world, random, x, yPos, z);
+        }
 
         return true;
     }
 
-    void generateCactusTree (World world, Random random, int x, int y, int z)
-    {
-        for (int i = 0; i < 6; i++)
-        {
+    void generateCactusTree (World world, Random random, int x, int y, int z) {
+        for (int i = 0; i < 6; i++) {
             genBlock(world, x, y + i, z);
         }
 
@@ -66,8 +63,7 @@ public class SaguaroGen extends WorldGenerator
         genBlock(world, x, y + 2, z + 1);
         genBlock(world, x, y + 2, z - 1);
 
-        for (int height = 0; height < 2; height++)
-        {
+        for (int height = 0; height < 2; height++) {
             genBlock(world, x + 2, y + height + 2, z);
             genBlock(world, x - 2, y + height + 2, z);
             genBlock(world, x, y + height + 2, z + 2);
@@ -85,74 +81,63 @@ public class SaguaroGen extends WorldGenerator
         }
     }
 
-    void generateSmallCactus (World world, Random random, int x, int y, int z)
-    {
+    void generateSmallCactus (World world, Random random, int x, int y, int z) {
 
         int height = random.nextInt(4) + 3;
-        for (int iter = 0; iter < height; iter++)
-        {
+        for (int iter = 0; iter < height; iter++) {
             genBlock(world, x, y + iter, z);
         }
 
         int branchY = height >= 5 ? 2 : 1;
         int size;
         y = y + branchY;
-        if (random.nextBoolean())
-        {
+        if (random.nextBoolean()) {
             size = random.nextInt(height - branchY) + branchY - random.nextInt(3);
-            for (int branch = 0; branch < size; branch++)
-            {
+            for (int branch = 0; branch < size; branch++) {
                 genBlock(world, x + 1, y + branch, z);
             }
 
         }
-        if (random.nextBoolean())
-        {
+        if (random.nextBoolean()) {
             size = random.nextInt(height - branchY) + branchY - random.nextInt(3);
-            for (int branch = 0; branch < size; branch++)
-            {
+            for (int branch = 0; branch < size; branch++) {
                 genBlock(world, x - 1, y + branch, z);
             }
         }
 
-        if (random.nextBoolean())
-        {
+        if (random.nextBoolean()) {
             size = random.nextInt(height - branchY) + branchY - random.nextInt(3);
-            for (int branch = 0; branch < size; branch++)
-            {
+            for (int branch = 0; branch < size; branch++) {
                 genBlock(world, x, y + branch, z + 1);
             }
         }
 
-        if (random.nextBoolean())
-        {
+        if (random.nextBoolean()) {
             size = random.nextInt(height - branchY) + branchY - random.nextInt(3);
-            for (int branch = 0; branch < size; branch++)
-            {
+            for (int branch = 0; branch < size; branch++) {
                 genBlock(world, x, y + branch, z - 1);
             }
         }
     }
 
-    void genBlock (World world, int x, int y, int z)
-    {
+    void genBlock (World world, int x, int y, int z) {
         if (!world.getBlock(x, y, z).isOpaqueCube())
-            world.setBlock(x, y, z, NContent.saguaro);
+            world.setBlock(x, y, z, saguaroBlock, saguaroMeta, 3);
     }
 
-    int findGround (World world, int x, int y, int z, boolean useHeight)
-    {
-        if (useHeight)
+    int findGround (World world, int x, int y, int z, boolean useHeight) {
+        if (useHeight) {
             return y;
+        }
 
         boolean foundGround = false;
         int height = PHNatura.seaLevel + 64;
-        do
-        {
+        do {
             height--;
             Block underID = world.getBlock(x, height, z);
-            if (underID == Blocks.sand || underID == Blocks.dirt || underID == Blocks.grass || height < PHNatura.seaLevel)
+            if (underID == Blocks.sand || underID == Blocks.dirt || underID == Blocks.grass || height < PHNatura.seaLevel) {
                 foundGround = true;
+            }
         } while (!foundGround);
         return height + 1;
     }
