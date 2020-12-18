@@ -159,8 +159,10 @@ public class NContent implements IFuelHandler {
             GameRegistry.registerBlock(netherrackFurnace, "NetherFurnace");
             GameRegistry.registerTileEntity(NetherrackFurnaceLogic.class, "netherrackFurnace");
         }
-        respawnObelisk = new RespawnObelisk(Material.wood).setHardness(1.0F).setResistance(1000000F).setCreativeTab(NaturaTab.tab).setBlockName("nether.obelisk");
-        GameRegistry.registerBlock(respawnObelisk, "Obelisk");
+        if (PHNatura.enableObelisks) {
+            respawnObelisk = new RespawnObelisk(Material.wood).setHardness(1.0F).setResistance(1000000F).setCreativeTab(NaturaTab.tab).setBlockName("nether.obelisk");
+            GameRegistry.registerBlock(respawnObelisk, "Obelisk");
+        }
         if (PHNatura.enableNetherGlass) {
             netherGlass = (NetherGlass) new NetherGlass().setHardness(1.0F).setResistance(3000F).setStepSound(Block.soundTypeGlass).setCreativeTab(NaturaTab.tab).setBlockName("nether.glass");
             GameRegistry.registerBlock(netherGlass, NetherGlassItem.class, "NetherGlass");
@@ -214,10 +216,14 @@ public class NContent implements IFuelHandler {
         GameRegistry.registerBlock(glowshroomBlue, "blueGlowshroom");
 
         //Berry bushes
-        netherBerryBush = new NetherBerryBush();
-        GameRegistry.registerBlock(netherBerryBush, NetherBerryBushItem.class, "NetherBerryBush");
-        berryBush = new BerryBush();
-        GameRegistry.registerBlock(berryBush, BerryBushItem.class, "BerryBush");
+        if (PHNatura.enableNetherBerryBushes) {
+            netherBerryBush = new NetherBerryBush();
+            GameRegistry.registerBlock(netherBerryBush, NetherBerryBushItem.class, "NetherBerryBush");
+        }
+        if (PHNatura.enableBerryBushes) {
+            berryBush = new BerryBush();
+            GameRegistry.registerBlock(berryBush, BerryBushItem.class, "BerryBush");
+        }
 
         //Overworld plants
         crops = (CropBlock) new CropBlock().setBlockName("natura.crops");
@@ -612,33 +618,34 @@ public class NContent implements IFuelHandler {
         //Other items
         plantItem = new PlantItem().setUnlocalizedName("barleyFood");
         GameRegistry.registerItem(plantItem, "barleyFood");
-        waterDrop = new CactusJuice(false).setUnlocalizedName("waterdrop");
-        GameRegistry.registerItem(waterDrop, "waterdrop");
+        if (PHNatura.enableCactusJuice) {
+            waterDrop = new CactusJuice(false).setUnlocalizedName("waterdrop");
+            GameRegistry.registerItem(waterDrop, "waterdrop");
+        }
         //floraBoat = new NBoat(PHNatura.boatItemID).setIconCoord(0, 3).setBlockName("floraBoat");
         
 
         //Seed Bags
-        wheatBag = new SeedBag(Blocks.wheat, 0, "wheat").setUnlocalizedName("wheatBag");
-        GameRegistry.registerItem(wheatBag, "wheatBag");
-        GameRegistry.registerCustomItemStack("bagWheat", new ItemStack(wheatBag, 1, 0));
-        barleyBag = new SeedBag(crops, 0, "barley").setUnlocalizedName("barleyBag");
-        GameRegistry.registerItem(barleyBag, "barleyBag");
-        GameRegistry.registerCustomItemStack("bagBarley", new ItemStack(barleyBag, 1, 0));
-        potatoBag = new SeedBag(Blocks.potatoes, 0, "potato").setUnlocalizedName("potatoBag");
-        GameRegistry.registerItem(potatoBag, "potatoBag");
-        GameRegistry.registerCustomItemStack("bagPotato", new ItemStack(potatoBag, 1, 0));
-        carrotBag = new SeedBag(Blocks.carrots, 0, "carrot").setUnlocalizedName("carrotBag");
-        GameRegistry.registerItem(carrotBag, "carrotBag");
-        GameRegistry.registerCustomItemStack("bagCarrot", new ItemStack(carrotBag, 1, 0));
-        netherWartBag = new SeedBag(Blocks.nether_wart, 0, "netherwart").setUnlocalizedName("wartBag");
-        GameRegistry.registerItem(netherWartBag, "wartBag");
-        GameRegistry.registerCustomItemStack("bagNetherWart", new ItemStack(netherWartBag, 1, 0));
-        cottonBag = new SeedBag(crops, 4, "cotton").setUnlocalizedName("cottonBag");
-        GameRegistry.registerItem(cottonBag, "cottonBag");
-        GameRegistry.registerCustomItemStack("bagCotton", new ItemStack(cottonBag, 1, 0));
-        boneBag = new BoneBag("bone").setUnlocalizedName("boneBag");
-        GameRegistry.registerItem(boneBag, "boneBag");
-        GameRegistry.registerCustomItemStack("bagBone", new ItemStack(boneBag, 1, 0));
+        if (PHNatura.enableSeedBags) {
+            wheatBag = new SeedBag(Blocks.wheat, 0, "wheat").setUnlocalizedName("wheatBag");
+            GameRegistry.registerItem(wheatBag, "wheatBag");
+            barleyBag = new SeedBag(crops, 0, "barley").setUnlocalizedName("barleyBag");
+            GameRegistry.registerItem(barleyBag, "barleyBag");
+            potatoBag = new SeedBag(Blocks.potatoes, 0, "potato").setUnlocalizedName("potatoBag");
+            GameRegistry.registerItem(potatoBag, "potatoBag");
+            carrotBag = new SeedBag(Blocks.carrots, 0, "carrot").setUnlocalizedName("carrotBag");
+            GameRegistry.registerItem(carrotBag, "carrotBag");
+            cottonBag = new SeedBag(crops, 4, "cotton").setUnlocalizedName("cottonBag");
+            GameRegistry.registerItem(cottonBag, "cottonBag");
+        }
+        if (PHNatura.enableNetherWartBags) {
+            netherWartBag = new SeedBag(Blocks.nether_wart, 0, "netherwart").setUnlocalizedName("wartBag");
+            GameRegistry.registerItem(netherWartBag, "wartBag");
+        }
+        if (PHNatura.enableBonemealBags) {
+            boneBag = new BoneBag("bone").setUnlocalizedName("boneBag");
+            GameRegistry.registerItem(boneBag, "boneBag");
+        }
         
         //Seeds
         seeds = new NaturaSeeds(crops, Blocks.farmland).setUnlocalizedName("barley.seed");
@@ -647,38 +654,46 @@ public class NContent implements IFuelHandler {
         GameRegistry.registerCustomItemStack("seedCotton", new ItemStack(seeds, 1, 1));
         seedFood = new SeedFood(3, 0.3f, saguaro).setUnlocalizedName("saguaro.fruit");
         GameRegistry.registerItem(seedFood, "saguaro.fruit");
-        if(PHNatura.dropBarley)
+        if(PHNatura.dropBarley) {
             MinecraftForge.addGrassSeed(new ItemStack(seeds, 1, 0), 3);
-        if(PHNatura.dropCotton)
+        }
+        if(PHNatura.dropCotton) {
             MinecraftForge.addGrassSeed(new ItemStack(seeds, 1, 1), 3);
+        }
         
         //Berries
-        berryItem = new BerryItem(1).setUnlocalizedName("berry");
-        GameRegistry.registerItem(berryItem, "berry");
-        GameRegistry.registerCustomItemStack("berryRasp", new ItemStack(berryItem, 1, 0));
-        GameRegistry.registerCustomItemStack("berryBlue", new ItemStack(berryItem, 1, 1));
-        GameRegistry.registerCustomItemStack("berryBlack", new ItemStack(berryItem, 1, 2));
-        GameRegistry.registerCustomItemStack("berryMalo", new ItemStack(berryItem, 1, 3));
-        netherBerryItem = new NetherBerryItem(1).setUnlocalizedName("berry.nether");
-        GameRegistry.registerItem(netherBerryItem, "berry.nether");
-        GameRegistry.registerCustomItemStack("berryBlight", new ItemStack(netherBerryItem, 1, 0));
-        GameRegistry.registerCustomItemStack("berryDusk", new ItemStack(netherBerryItem, 1, 1));
-        GameRegistry.registerCustomItemStack("berrySky", new ItemStack(netherBerryItem, 1, 2));
-        GameRegistry.registerCustomItemStack("berrySting", new ItemStack(netherBerryItem, 1, 3));
-        berryMedley = new BerryMedley(5).setUnlocalizedName("berryMedley");
-        GameRegistry.registerItem(berryMedley, "berryMedley");
-        GameRegistry.registerCustomItemStack("berryMedley", new ItemStack(berryMedley, 1, 0));
+        if (PHNatura.enableBerryBushes) {
+            berryItem = new BerryItem(1).setUnlocalizedName("berry");
+            GameRegistry.registerItem(berryItem, "berry");
+            GameRegistry.registerCustomItemStack("berryRasp", new ItemStack(berryItem, 1, 0));
+            GameRegistry.registerCustomItemStack("berryBlue", new ItemStack(berryItem, 1, 1));
+            GameRegistry.registerCustomItemStack("berryBlack", new ItemStack(berryItem, 1, 2));
+            GameRegistry.registerCustomItemStack("berryMalo", new ItemStack(berryItem, 1, 3));
+        }
+        if (PHNatura.enableNetherBerryBushes) {
+            netherBerryItem = new NetherBerryItem(1).setUnlocalizedName("berry.nether");
+            GameRegistry.registerItem(netherBerryItem, "berry.nether");
+            GameRegistry.registerCustomItemStack("berryBlight", new ItemStack(netherBerryItem, 1, 0));
+            GameRegistry.registerCustomItemStack("berryDusk", new ItemStack(netherBerryItem, 1, 1));
+            GameRegistry.registerCustomItemStack("berrySky", new ItemStack(netherBerryItem, 1, 2));
+            GameRegistry.registerCustomItemStack("berrySting", new ItemStack(netherBerryItem, 1, 3));
+        }
+        if (PHNatura.enableBerryBushes) {
+            berryMedley = new BerryMedley(5).setUnlocalizedName("berryMedley");
+            GameRegistry.registerItem(berryMedley, "berryMedley");
+        }
 
         //Nether items
         potashApple = new NetherFoodItem().setUnlocalizedName("Natura.netherfood");
         GameRegistry.registerItem(potashApple, "Natura.netherfood");
-        GameRegistry.registerCustomItemStack("applePotash", new ItemStack(potashApple, 1, 0));
         bowlStew = new BowlStew().setUnlocalizedName("natura.stewbowl");
         GameRegistry.registerItem(bowlStew, "natura.stewbowl");
         bowlEmpty = new BowlEmpty().setUnlocalizedName("natura.emptybowl");
         GameRegistry.registerItem(bowlEmpty, "natura.emptybowl");
-        flintAndBlaze = new FlintAndBlaze().setUnlocalizedName("flintandblaze").setTextureName("natura:flint_and_blaze");
-        GameRegistry.registerItem(flintAndBlaze, "natura.flintandblaze");
+        if (PHNatura.enableFlintAndBlaze) {
+            flintAndBlaze = new FlintAndBlaze().setUnlocalizedName("flintandblaze").setTextureName("natura:flint_and_blaze");
+            GameRegistry.registerItem(flintAndBlaze, "natura.flintandblaze");
+        }
 
         //Imp items
         if (PHNatura.enableImps) {
@@ -768,19 +783,21 @@ public class NContent implements IFuelHandler {
         fusewoodShovel.setHarvestLevel("shovel", 2);
         fusewoodAxe.setHarvestLevel("axe", 2);
 
-        netherquartzSword = new NaturaSword(ToolMaterial.STONE, "netherquartz").setUnlocalizedName("natura.sword.netherquartz");
-        GameRegistry.registerItem(netherquartzSword, "natura.sword.netherquartz");
-        netherquartzPickaxe = new NaturaPickaxe(ToolMaterial.STONE, "netherquartz").setUnlocalizedName("natura.pickaxe.netherquartz");
-        GameRegistry.registerItem(netherquartzPickaxe, "natura.pickaxe.netherquartz");
-        netherquartzShovel = new NaturaShovel(ToolMaterial.STONE, "netherquartz").setUnlocalizedName("natura.shovel.netherquartz");
-        GameRegistry.registerItem(netherquartzShovel, "natura.shovel.netherquartz");
-        netherquartzAxe = new NaturaHatchet(ToolMaterial.STONE, "netherquartz").setUnlocalizedName("natura.axe.netherquartz");
-        GameRegistry.registerItem(netherquartzAxe, "natura.axe.netherquartz");
-        netherquartzKama = new NaturaKama(ToolMaterial.STONE, "netherquartz").setUnlocalizedName("natura.kama.netherquartz");
-        GameRegistry.registerItem(netherquartzKama, "natura.kama.netherquartz");
-        netherquartzPickaxe.setHarvestLevel("pickaxe", 1);
-        netherquartzShovel.setHarvestLevel("shovel", 1);
-        netherquartzAxe.setHarvestLevel("axe", 1);
+        if(PHNatura.enableQuartzTools) {
+            netherquartzSword = new NaturaSword(ToolMaterial.STONE, "netherquartz").setUnlocalizedName("natura.sword.netherquartz");
+            GameRegistry.registerItem(netherquartzSword, "natura.sword.netherquartz");
+            netherquartzPickaxe = new NaturaPickaxe(ToolMaterial.STONE, "netherquartz").setUnlocalizedName("natura.pickaxe.netherquartz");
+            GameRegistry.registerItem(netherquartzPickaxe, "natura.pickaxe.netherquartz");
+            netherquartzShovel = new NaturaShovel(ToolMaterial.STONE, "netherquartz").setUnlocalizedName("natura.shovel.netherquartz");
+            GameRegistry.registerItem(netherquartzShovel, "natura.shovel.netherquartz");
+            netherquartzAxe = new NaturaHatchet(ToolMaterial.STONE, "netherquartz").setUnlocalizedName("natura.axe.netherquartz");
+            GameRegistry.registerItem(netherquartzAxe, "natura.axe.netherquartz");
+            netherquartzKama = new NaturaKama(ToolMaterial.STONE, "netherquartz").setUnlocalizedName("natura.kama.netherquartz");
+            GameRegistry.registerItem(netherquartzKama, "natura.kama.netherquartz");
+            netherquartzPickaxe.setHarvestLevel("pickaxe", 1);
+            netherquartzShovel.setHarvestLevel("shovel", 1);
+            netherquartzAxe.setHarvestLevel("axe", 1);
+        }
 
         //Spawn eggs
         if (PHNatura.anyMobsEnabled) {
@@ -805,7 +822,9 @@ public class NContent implements IFuelHandler {
         if (PHNatura.enableNetherFurnaces) {
             GameRegistry.addRecipe(new ItemStack(netherrackFurnace), "###", "# #", "###", '#', Blocks.netherrack);
         }
-        GameRegistry.addRecipe(new ItemStack(respawnObelisk), "###", "# #", "###", '#', new ItemStack(tree, 1, 2));
+        if (PHNatura.enableObelisks) {
+            GameRegistry.addRecipe(new ItemStack(respawnObelisk), "###", "# #", "###", '#', new ItemStack(tree, 1, 2));
+        }
         if (PHNatura.enableNetherGlass) {
             FurnaceRecipes.smelting().func_151394_a(new ItemStack(Blocks.soul_sand, 1, 0), new ItemStack(netherGlass, 1, 0), 0.3f);
             FurnaceRecipes.smelting().func_151394_a(new ItemStack(heatSand, 1, 0), new ItemStack(netherGlass, 1, 1), 0.3f);
@@ -825,6 +844,9 @@ public class NContent implements IFuelHandler {
 
         if (PHNatura.enableBlazeHoppers) {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(netherHopper), "# #", "#C#", " # ", '#', new ItemStack(Items.blaze_rod), 'C', "chestWood"));
+        }
+        if (PHNatura.enableFlintAndBlaze) {
+        	GameRegistry.addShapelessRecipe(new ItemStack(flintAndBlaze), Items.flint, Items.blaze_rod);
         }
         if (PHNatura.enableNetherPressurePlates) {
             GameRegistry.addRecipe(new ItemStack(netherPressurePlate), "##", '#', stackSingleNetherrack);
@@ -893,7 +915,7 @@ public class NContent implements IFuelHandler {
         }
 
         //Wooden Stairs
-        if (PHNatura.enableWoodenTrapdoors) {
+        if (PHNatura.enableWoodenStairs) {
             Block[] stairs = new Block[] { stairEucalyptus, stairSakura, stairGhostwood, stairRedwood, stairBloodwood, stairHopseed, stairMaple, stairSilverbell,
                     stairAmaranth, stairTiger, stairWillow, stairDarkwood, stairFusewood };
             for (int i = 0; i < 13; i++) {
@@ -967,8 +989,10 @@ public class NContent implements IFuelHandler {
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.glass_bottle, 3), "# #", " # ", '#', "glass"));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.daylight_detector), "GGG", "QQQ", "WWW", 'G', "glass", 'Q', "gemQuartz", 'W', "slabWood"));
 
-        GameRegistry.addRecipe(new ItemStack(waterDrop, 1), "X", 'X', Blocks.cactus);
-        GameRegistry.addRecipe(new ItemStack(Items.water_bucket, 1), "www", "wBw", "www", 'w', waterDrop, 'B', Items.bucket);
+        if (PHNatura.enableCactusJuice) {
+            GameRegistry.addRecipe(new ItemStack(waterDrop, 1), "X", 'X', Blocks.cactus);
+            GameRegistry.addRecipe(new ItemStack(Items.water_bucket, 1), "www", "wBw", "www", 'w', waterDrop, 'B', Items.bucket);
+        }
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.string), "sss", 's', "cropCotton"));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.wool), "sss", "sss", "sss", 's', "cropCotton"));
@@ -994,41 +1018,48 @@ public class NContent implements IFuelHandler {
         GameRegistry.addShapelessRecipe(new ItemStack(plantItem, 2, 2), new ItemStack(plantItem, 1, 1), Item.egg );*/
 
         //Seed Bags
-        GameRegistry.addRecipe(new ItemStack(wheatBag, 1, 0), "sss", "sss", "sss", 's', Items.wheat_seeds);
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(barleyBag, 1, 0), "sss", "sss", "sss", 's', "seedBarley"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(potatoBag, 1, 0), "sss", "sss", "sss", 's', "cropPotato"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(carrotBag, 1, 0), "sss", "sss", "sss", 's', "cropCarrot"));
-        GameRegistry.addRecipe(new ItemStack(netherWartBag, 1, 0), "sss", "sss", "sss", 's', Items.nether_wart);
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(cottonBag, 1, 0), "sss", "sss", "sss", 's', "seedCotton"));
-        GameRegistry.addRecipe(new ItemStack(boneBag, 1, 0), "sss", "sss", "sss", 's', new ItemStack(Items.dye, 1, 15));
-
-        GameRegistry.addRecipe(new ItemStack(Items.wheat_seeds, 9, 0), "s", 's', wheatBag);
-        GameRegistry.addRecipe(new ItemStack(seeds, 9, 0), "s", 's', barleyBag);
-        GameRegistry.addRecipe(new ItemStack(Items.potato, 9, 0), "s", 's', potatoBag);
-        GameRegistry.addRecipe(new ItemStack(Items.carrot, 9, 0), "s", 's', carrotBag);
-        GameRegistry.addRecipe(new ItemStack(Items.nether_wart, 9, 0), "s", 's', netherWartBag);
-        GameRegistry.addRecipe(new ItemStack(seeds, 9, 1), "s", 's', cottonBag);
-        GameRegistry.addRecipe(new ItemStack(Items.dye, 9, 15), "s", 's', boneBag);
+        if (PHNatura.enableSeedBags) {
+            GameRegistry.addRecipe(new ItemStack(wheatBag, 1, 0), "sss", "sss", "sss", 's', Items.wheat_seeds);
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(carrotBag, 1, 0), "sss", "sss", "sss", 's', "cropCarrot"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(potatoBag, 1, 0), "sss", "sss", "sss", 's', "cropPotato"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(barleyBag, 1, 0), "sss", "sss", "sss", 's', "seedBarley"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(cottonBag, 1, 0), "sss", "sss", "sss", 's', "seedCotton"));
+            GameRegistry.addRecipe(new ItemStack(Items.wheat_seeds, 9, 0), "s", 's', wheatBag);
+            GameRegistry.addRecipe(new ItemStack(Items.carrot, 9, 0), "s", 's', carrotBag);
+            GameRegistry.addRecipe(new ItemStack(Items.potato, 9, 0), "s", 's', potatoBag);
+            GameRegistry.addRecipe(new ItemStack(seeds, 9, 0), "s", 's', barleyBag);
+            GameRegistry.addRecipe(new ItemStack(seeds, 9, 1), "s", 's', cottonBag);
+        }
+        if (PHNatura.enableNetherWartBags) {
+            GameRegistry.addRecipe(new ItemStack(netherWartBag, 1, 0), "sss", "sss", "sss", 's', Items.nether_wart);
+            GameRegistry.addRecipe(new ItemStack(Items.nether_wart, 9, 0), "s", 's', netherWartBag);
+        }
+        if (PHNatura.enableBonemealBags) {
+            GameRegistry.addRecipe(new ItemStack(boneBag, 1, 0), "sss", "sss", "sss", 's', new ItemStack(Items.dye, 1, 15));
+            GameRegistry.addRecipe(new ItemStack(Items.dye, 9, 15), "s", 's', boneBag);
+        }
 
         //Berries
-        String[] berryTypes = new String[] { "cropRaspberry", "cropBlueberry", "cropBlackberry", "cropMaloberry", "cropStrawberry", "cropCranberry" };
+        if (PHNatura.enableBerryBushes) {
+            String[] berryTypes = new String[] { "cropRaspberry", "cropBlueberry", "cropBlackberry", "cropMaloberry", "cropStrawberry", "cropCranberry" };
 
-        for (int iter1 = 0; iter1 < berryTypes.length - 2; iter1++)
-            for (int iter2 = iter1 + 1; iter2 < berryTypes.length - 1; iter2++)
-                for (int iter3 = iter2 + 1; iter3 < berryTypes.length; iter3++)
-                    GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(berryMedley, 1, 0), "bowlWood", berryTypes[iter1], berryTypes[iter2], berryTypes[iter3]));
+            for (int iter1 = 0; iter1 < berryTypes.length - 2; iter1++)
+                for (int iter2 = iter1 + 1; iter2 < berryTypes.length - 1; iter2++)
+                    for (int iter3 = iter2 + 1; iter3 < berryTypes.length; iter3++)
+                        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(berryMedley, 1, 0), "bowlWood", berryTypes[iter1], berryTypes[iter2], berryTypes[iter3]));
 
-        for (int iter1 = 0; iter1 < berryTypes.length - 3; iter1++)
-            for (int iter2 = iter1 + 1; iter2 < berryTypes.length - 2; iter2++)
+            for (int iter1 = 0; iter1 < berryTypes.length - 3; iter1++)
+              for (int iter2 = iter1 + 1; iter2 < berryTypes.length - 2; iter2++)
                 for (int iter3 = iter2 + 1; iter3 < berryTypes.length - 1; iter3++)
                     for (int iter4 = iter3 + 1; iter4 < berryTypes.length; iter4++)
                         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(berryMedley, 2, 0), "bowlWood", "bowlWood", berryTypes[iter1], berryTypes[iter2], berryTypes[iter3], berryTypes[iter4]));
 
-        /*GameRegistry.addShapelessRecipe(new ItemStack(berryMedley, 1), new ItemStack(berryItem, 1, 0), new ItemStack(berryItem, 1, 1), new ItemStack(berryItem, 1, 2), new ItemStack(Item.bowlEmpty));
-        GameRegistry.addShapelessRecipe(new ItemStack(berryMedley, 1), new ItemStack(berryItem, 1, 0), new ItemStack(berryItem, 1, 1), new ItemStack(berryItem, 1, 3), new ItemStack(Item.bowlEmpty));
-        GameRegistry.addShapelessRecipe(new ItemStack(berryMedley, 1), new ItemStack(berryItem, 1, 0), new ItemStack(berryItem, 1, 2), new ItemStack(berryItem, 1, 3), new ItemStack(Item.bowlEmpty));
-        GameRegistry.addShapelessRecipe(new ItemStack(berryMedley, 1), new ItemStack(berryItem, 1, 1), new ItemStack(berryItem, 1, 2), new ItemStack(berryItem, 1, 3), new ItemStack(Item.bowlEmpty));
-        GameRegistry.addShapelessRecipe(new ItemStack(berryMedley, 2), new ItemStack(berryItem, 1, 0), new ItemStack(berryItem, 1, 1), new ItemStack(berryItem, 1, 2), new ItemStack(berryItem, 1, 3), new ItemStack(Item.bowlEmpty), new ItemStack(Item.bowlEmpty));*/
+            /*GameRegistry.addShapelessRecipe(new ItemStack(berryMedley, 1), new ItemStack(berryItem, 1, 0), new ItemStack(berryItem, 1, 1), new ItemStack(berryItem, 1, 2), new ItemStack(Item.bowlEmpty));
+            GameRegistry.addShapelessRecipe(new ItemStack(berryMedley, 1), new ItemStack(berryItem, 1, 0), new ItemStack(berryItem, 1, 1), new ItemStack(berryItem, 1, 3), new ItemStack(Item.bowlEmpty));
+            GameRegistry.addShapelessRecipe(new ItemStack(berryMedley, 1), new ItemStack(berryItem, 1, 0), new ItemStack(berryItem, 1, 2), new ItemStack(berryItem, 1, 3), new ItemStack(Item.bowlEmpty));
+            GameRegistry.addShapelessRecipe(new ItemStack(berryMedley, 1), new ItemStack(berryItem, 1, 1), new ItemStack(berryItem, 1, 2), new ItemStack(berryItem, 1, 3), new ItemStack(Item.bowlEmpty));
+            GameRegistry.addShapelessRecipe(new ItemStack(berryMedley, 2), new ItemStack(berryItem, 1, 0), new ItemStack(berryItem, 1, 1), new ItemStack(berryItem, 1, 2), new ItemStack(berryItem, 1, 3), new ItemStack(Item.bowlEmpty), new ItemStack(Item.bowlEmpty));*/
+        }
 
         //Nether items
         addShapelessRecipeFirst(recipes, new ItemStack(bowlStew, 1, 0), new ItemStack(Blocks.brown_mushroom), new ItemStack(Blocks.red_mushroom), new ItemStack(Items.bowl));
@@ -1097,13 +1128,16 @@ public class NContent implements IFuelHandler {
             addShapedRecipeFirst(recipes, new ItemStack(tools[i][2], 1, 0), "#", "s", "s", '#', new ItemStack(planks, 1, toolMeta[i]), 's', new ItemStack(stickItem, 1, toolMeta[i]));
             addShapedRecipeFirst(recipes, new ItemStack(tools[i][3], 1, 0), "##", "#s", " s", '#', new ItemStack(planks, 1, toolMeta[i]), 's', new ItemStack(stickItem, 1, toolMeta[i]));
             addShapedRecipeFirst(recipes, new ItemStack(tools[i][4], 1, 0), "##", " s", " s", '#', new ItemStack(planks, 1, toolMeta[i]), 's', new ItemStack(stickItem, 1, toolMeta[i]));
-            addShapedRecipeFirst(recipes, new ItemStack(tools[i][5], 1, 0), "#s ", "# s", "#s ", '#', new ItemStack(plantItem, 1, 7), 's', new ItemStack(stickItem, 1, toolMeta[i]));
+            addShapedRecipeFirst(recipes, new ItemStack(tools[i][5], 1, 0), " s#", "s #", " s#", '#', new ItemStack(plantItem, 1, 7), 's', new ItemStack(stickItem, 1, toolMeta[i]));
         }
 
-        GameRegistry.addRecipe(new ItemStack(netherquartzSword, 1, 0), "#", "#", "s", '#', new ItemStack(Blocks.quartz_block, 1, OreDictionary.WILDCARD_VALUE), 's', new ItemStack(stickItem, 1, 2));
-        GameRegistry.addRecipe(new ItemStack(netherquartzPickaxe, 1, 0), "###", " s ", " s ", '#', new ItemStack(Blocks.quartz_block, 1, OreDictionary.WILDCARD_VALUE), 's', new ItemStack(stickItem, 1, 2));
-        GameRegistry.addRecipe(new ItemStack(netherquartzShovel, 1, 0), "#", "s", "s", '#', new ItemStack(Blocks.quartz_block, 1, OreDictionary.WILDCARD_VALUE), 's', new ItemStack(stickItem, 1, 2));
-        GameRegistry.addRecipe(new ItemStack(netherquartzAxe, 1, 0), "##", "#s", " s", '#', new ItemStack(Blocks.quartz_block, 1, OreDictionary.WILDCARD_VALUE), 's', new ItemStack(stickItem, 1, 2));
+        if(PHNatura.enableQuartzTools) {
+            GameRegistry.addRecipe(new ItemStack(netherquartzSword, 1, 0), "#", "#", "s", '#', new ItemStack(Blocks.quartz_block, 1, OreDictionary.WILDCARD_VALUE), 's', new ItemStack(stickItem, 1, 2));
+            GameRegistry.addRecipe(new ItemStack(netherquartzPickaxe, 1, 0), "###", " s ", " s ", '#', new ItemStack(Blocks.quartz_block, 1, OreDictionary.WILDCARD_VALUE), 's', new ItemStack(stickItem, 1, 2));
+            GameRegistry.addRecipe(new ItemStack(netherquartzShovel, 1, 0), "#", "s", "s", '#', new ItemStack(Blocks.quartz_block, 1, OreDictionary.WILDCARD_VALUE), 's', new ItemStack(stickItem, 1, 2));
+            GameRegistry.addRecipe(new ItemStack(netherquartzAxe, 1, 0), "##", "#s", " s", '#', new ItemStack(Blocks.quartz_block, 1, OreDictionary.WILDCARD_VALUE), 's', new ItemStack(stickItem, 1, 2));
+            GameRegistry.addRecipe(new ItemStack(netherquartzKama, 1, 0), "##", " s", " s", '#', new ItemStack(Blocks.quartz_block, 1, OreDictionary.WILDCARD_VALUE), 's', new ItemStack(stickItem, 1, 2));
+        }
     }
 
     public void addShapedRecipeFirst (List recipeList, ItemStack itemstack, Object... objArray) {
@@ -1365,19 +1399,23 @@ public class NContent implements IFuelHandler {
         OreDictionary.registerOre("cropCactusfruit", new ItemStack(seedFood, 1, 0));
 
         //Berries
-        OreDictionary.registerOre("listAllfruit", new ItemStack(berryItem, 1, OreDictionary.WILDCARD_VALUE));
-        OreDictionary.registerOre("listAllberry", new ItemStack(berryItem, 1, OreDictionary.WILDCARD_VALUE));
-        OreDictionary.registerOre("cropRaspberry", new ItemStack(berryItem, 1, 0));
-        OreDictionary.registerOre("cropBlueberry", new ItemStack(berryItem, 1, 1));
-        OreDictionary.registerOre("cropBlackberry", new ItemStack(berryItem, 1, 2));
-        OreDictionary.registerOre("cropMaloberry", new ItemStack(berryItem, 1, 3));
+        if (PHNatura.enableBerryBushes) {
+            OreDictionary.registerOre("listAllfruit", new ItemStack(berryItem, 1, OreDictionary.WILDCARD_VALUE));
+            OreDictionary.registerOre("listAllberry", new ItemStack(berryItem, 1, OreDictionary.WILDCARD_VALUE));
+            OreDictionary.registerOre("cropRaspberry", new ItemStack(berryItem, 1, 0));
+            OreDictionary.registerOre("cropBlueberry", new ItemStack(berryItem, 1, 1));
+            OreDictionary.registerOre("cropBlackberry", new ItemStack(berryItem, 1, 2));
+            OreDictionary.registerOre("cropMaloberry", new ItemStack(berryItem, 1, 3));
+        }
 
-        OreDictionary.registerOre("listAllfruit", new ItemStack(netherBerryItem, 1, OreDictionary.WILDCARD_VALUE));
-        OreDictionary.registerOre("listAllberry", new ItemStack(netherBerryItem, 1, OreDictionary.WILDCARD_VALUE));
-        OreDictionary.registerOre("cropBlightberry", new ItemStack(netherBerryItem, 1, 0));
-        OreDictionary.registerOre("cropDuskberry", new ItemStack(netherBerryItem, 1, 1));
-        OreDictionary.registerOre("cropSkyberry", new ItemStack(netherBerryItem, 1, 2));
-        OreDictionary.registerOre("cropStingberry", new ItemStack(netherBerryItem, 1, 3));
+        if (PHNatura.enableNetherBerryBushes) {
+            OreDictionary.registerOre("listAllfruit", new ItemStack(netherBerryItem, 1, OreDictionary.WILDCARD_VALUE));
+            OreDictionary.registerOre("listAllberry", new ItemStack(netherBerryItem, 1, OreDictionary.WILDCARD_VALUE));
+            OreDictionary.registerOre("cropBlightberry", new ItemStack(netherBerryItem, 1, 0));
+            OreDictionary.registerOre("cropDuskberry", new ItemStack(netherBerryItem, 1, 1));
+            OreDictionary.registerOre("cropSkyberry", new ItemStack(netherBerryItem, 1, 2));
+            OreDictionary.registerOre("cropStingberry", new ItemStack(netherBerryItem, 1, 3));
+        }
 
         //Nether items
         OreDictionary.registerOre("bowlWood", new ItemStack(bowlEmpty, 1, 0));
@@ -1604,11 +1642,11 @@ public class NContent implements IFuelHandler {
 
     //Seed Bags
     public static Item wheatBag;
-    public static Item barleyBag;
-    public static Item potatoBag;
     public static Item carrotBag;
-    public static Item netherWartBag;
+    public static Item potatoBag;
+    public static Item barleyBag;
     public static Item cottonBag;
+    public static Item netherWartBag;
     public static Item boneBag;
 
     //Seeds

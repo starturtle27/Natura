@@ -5,6 +5,7 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 import mantle.pulsar.pulse.Handler;
 import mantle.pulsar.pulse.Pulse;
 import mods.natura.common.NContent;
+import mods.natura.common.PHNatura;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
@@ -15,15 +16,21 @@ public class BuildCraftPulse {
 
     @Handler
     public void init (FMLInitializationEvent evt) {
-        for (int i = 0; i < 4; i++) {
-            addFacade(NContent.berryBush, i);
-            addFacade(NContent.netherBerryBush, i);
-        }
-
+    	if(PHNatura.enableNetherBerryBushes) {
+            for (int i = 0; i < 4; i++) {
+                addFacade(NContent.netherBerryBush, i);
+            }
+    	}
+    	if(PHNatura.enableBerryBushes) {
+            for (int i = 0; i < 4; i++) {
+                addFacade(NContent.berryBush, i);
+            }
+    	}
         addFacade(NContent.saguaro, 0);
     }
 
     private void addFacade (Block b, int meta) {
         FMLInterModComms.sendMessage("BuildCraft|Transport", "add-facade", new ItemStack(b, 1, meta));
     }
+
 }

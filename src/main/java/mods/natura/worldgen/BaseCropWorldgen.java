@@ -17,15 +17,19 @@ import net.minecraft.world.chunk.IChunkProvider;
 public class BaseCropWorldgen implements IWorldGenerator {
 
     public BaseCropWorldgen() {
-        raspgen = new BerryBushGen(0, PHNatura.seaLevel + PHNatura.raspSpawnRange);
-        bluegen = new BerryBushGen(1, PHNatura.seaLevel + PHNatura.blueSpawnRange);
-        blackgen = new BerryBushGen(2, PHNatura.seaLevel + PHNatura.blackSpawnRange);
-        malogen = new BerryBushGen(3, PHNatura.seaLevel + PHNatura.geoSpawnRange);
+    	if (PHNatura.enableBerryBushes) {
+            raspgen = new BerryBushGen(0, PHNatura.seaLevel + PHNatura.raspSpawnRange);
+            bluegen = new BerryBushGen(1, PHNatura.seaLevel + PHNatura.blueSpawnRange);
+            blackgen = new BerryBushGen(2, PHNatura.seaLevel + PHNatura.blackSpawnRange);
+            malogen = new BerryBushGen(3, PHNatura.seaLevel + PHNatura.geoSpawnRange);
+    	}
 
-        blightgen = new NetherBerryBushGen(NContent.netherBerryBush, 0);
-        duskgen = new NetherBerryBushGen(NContent.netherBerryBush, 1);
-        skygen = new NetherBerryBushGen(NContent.netherBerryBush, 2);
-        stinggen = new NetherBerryBushGen(NContent.netherBerryBush, 3);
+    	if (PHNatura.enableBerryBushes) {
+            blightgen = new NetherBerryBushGen(NContent.netherBerryBush, 0);
+            duskgen = new NetherBerryBushGen(NContent.netherBerryBush, 1);
+            skygen = new NetherBerryBushGen(NContent.netherBerryBush, 2);
+            stinggen = new NetherBerryBushGen(NContent.netherBerryBush, 3);
+    	}
     }
 
     @Override

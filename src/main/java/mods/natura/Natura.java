@@ -88,7 +88,7 @@ public class Natura {
 
     @EventHandler
     public void init(FMLInitializationEvent evt) {
-        GameRegistry.registerWorldGenerator(crops = new BaseCropWorldgen(), 20); // TODO 1.7 Find correct weight (param 2)
+        if(PHNatura.enableBerryBushes | PHNatura.enableNetherBerryBushes) GameRegistry.registerWorldGenerator(crops = new BaseCropWorldgen(), 20); // TODO 1.7 Find correct weight (param 2)
         GameRegistry.registerWorldGenerator(clouds = new BaseCloudWorldgen(), 20); // TODO 1.7 Find correct weight (param 2)
         GameRegistry.registerWorldGenerator(trees = new BaseTreeWorldgen(), 20); // TODO 1.7 Find correct weight (param 2)
 
@@ -127,10 +127,10 @@ public class Natura {
             if (event.block == NContent.glowshroom) {
                 if (NContent.glowshroom.fertilizeMushroom(event.world, event.x, event.y, event.z, event.world.rand))
                     event.setResult(Result.ALLOW);
-            } else if (event.block == NContent.berryBush) {
+            } else if (PHNatura.enableBerryBushes && event.block == NContent.berryBush) {
                 if (NContent.berryBush.boneFertilize(event.world, event.x, event.y, event.z, event.world.rand))
                     event.setResult(Result.ALLOW);
-            } else if (event.block == NContent.netherBerryBush) {
+            } else if (PHNatura.enableNetherBerryBushes && event.block == NContent.netherBerryBush) {
                 if (NContent.netherBerryBush.boneFertilize(event.world, event.x, event.y, event.z, event.world.rand))
                     event.setResult(Result.ALLOW);
             }

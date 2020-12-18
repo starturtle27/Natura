@@ -16,6 +16,7 @@ public class PHNatura {
         final String catGeneral = "general";
 
         final String catWoodProducts = "wood products";
+        final String catOverworldProducts = "overworld products";
         final String catNetherProducts = "nether products";
 
         /* [Forge] Configuration class, used as config method */
@@ -26,8 +27,9 @@ public class PHNatura {
         Natura.retrogen = config.get("Retrogen", "Retroactive Generation", false).getBoolean(false);
 
         boolean BoP = false;
-        if(Loader.isModLoaded("BiomesOPlenty"))
+        if(Loader.isModLoaded("BiomesOPlenty")) {
             BoP = true;
+        }
 
         babyHeatscarMinimum = config.get(catMobChanges, "Minimum Baby Heatscar Spiders on Spider Death", 2).getInt(2);
         if (babyHeatscarMinimum < 0)
@@ -161,14 +163,24 @@ public class PHNatura {
         enableWoodenStairs = config.get(catWoodProducts, "Enable Wooden Stairs", true).getBoolean(true);
         enableWoodenTrapdoors = config.get(catWoodProducts, "Enable Wooden Trapdoors", true).getBoolean(true);
         enableWoodenWorkbenches = config.get(catWoodProducts, "Enable Wooden Workbenches", true).getBoolean(true);
-        
+
+        enableBerryBushes = config.get(catOverworldProducts, "Enable Berries and Berry Bushes", true).getBoolean(true);
+        enableBonemealBags = config.get(catOverworldProducts, "Enable Bonemeal Bags", true).getBoolean(true);
+        enableCactusJuice = config.get(catOverworldProducts, "Enable Cactus Juice", true).getBoolean(true);
+        enableSeedBags = config.get(catOverworldProducts, "Enable Seed Bags", true).getBoolean(true);
+
         enableBlazeHoppers = config.get(catNetherProducts, "Enable Blaze Hoppers", true).getBoolean(true);
         enableBlazeRails = config.get(catNetherProducts, "Enable Blaze Rails", true).getBoolean(true);
+        enableFlintAndBlaze = config.get(catNetherProducts, "Enable Flint And Blaze", true).getBoolean(true);
+        enableNetherBerryBushes = config.get(catNetherProducts, "Enable Nether Berries and Berry Bushes", true).getBoolean(true);
         enableNetherButtons = config.get(catNetherProducts, "Enable Netherack Buttons", true).getBoolean(true);
         enableNetherFurnaces = config.get(catNetherProducts, "Enable Netherack Furnaces", true).getBoolean(true);
         enableNetherGlass = config.get(catNetherProducts, "Enable Nether Glass", true).getBoolean(true);
         enableNetherLevers = config.get(catNetherProducts, "Enable Netherack Levers", true).getBoolean(true);
         enableNetherPressurePlates = config.get(catNetherProducts, "Enable Netherack Pressure Plates", true).getBoolean(true);
+        enableNetherWartBags = config.get(catNetherProducts, "Enable Nether Wart Bags", true).getBoolean(true);
+        enableObelisks = config.get(catNetherProducts, "Enable Obelisks", true).getBoolean(true);
+        enableQuartzTools = config.get(catNetherProducts, "Enable Quartz Tools", true).getBoolean(true);
 
         seaLevel = config.get(catGeneral, "Sea level", 64).getInt(64);
 
@@ -185,6 +197,7 @@ public class PHNatura {
     public static int seaLevel;
 
     //Overworld
+
     public static boolean generateBarley;
     public static boolean generateCotton;
     public static boolean generateBluebells;
@@ -311,14 +324,27 @@ public class PHNatura {
     public static boolean enableWoodenStairs;
     public static boolean enableWoodenTrapdoors;
     public static boolean enableWoodenWorkbenches;
+    
+    //Overworld products
+
+    public static boolean enableBerryBushes;
+    public static boolean enableBonemealBags;
+    public static boolean enableCactusJuice;
+    public static boolean enableSeedBags;
 
     //Nether products
 
     public static boolean enableBlazeHoppers;
     public static boolean enableBlazeRails;
+    public static boolean enableFlintAndBlaze;
+    public static boolean enableNetherBerryBushes;
     public static boolean enableNetherButtons;
     public static boolean enableNetherFurnaces;
     public static boolean enableNetherGlass;
     public static boolean enableNetherLevers;
     public static boolean enableNetherPressurePlates;
+    public static boolean enableNetherWartBags;
+    public static boolean enableObelisks;
+    public static boolean enableQuartzTools;
+    
 }
