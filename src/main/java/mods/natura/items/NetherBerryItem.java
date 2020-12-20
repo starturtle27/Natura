@@ -18,13 +18,11 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
-public class NetherBerryItem extends ItemFood
-{
+public class NetherBerryItem extends ItemFood {
     public IIcon[] icons;
     public String[] textureNames = new String[] { "blight", "dusk", "sky", "sting" };//, "haste"
 
-    public NetherBerryItem(int heal)
-    {
+    public NetherBerryItem(int heal) {
         super(heal, 0.4F, false);
         setHasSubtypes(true);
         setMaxDamage(0);
@@ -33,33 +31,26 @@ public class NetherBerryItem extends ItemFood
     }
 
     @Override
-    public ItemStack onItemRightClick (ItemStack par1ItemStack, World par2World, EntityPlayer player)
-    {
-        if (player.canEat(true) && player.getFoodStats().getSaturationLevel() < 18F)
-        {
-            player.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
+    public ItemStack onItemRightClick (ItemStack stack, World world, EntityPlayer player) {
+        if (player.canEat(true) && player.getFoodStats().getSaturationLevel() < 18F) {
+            player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
         }
-
-        return par1ItemStack;
+        return stack;
     }
 
     @Override
-    protected void onFoodEaten (ItemStack stack, World world, EntityPlayer player)
-    {
-        if (!world.isRemote)
-        {
+    protected void onFoodEaten (ItemStack stack, World world, EntityPlayer player) {
+        if (!world.isRemote) {
             int duration = 0;
             PotionEffect potion;
-            switch (stack.getItemDamage())
-            {
+            switch (stack.getItemDamage()) {
             case 0:
                 potion = player.getActivePotionEffect(Potion.regeneration);
                 if (potion != null)
                     duration = potion.getDuration();
                 player.addPotionEffect(new PotionEffect(Potion.regeneration.id, duration + 8 * 20, 0));
 
-                if (Natura.random.nextFloat() < 0.75f)
-                {
+                if (Natura.random.nextFloat() < 0.75f) {
                     potion = player.getActivePotionEffect(Potion.poison);
                     if (potion != null)
                         duration = potion.getDuration();
@@ -67,8 +58,7 @@ public class NetherBerryItem extends ItemFood
                         duration = 0;
                     player.addPotionEffect(new PotionEffect(Potion.poison.id, duration + 5 * 20, 0));
                 }
-                if (Natura.random.nextFloat() < 0.15f)
-                {
+                if (Natura.random.nextFloat() < 0.15f) {
                     potion = player.getActivePotionEffect(Potion.wither);
                     if (potion != null)
                         duration = potion.getDuration();
@@ -84,8 +74,7 @@ public class NetherBerryItem extends ItemFood
                     duration = potion.getDuration();
                 player.addPotionEffect(new PotionEffect(Potion.nightVision.id, duration + 15 * 20, 0));
 
-                if (Natura.random.nextFloat() < 0.75f)
-                {
+                if (Natura.random.nextFloat() < 0.75f) {
                     potion = player.getActivePotionEffect(Potion.blindness);
                     if (potion != null)
                         duration = potion.getDuration();
@@ -101,8 +90,7 @@ public class NetherBerryItem extends ItemFood
                     duration = potion.getDuration();
                 player.addPotionEffect(new PotionEffect(Potion.jump.id, duration + 8 * 20, 0));
 
-                if (Natura.random.nextFloat() < 0.75f)
-                {
+                if (Natura.random.nextFloat() < 0.75f) {
                     potion = player.getActivePotionEffect(Potion.moveSlowdown);
                     if (potion != null)
                         duration = potion.getDuration();
@@ -118,8 +106,7 @@ public class NetherBerryItem extends ItemFood
                     duration = potion.getDuration();
                 player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, duration + 10 * 20, 0));
 
-                if (Natura.random.nextFloat() < 0.75f)
-                {
+                if (Natura.random.nextFloat() < 0.75f) {
                     potion = player.getActivePotionEffect(Potion.digSlowdown);
                     if (potion != null)
                         duration = potion.getDuration();
@@ -135,8 +122,7 @@ public class NetherBerryItem extends ItemFood
                     duration = potion.getDuration();
                 player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, duration + 10 * 20, 0));
 
-                if (Natura.random.nextFloat() < 0.75f)
-                {
+                if (Natura.random.nextFloat() < 0.75f) {
                     potion = player.getActivePotionEffect(Potion.weakness);
                     if (potion != null)
                         duration = potion.getDuration();
@@ -150,37 +136,31 @@ public class NetherBerryItem extends ItemFood
     }
 
     @Override
-    public int getMaxItemUseDuration (ItemStack itemstack)
-    {
+    public int getMaxItemUseDuration (ItemStack itemstack) {
         return 24;
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public IIcon getIconFromDamage (int meta)
-    {
-        return icons[meta];
+    public IIcon getIconFromDamage (int meta) {
+    	return meta >= icons.length ? icons[0] : icons[meta];
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void registerIcons (IIconRegister iconRegister)
-    {
+    public void registerIcons (IIconRegister iconRegister) {
         this.icons = new IIcon[textureNames.length];
 
-        for (int i = 0; i < this.icons.length; ++i)
-        {
+        for (int i = 0; i < this.icons.length; ++i) {
             this.icons[i] = iconRegister.registerIcon("natura:berry_" + textureNames[i]);
         }
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation (ItemStack stack, EntityPlayer player, List list, boolean par4)
-    {
+    public void addInformation (ItemStack stack, EntityPlayer player, List list, boolean par4) {
         list.add(StatCollector.translateToLocal("tooltip.netherberrybush1"));
-        switch (stack.getItemDamage() % 4)
-        {
+        switch (stack.getItemDamage() % 4) {
         case 0:
             list.add(StatCollector.translateToLocal("tooltip.netherberrybush2"));
             break;
@@ -198,8 +178,7 @@ public class NetherBerryItem extends ItemFood
 
     /* Name override */
     @Override
-    public String getUnlocalizedName (ItemStack itemstack)
-    {
+    public String getUnlocalizedName (ItemStack itemstack) {
         return (new StringBuilder()).append("item.berry.").append(textureNames[itemstack.getItemDamage()]).toString();
     }
 
@@ -208,16 +187,10 @@ public class NetherBerryItem extends ItemFood
      */
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubItems (Item par1, CreativeTabs par2CreativeTabs, List par3List)
-    {
-        for (int var4 = 0; var4 < 4; ++var4)
-        {
+    public void getSubItems (Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+        for (int var4 = 0; var4 < 4; ++var4) {
             par3List.add(new ItemStack(par1, 1, var4));
         }
     }
 
-    /*public boolean isPotionIngredient()
-    {
-        return true;
-    }*/
 }
