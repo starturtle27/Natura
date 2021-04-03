@@ -176,6 +176,7 @@ public class PHNatura {
         enableNetherButtons = config.get(catNetherProducts, "Enable Netherack Buttons", true).getBoolean(true);
         enableNetherFurnaces = config.get(catNetherProducts, "Enable Netherack Furnaces", true).getBoolean(true);
         enableNetherGlass = config.get(catNetherProducts, "Enable Nether Glass", true).getBoolean(true);
+        enableNetherWoodTools = config.get(catNetherProducts, "Enable Nether Wood Tools", true).getBoolean(true);
         enableNetherLevers = config.get(catNetherProducts, "Enable Netherack Levers", true).getBoolean(true);
         enableNetherPressurePlates = config.get(catNetherProducts, "Enable Netherack Pressure Plates", true).getBoolean(true);
         enableNetherWartBags = config.get(catNetherProducts, "Enable Nether Wart Bags", true).getBoolean(true);
@@ -341,6 +342,7 @@ public class PHNatura {
     public static boolean enableNetherButtons;
     public static boolean enableNetherFurnaces;
     public static boolean enableNetherGlass;
+    public static boolean enableNetherWoodTools;
     public static boolean enableNetherLevers;
     public static boolean enableNetherPressurePlates;
     public static boolean enableNetherWartBags;

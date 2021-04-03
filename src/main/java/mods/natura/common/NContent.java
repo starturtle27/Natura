@@ -718,70 +718,73 @@ public class NContent implements IFuelHandler {
         GameRegistry.registerItem(stickItem, "natura.stick");
 
         //Nether Tools
-        ghostwoodSword = new NaturaSword(ToolMaterial.WOOD, "ghostwood").setUnlocalizedName("natura.sword.ghostwood");
-        GameRegistry.registerItem(ghostwoodSword, "natura.sword.ghostwood");
-        ghostwoodPickaxe = new NaturaPickaxe(ToolMaterial.WOOD, "ghostwood").setUnlocalizedName("natura.pickaxe.ghostwood");
-        GameRegistry.registerItem(ghostwoodPickaxe, "natura.pickaxe.ghostwood");
-        ghostwoodShovel = new NaturaShovel(ToolMaterial.WOOD, "ghostwood").setUnlocalizedName("natura.shovel.ghostwood");
-        GameRegistry.registerItem(ghostwoodShovel, "natura.shovel.ghostwood");
-        ghostwoodAxe = new NaturaHatchet(ToolMaterial.WOOD, "ghostwood").setUnlocalizedName("natura.axe.ghostwood");
-        GameRegistry.registerItem(ghostwoodAxe, "natura.axe.ghostwood");
-        ghostwoodKama = new NaturaKama(ToolMaterial.WOOD, "ghostwood").setUnlocalizedName("natura.kama.ghostwood");
-        GameRegistry.registerItem(ghostwoodKama, "natura.kama.ghostwood");
-        ghostwoodBow = new NaturaBow(384, "ghostwood").setUnlocalizedName("natura.bow.ghostwood");
-        GameRegistry.registerItem(ghostwoodBow, "natura.bow.ghostwood");
-        ghostwoodPickaxe.setHarvestLevel("pickaxe", 0);
-        ghostwoodShovel.setHarvestLevel("shovel", 0);
-        ghostwoodAxe.setHarvestLevel("axe", 0);
+        if(PHNatura.enableNetherWoodTools) {
+            ghostwoodSword = new NaturaSword(ToolMaterial.WOOD, "ghostwood").setUnlocalizedName("natura.sword.ghostwood");
+            GameRegistry.registerItem(ghostwoodSword, "natura.sword.ghostwood");
+            ghostwoodPickaxe = new NaturaPickaxe(ToolMaterial.WOOD, "ghostwood").setUnlocalizedName("natura.pickaxe.ghostwood");
+            GameRegistry.registerItem(ghostwoodPickaxe, "natura.pickaxe.ghostwood");
+            ghostwoodShovel = new NaturaShovel(ToolMaterial.WOOD, "ghostwood").setUnlocalizedName("natura.shovel.ghostwood");
+            GameRegistry.registerItem(ghostwoodShovel, "natura.shovel.ghostwood");
+            ghostwoodAxe = new NaturaHatchet(ToolMaterial.WOOD, "ghostwood").setUnlocalizedName("natura.axe.ghostwood");
+            GameRegistry.registerItem(ghostwoodAxe, "natura.axe.ghostwood");
+            ghostwoodKama = new NaturaKama(ToolMaterial.WOOD, "ghostwood").setUnlocalizedName("natura.kama.ghostwood");
+            GameRegistry.registerItem(ghostwoodKama, "natura.kama.ghostwood");
+            ghostwoodBow = new NaturaBow(384, "ghostwood").setUnlocalizedName("natura.bow.ghostwood");
+            GameRegistry.registerItem(ghostwoodBow, "natura.bow.ghostwood");
+            ghostwoodPickaxe.setHarvestLevel("pickaxe", 0);
+            ghostwoodShovel.setHarvestLevel("shovel", 0);
+            ghostwoodAxe.setHarvestLevel("axe", 0);
 
-        ToolMaterial Bloodwood = EnumHelper.addToolMaterial("Bloodwood", 3, 350, 7f, 3, 24);
-        bloodwoodSword = new NaturaSword(Bloodwood, "bloodwood").setUnlocalizedName("natura.sword.bloodwood");
-        GameRegistry.registerItem(bloodwoodSword, "natura.sword.bloodwood");
-        bloodwoodPickaxe = new NaturaPickaxe(Bloodwood, "bloodwood").setUnlocalizedName("natura.pickaxe.bloodwood");
-        GameRegistry.registerItem(bloodwoodPickaxe, "natura.pickaxe.bloodwood");
-        bloodwoodShovel = new NaturaShovel(Bloodwood, "bloodwood").setUnlocalizedName("natura.shovel.bloodwood");
-        GameRegistry.registerItem(bloodwoodShovel, "natura.shovel.bloodwood");
-        bloodwoodAxe = new NaturaHatchet(Bloodwood, "bloodwood").setUnlocalizedName("natura.axe.bloodwood");
-        GameRegistry.registerItem(bloodwoodAxe, "natura.axe.bloodwood");
-        bloodwoodKama = new NaturaKama(Bloodwood, "bloodwood").setUnlocalizedName("natura.kama.bloodwood");
-        GameRegistry.registerItem(bloodwoodKama, "natura.kama.bloodwood");
-        bloodwoodBow = new NaturaBow(1501, "bloodwood").setUnlocalizedName("natura.bow.bloodwood");
-        GameRegistry.registerItem(bloodwoodBow, "natura.bow.bloodwood");
-        bloodwoodPickaxe.setHarvestLevel("pickaxe", 2);
-        bloodwoodShovel.setHarvestLevel("shovel", 2);
-        bloodwoodAxe.setHarvestLevel("axe", 2);
+            ToolMaterial Bloodwood = EnumHelper.addToolMaterial("Bloodwood", 3, 350, 7f, 3, 24);
+            bloodwoodSword = new NaturaSword(Bloodwood, "bloodwood").setUnlocalizedName("natura.sword.bloodwood");
+            GameRegistry.registerItem(bloodwoodSword, "natura.sword.bloodwood");
+            bloodwoodPickaxe = new NaturaPickaxe(Bloodwood, "bloodwood").setUnlocalizedName("natura.pickaxe.bloodwood");
+            GameRegistry.registerItem(bloodwoodPickaxe, "natura.pickaxe.bloodwood");
+            bloodwoodShovel = new NaturaShovel(Bloodwood, "bloodwood").setUnlocalizedName("natura.shovel.bloodwood");
+            GameRegistry.registerItem(bloodwoodShovel, "natura.shovel.bloodwood");
+            bloodwoodAxe = new NaturaHatchet(Bloodwood, "bloodwood").setUnlocalizedName("natura.axe.bloodwood");
+            GameRegistry.registerItem(bloodwoodAxe, "natura.axe.bloodwood");
+            bloodwoodKama = new NaturaKama(Bloodwood, "bloodwood").setUnlocalizedName("natura.kama.bloodwood");
+            GameRegistry.registerItem(bloodwoodKama, "natura.kama.bloodwood");
+            bloodwoodBow = new NaturaBow(1501, "bloodwood").setUnlocalizedName("natura.bow.bloodwood");
+            GameRegistry.registerItem(bloodwoodBow, "natura.bow.bloodwood");
+            bloodwoodPickaxe.setHarvestLevel("pickaxe", 2);
+            bloodwoodShovel.setHarvestLevel("shovel", 2);
+            bloodwoodAxe.setHarvestLevel("axe", 2);
 
-        darkwoodSword = new NaturaSword(ToolMaterial.STONE, "darkwood").setUnlocalizedName("natura.sword.darkwood");
-        GameRegistry.registerItem(darkwoodSword, "natura.sword.darkwood");
-        darkwoodPickaxe = new NaturaPickaxe(ToolMaterial.STONE, "darkwood").setUnlocalizedName("natura.pickaxe.darkwood");
-        GameRegistry.registerItem(darkwoodPickaxe, "natura.pickaxe.darkwood");
-        darkwoodShovel = new NaturaShovel(ToolMaterial.STONE, "darkwood").setUnlocalizedName("natura.shovel.darkwood");
-        GameRegistry.registerItem(darkwoodShovel, "natura.shovel.darkwood");
-        darkwoodAxe = new NaturaHatchet(ToolMaterial.STONE, "darkwood").setUnlocalizedName("natura.axe.darkwood");
-        GameRegistry.registerItem(darkwoodAxe, "natura.axe.darkwood");
-        darkwoodKama = new NaturaKama(ToolMaterial.STONE, "darkwood").setUnlocalizedName("natura.kama.darkwood");
-        GameRegistry.registerItem(darkwoodKama, "natura.kama.darkwood");
-        darkwoodBow = new NaturaBow(162, "darkwood").setUnlocalizedName("natura.bow.darkwood");
-        GameRegistry.registerItem(darkwoodBow, "natura.bow.darkwood");
-        darkwoodPickaxe.setHarvestLevel("pickaxe", 1);
-        darkwoodShovel.setHarvestLevel("shovel", 1);
-        darkwoodAxe.setHarvestLevel("axe", 1);
+            darkwoodSword = new NaturaSword(ToolMaterial.STONE, "darkwood").setUnlocalizedName("natura.sword.darkwood");
+            GameRegistry.registerItem(darkwoodSword, "natura.sword.darkwood");
+            darkwoodPickaxe = new NaturaPickaxe(ToolMaterial.STONE, "darkwood").setUnlocalizedName("natura.pickaxe.darkwood");
+            GameRegistry.registerItem(darkwoodPickaxe, "natura.pickaxe.darkwood");
+            darkwoodShovel = new NaturaShovel(ToolMaterial.STONE, "darkwood").setUnlocalizedName("natura.shovel.darkwood");
+            GameRegistry.registerItem(darkwoodShovel, "natura.shovel.darkwood");
+            darkwoodAxe = new NaturaHatchet(ToolMaterial.STONE, "darkwood").setUnlocalizedName("natura.axe.darkwood");
+            GameRegistry.registerItem(darkwoodAxe, "natura.axe.darkwood");
+            darkwoodKama = new NaturaKama(ToolMaterial.STONE, "darkwood").setUnlocalizedName("natura.kama.darkwood");
+            GameRegistry.registerItem(darkwoodKama, "natura.kama.darkwood");
+            darkwoodBow = new NaturaBow(162, "darkwood").setUnlocalizedName("natura.bow.darkwood");
+            GameRegistry.registerItem(darkwoodBow, "natura.bow.darkwood");
+            darkwoodPickaxe.setHarvestLevel("pickaxe", 1);
+            darkwoodShovel.setHarvestLevel("shovel", 1);
+            darkwoodAxe.setHarvestLevel("axe", 1);
 
-        fusewoodSword = new NaturaSword(ToolMaterial.IRON, "fusewood").setUnlocalizedName("natura.sword.fusewood");
-        GameRegistry.registerItem(fusewoodSword, "natura.sword.fusewood");
-        fusewoodPickaxe = new NaturaPickaxe(ToolMaterial.IRON, "fusewood").setUnlocalizedName("natura.pickaxe.fusewood");
-        GameRegistry.registerItem(fusewoodPickaxe, "natura.pickaxe.fusewood");
-        fusewoodShovel = new NaturaShovel(ToolMaterial.IRON, "fusewood").setUnlocalizedName("natura.shovel.fusewood");
-        GameRegistry.registerItem(fusewoodShovel, "natura.shovel.fusewood");
-        fusewoodAxe = new NaturaHatchet(ToolMaterial.IRON, "fusewood").setUnlocalizedName("natura.axe.fusewood");
-        GameRegistry.registerItem(fusewoodAxe, "natura.axe.fusewood");
-        fusewoodKama = new NaturaKama(ToolMaterial.IRON, "fusewood").setUnlocalizedName("natura.kama.fusewood");
-        GameRegistry.registerItem(fusewoodKama, "natura.kama.fusewood");
-        fusewoodBow = new NaturaBow(28, "fusewood").setUnlocalizedName("natura.bow.fusewood");
-        GameRegistry.registerItem(fusewoodBow, "natura.bow.fusewood");
-        fusewoodPickaxe.setHarvestLevel("pickaxe", 2);
-        fusewoodShovel.setHarvestLevel("shovel", 2);
-        fusewoodAxe.setHarvestLevel("axe", 2);
+            fusewoodSword = new NaturaSword(ToolMaterial.IRON, "fusewood").setUnlocalizedName("natura.sword.fusewood");
+            GameRegistry.registerItem(fusewoodSword, "natura.sword.fusewood");
+            fusewoodPickaxe = new NaturaPickaxe(ToolMaterial.IRON, "fusewood").setUnlocalizedName("natura.pickaxe.fusewood");
+            GameRegistry.registerItem(fusewoodPickaxe, "natura.pickaxe.fusewood");
+            fusewoodShovel = new NaturaShovel(ToolMaterial.IRON, "fusewood").setUnlocalizedName("natura.shovel.fusewood");
+            GameRegistry.registerItem(fusewoodShovel, "natura.shovel.fusewood");
+            fusewoodAxe = new NaturaHatchet(ToolMaterial.IRON, "fusewood").setUnlocalizedName("natura.axe.fusewood");
+            GameRegistry.registerItem(fusewoodAxe, "natura.axe.fusewood");
+            fusewoodKama = new NaturaKama(ToolMaterial.IRON, "fusewood").setUnlocalizedName("natura.kama.fusewood");
+            GameRegistry.registerItem(fusewoodKama, "natura.kama.fusewood");
+            fusewoodBow = new NaturaBow(28, "fusewood").setUnlocalizedName("natura.bow.fusewood");
+            GameRegistry.registerItem(fusewoodBow, "natura.bow.fusewood");
+            fusewoodPickaxe.setHarvestLevel("pickaxe", 2);
+            fusewoodShovel.setHarvestLevel("shovel", 2);
+            fusewoodAxe.setHarvestLevel("axe", 2);
+        
+        }
 
         if(PHNatura.enableQuartzTools) {
             netherquartzSword = new NaturaSword(ToolMaterial.STONE, "netherquartz").setUnlocalizedName("natura.sword.netherquartz");
@@ -846,7 +849,7 @@ public class NContent implements IFuelHandler {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(netherHopper), "# #", "#C#", " # ", '#', new ItemStack(Items.blaze_rod), 'C', "chestWood"));
         }
         if (PHNatura.enableFlintAndBlaze) {
-        	GameRegistry.addShapelessRecipe(new ItemStack(flintAndBlaze), Items.flint, Items.blaze_rod);
+            GameRegistry.addShapelessRecipe(new ItemStack(flintAndBlaze), Items.flint, Items.blaze_rod);
         }
         if (PHNatura.enableNetherPressurePlates) {
             GameRegistry.addRecipe(new ItemStack(netherPressurePlate), "##", '#', stackSingleNetherrack);
@@ -1114,21 +1117,23 @@ public class NContent implements IFuelHandler {
         }
 
         //Nether Tools
-        int[] toolMeta = { 2, 4, 11, 12 };
-        Item[][] tools = {
-                { ghostwoodSword, ghostwoodPickaxe, ghostwoodShovel, ghostwoodAxe, ghostwoodKama, ghostwoodBow },
-                { bloodwoodSword, bloodwoodPickaxe, bloodwoodShovel, bloodwoodAxe, bloodwoodKama, bloodwoodBow },
-                { darkwoodSword, darkwoodPickaxe, darkwoodShovel, darkwoodAxe, darkwoodKama, darkwoodBow },
-                { fusewoodSword, fusewoodPickaxe, fusewoodShovel, fusewoodAxe, fusewoodKama, fusewoodBow }
-            };
+        if(PHNatura.enableNetherWoodTools) {
+            int[] toolMeta = { 2, 4, 11, 12 };
+            Item[][] tools = {
+                    { ghostwoodSword, ghostwoodPickaxe, ghostwoodShovel, ghostwoodAxe, ghostwoodKama, ghostwoodBow },
+                    { bloodwoodSword, bloodwoodPickaxe, bloodwoodShovel, bloodwoodAxe, bloodwoodKama, bloodwoodBow },
+                    { darkwoodSword, darkwoodPickaxe, darkwoodShovel, darkwoodAxe, darkwoodKama, darkwoodBow },
+                    { fusewoodSword, fusewoodPickaxe, fusewoodShovel, fusewoodAxe, fusewoodKama, fusewoodBow }
+                };
 
-        for (int i = 0; i < toolMeta.length; i++) {
-            addShapedRecipeFirst(recipes, new ItemStack(tools[i][0], 1, 0), "#", "#", "s", '#', new ItemStack(planks, 1, toolMeta[i]), 's', new ItemStack(stickItem, 1, toolMeta[i]));
-            addShapedRecipeFirst(recipes, new ItemStack(tools[i][1], 1, 0), "###", " s ", " s ", '#', new ItemStack(planks, 1, toolMeta[i]), 's', new ItemStack(stickItem, 1, toolMeta[i]));
-            addShapedRecipeFirst(recipes, new ItemStack(tools[i][2], 1, 0), "#", "s", "s", '#', new ItemStack(planks, 1, toolMeta[i]), 's', new ItemStack(stickItem, 1, toolMeta[i]));
-            addShapedRecipeFirst(recipes, new ItemStack(tools[i][3], 1, 0), "##", "#s", " s", '#', new ItemStack(planks, 1, toolMeta[i]), 's', new ItemStack(stickItem, 1, toolMeta[i]));
-            addShapedRecipeFirst(recipes, new ItemStack(tools[i][4], 1, 0), "##", " s", " s", '#', new ItemStack(planks, 1, toolMeta[i]), 's', new ItemStack(stickItem, 1, toolMeta[i]));
-            addShapedRecipeFirst(recipes, new ItemStack(tools[i][5], 1, 0), " s#", "s #", " s#", '#', new ItemStack(plantItem, 1, 7), 's', new ItemStack(stickItem, 1, toolMeta[i]));
+            for (int i = 0; i < toolMeta.length; i++) {
+                addShapedRecipeFirst(recipes, new ItemStack(tools[i][0], 1, 0), "#", "#", "s", '#', new ItemStack(planks, 1, toolMeta[i]), 's', new ItemStack(stickItem, 1, toolMeta[i]));
+                addShapedRecipeFirst(recipes, new ItemStack(tools[i][1], 1, 0), "###", " s ", " s ", '#', new ItemStack(planks, 1, toolMeta[i]), 's', new ItemStack(stickItem, 1, toolMeta[i]));
+                addShapedRecipeFirst(recipes, new ItemStack(tools[i][2], 1, 0), "#", "s", "s", '#', new ItemStack(planks, 1, toolMeta[i]), 's', new ItemStack(stickItem, 1, toolMeta[i]));
+                addShapedRecipeFirst(recipes, new ItemStack(tools[i][3], 1, 0), "##", "#s", " s", '#', new ItemStack(planks, 1, toolMeta[i]), 's', new ItemStack(stickItem, 1, toolMeta[i]));
+                addShapedRecipeFirst(recipes, new ItemStack(tools[i][4], 1, 0), "##", " s", " s", '#', new ItemStack(planks, 1, toolMeta[i]), 's', new ItemStack(stickItem, 1, toolMeta[i]));
+                addShapedRecipeFirst(recipes, new ItemStack(tools[i][5], 1, 0), " s#", "s #", " s#", '#', new ItemStack(plantItem, 1, 7), 's', new ItemStack(stickItem, 1, toolMeta[i]));
+            }
         }
 
         if(PHNatura.enableQuartzTools) {
