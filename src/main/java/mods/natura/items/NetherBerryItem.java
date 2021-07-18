@@ -22,8 +22,8 @@ public class NetherBerryItem extends ItemFood {
     public IIcon[] icons;
     public String[] textureNames = new String[] { "blight", "dusk", "sky", "sting" };//, "haste"
 
-    public NetherBerryItem(int heal) {
-        super(heal, 0.4F, false);
+    public NetherBerryItem(int healAmount) {
+        super(healAmount, 0.4F, false);
         setHasSubtypes(true);
         setMaxDamage(0);
         this.setCreativeTab(NaturaTab.tab);
@@ -136,7 +136,7 @@ public class NetherBerryItem extends ItemFood {
     }
 
     @Override
-    public int getMaxItemUseDuration (ItemStack itemstack) {
+    public int getMaxItemUseDuration (ItemStack itemStack) {
         return 24;
     }
 
@@ -179,7 +179,7 @@ public class NetherBerryItem extends ItemFood {
     /* Name override */
     @Override
     public String getUnlocalizedName (ItemStack itemstack) {
-        return (new StringBuilder()).append("item.berry.").append(textureNames[itemstack.getItemDamage()]).toString();
+    	return "item.berry." + textureNames[itemstack.getItemDamage() >= textureNames.length ? 0 : itemstack.getItemDamage()];
     }
 
     /**
@@ -187,9 +187,9 @@ public class NetherBerryItem extends ItemFood {
      */
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubItems (Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+    public void getSubItems (Item item, CreativeTabs par2CreativeTabs, List par3List) {
         for (int var4 = 0; var4 < 4; ++var4) {
-            par3List.add(new ItemStack(par1, 1, var4));
+            par3List.add(new ItemStack(item, 1, var4));
         }
     }
 
