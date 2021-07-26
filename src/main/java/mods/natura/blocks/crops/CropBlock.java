@@ -64,7 +64,7 @@ public class CropBlock extends BlockBush implements IGrowable {
     /* checks if the block can stay, if not drop as item */
     @Override
     protected void checkAndDropBlock(World world, int x, int y, int z) {
-        if (world.getBlock(x, y - 1, z) == Blocks.dirt) {
+        if (world.getBlock(x, y - 1, z) != Blocks.farmland) {
             this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
             world.setBlock(x, y, z, getBlockById(0), 0, 2);
         }
