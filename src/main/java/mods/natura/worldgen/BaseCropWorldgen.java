@@ -24,7 +24,7 @@ public class BaseCropWorldgen implements IWorldGenerator {
             malogen = new BerryBushGen(3, PHNatura.seaLevel + PHNatura.geoSpawnRange);
     	}
 
-    	if (PHNatura.enableBerryBushes) {
+    	if (PHNatura.enableNetherBerryBushes) {
             blightgen = new NetherBerryBushGen(NContent.netherBerryBush, 0);
             duskgen = new NetherBerryBushGen(NContent.netherBerryBush, 1);
             skygen = new NetherBerryBushGen(NContent.netherBerryBush, 2);
