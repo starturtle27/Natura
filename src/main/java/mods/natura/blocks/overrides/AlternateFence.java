@@ -56,19 +56,4 @@ public class AlternateFence extends BlockFence {
         return FenceRender.model;
     }
 
-    @Override
-    public boolean canConnectFenceTo(IBlockAccess blockAccess, int x, int y, int z) {
-        Block block = blockAccess.getBlock(x, y, z);
-
-        if (block != this) {
-            if (block == null)
-                return false;
-            if (block.getMaterial().isOpaque() && block.renderAsNormalBlock())
-                return block.getMaterial() != Material.plants;
-            return (block instanceof BlockFenceGate);
-        } else {
-            return true;
-        }
-    }
-
 }
