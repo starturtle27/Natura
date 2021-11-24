@@ -1,10 +1,10 @@
 [
   {
-    "modid": "Natura",
-    "name": "Natura",
+    "modid": "${modId}",
+    "name": "${modName}",
     "description": "Heyo, Redwood trees! Chop them all day long!",
-    "version": "${version}",
-    "mcversion": "${mcversion}",
+    "version": "${modVersion}",
+    "mcversion": "${minecraftVersion}",
     "url": "www.minecraftforum.net/topic/1753754-natura/",
     "updateUrl": "",
     "authors": [
