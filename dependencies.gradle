@@ -4,16 +4,16 @@ dependencies {
 
     compile("com.github.GTNewHorizons:Mantle:master-SNAPSHOT:dev")
 
-    compileOnly("com.github.GTNewHorizons:waila:master-SNAPSHOT:dev") {
+    compileOnly("com.github.GTNewHorizons:waila:1.5.18:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:ForgeMultipart:master-SNAPSHOT:dev") {
+    compileOnly("com.github.GTNewHorizons:ForgeMultipart:1.2.7:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:NotEnoughItems:master-SNAPSHOT:dev") {
+    compileOnly("com.github.GTNewHorizons:NotEnoughItems:2.1.22-GTNH:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:TinkersConstruct:master-SNAPSHOT:dev") {
+    compileOnly("com.github.GTNewHorizons:TinkersConstruct:1.9.0.9-GTNH:dev") {
         transitive = false
     }
 
