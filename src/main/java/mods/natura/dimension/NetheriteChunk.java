@@ -31,22 +31,11 @@ public class NetheriteChunk extends Chunk {
             }
         }
 
-        /*for (int x = 0; x < 16; ++x) {
-            for (int z = 0; z < 16; ++z) {
-                for (int y = 0; y < height; ++y) {
-                    int id = upperIDs[x << 11 | z << 7 | y] & 0xFF;
-
-                    if (id != 0) {
-                        int k1 = (y >> 4) + 8;
-
-                        if (storage[k1] == null) {
-                            storage[k1] = new ExtendedBlockStorage(k1 << 4, !world.provider.hasNoSky);
-                        }
-
-                        storage[k1].setExtBlockID(x, y & 15, z, id);
-                    }
-                }
-            }
-        }*/
+        /*
+         * for (int x = 0; x < 16; ++x) { for (int z = 0; z < 16; ++z) { for (int y = 0; y < height; ++y) { int id =
+         * upperIDs[x << 11 | z << 7 | y] & 0xFF; if (id != 0) { int k1 = (y >> 4) + 8; if (storage[k1] == null) {
+         * storage[k1] = new ExtendedBlockStorage(k1 << 4, !world.provider.hasNoSky); } storage[k1].setExtBlockID(x, y &
+         * 15, z, id); } } } }
+         */
     }
 }

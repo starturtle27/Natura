@@ -1,11 +1,10 @@
 package mods.natura.blocks.trees;
 
-import com.google.common.collect.Lists;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.List;
+
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -15,18 +14,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+import com.google.common.collect.Lists;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class OverworldTreeBlock extends BlockLog {
+
     public IIcon[] icons;
-    public String[] textureNames = new String[] {
-        "maple_bark",
-        "maple_heart",
-        "silverbell_bark",
-        "silverbell_heart",
-        "purpleheart_bark",
-        "purpleheart_heart",
-        "tiger_bark",
-        "tiger_heart"
-    };
+    public String[] textureNames = new String[] { "maple_bark", "maple_heart", "silverbell_bark", "silverbell_heart",
+            "purpleheart_bark", "purpleheart_heart", "tiger_bark", "tiger_heart" };
 
     public OverworldTreeBlock() {
         super();
@@ -81,15 +78,11 @@ public class OverworldTreeBlock extends BlockLog {
         return meta % 4;
     }
 
-    /* public int getFlammability(IBlockAccess world, int x, int y, int z, int metadata, ForgeDirection face)
-    {
-        return metadata % 4 != 2 ? blockFlammability[blockID] : 0;
-    }
-
-    public int getFireSpreadSpeed(World world, int x, int y, int z, int metadata, ForgeDirection face)
-    {
-        return metadata % 4 != 2 ? blockFireSpreadSpeed[blockID] : 0;
-    }*/
+    /*
+     * public int getFlammability(IBlockAccess world, int x, int y, int z, int metadata, ForgeDirection face) { return
+     * metadata % 4 != 2 ? blockFlammability[blockID] : 0; } public int getFireSpreadSpeed(World world, int x, int y,
+     * int z, int metadata, ForgeDirection face) { return metadata % 4 != 2 ? blockFireSpreadSpeed[blockID] : 0; }
+     */
 
     @SideOnly(Side.CLIENT)
     @Override

@@ -1,14 +1,17 @@
 package mods.natura.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class NTrapdoor extends BlockTrapDoor {
+
     String textureName;
 
     public NTrapdoor(Material material, String texture) {

@@ -1,9 +1,8 @@
 package mods.natura.blocks.crops;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import mods.natura.Natura;
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.BlockVine;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -13,7 +12,11 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class ThornVines extends BlockVine {
+
     public ThornVines() {
         super();
         this.setCreativeTab(NaturaTab.tab);
@@ -54,8 +57,9 @@ public class ThornVines extends BlockVine {
         }
     }
 
-    /*public int onBlockPlaced(World world, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9) {
-        return 15;
-    }*/
+    /*
+     * public int onBlockPlaced(World world, int par2, int par3, int par4, int par5, float par6, float par7, float par8,
+     * int par9) { return 15; }
+     */
 
 }

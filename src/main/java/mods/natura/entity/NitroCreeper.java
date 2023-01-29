@@ -10,6 +10,7 @@ import net.minecraft.util.EntityDamageSource;
 import net.minecraft.world.World;
 
 public class NitroCreeper extends EntityCreeper {
+
     protected int fuseTime = 12;
     protected int timeSinceIgnited;
     protected int lastActiveTime;
@@ -22,17 +23,14 @@ public class NitroCreeper extends EntityCreeper {
         this.isImmuneToFire = true;
     }
 
-    /*@Override
-    public void initCreature ()
-    {
-        //if (this.rand.nextInt(100) == 0)
-            this.dataWatcher.updateObject(17, Byte.valueOf((byte)1));
-    }*/
+    /*
+     * @Override public void initCreature () { //if (this.rand.nextInt(100) == 0) this.dataWatcher.updateObject(17,
+     * Byte.valueOf((byte)1)); }
+     */
 
-    /*public int getMaxHealth ()
-    {
-        return 20;
-    }*/
+    /*
+     * public int getMaxHealth () { return 20; }
+     */
 
     @Override
     protected void fall(float distance) {
@@ -140,18 +138,10 @@ public class NitroCreeper extends EntityCreeper {
                 }
             }
 
-            /*j = Block.tnt.blockID;
-            int k = this.rand.nextInt(5) + 2;
-
-            if (par2 > 0)
-            {
-                k += this.rand.nextInt(par2*3 + 1);
-            }
-
-            for (int l = 0; l < k; ++l)
-            {
-                this.dropItem(j, 1);
-            }*/
+            /*
+             * j = Block.tnt.blockID; int k = this.rand.nextInt(5) + 2; if (par2 > 0) { k += this.rand.nextInt(par2*3 +
+             * 1); } for (int l = 0; l < k; ++l) { this.dropItem(j, 1); }
+             */
         }
     }
 
@@ -163,11 +153,11 @@ public class NitroCreeper extends EntityCreeper {
         return super.attackEntityFrom(source, damage);
     }
 
-    /*public boolean getCanSpawnHere()
-    {
-        int i = MathHelper.floor_double(this.posX);
-        int j = MathHelper.floor_double(this.boundingBox.minY);
-        int k = MathHelper.floor_double(this.posZ);
-        return this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(this.boundingBox) && this.getBlockPathWeight(i, j, k) >= 0.0F;
-    }*/
+    /*
+     * public boolean getCanSpawnHere() { int i = MathHelper.floor_double(this.posX); int j =
+     * MathHelper.floor_double(this.boundingBox.minY); int k = MathHelper.floor_double(this.posZ); return
+     * this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this,
+     * this.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(this.boundingBox) && this.getBlockPathWeight(i, j, k)
+     * >= 0.0F; }
+     */
 }

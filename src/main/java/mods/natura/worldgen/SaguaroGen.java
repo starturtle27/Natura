@@ -1,7 +1,9 @@
 package mods.natura.worldgen;
 
 import java.util.Random;
+
 import mods.natura.common.PHNatura;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -10,6 +12,7 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class SaguaroGen extends WorldGenerator {
+
     boolean useHeight;
 
     private final int saguaroMeta;
@@ -131,8 +134,7 @@ public class SaguaroGen extends WorldGenerator {
         do {
             height--;
             Block underID = world.getBlock(x, height, z);
-            if (underID == Blocks.sand
-                    || underID == Blocks.dirt
+            if (underID == Blocks.sand || underID == Blocks.dirt
                     || underID == Blocks.grass
                     || height < PHNatura.seaLevel) {
                 foundGround = true;

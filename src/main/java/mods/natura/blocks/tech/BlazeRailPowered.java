@@ -5,6 +5,7 @@ import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.world.World;
 
 public class BlazeRailPowered extends BlockRailPowered {
+
     boolean activator;
 
     public BlazeRailPowered(boolean activator) {
@@ -18,13 +19,14 @@ public class BlazeRailPowered extends BlockRailPowered {
     }
 
     /**
-     * This function is called by any minecart that passes over this rail.
-     * It is called once per update tick that the minecart is on the rail.
+     * This function is called by any minecart that passes over this rail. It is called once per update tick that the
+     * minecart is on the rail.
+     * 
      * @param world The world.
-     * @param cart The cart on the rail.
-     * @param y The rail X coordinate.
-     * @param x The rail Y coordinate.
-     * @param z The rail Z coordinate.
+     * @param cart  The cart on the rail.
+     * @param y     The rail X coordinate.
+     * @param x     The rail Y coordinate.
+     * @param z     The rail Z coordinate.
      */
     @Override
     public void onMinecartPass(World world, EntityMinecart cart, int x, int y, int z) {

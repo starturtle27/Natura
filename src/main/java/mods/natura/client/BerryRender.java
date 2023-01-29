@@ -1,18 +1,20 @@
 package mods.natura.client;
 
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.IBlockAccess;
 
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+
 public class BerryRender implements ISimpleBlockRenderingHandler {
+
     public static int berryModel = RenderingRegistry.getNextAvailableRenderId();
 
     @Override
-    public boolean renderWorldBlock(
-            IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
+    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
+            RenderBlocks renderer) {
 
         if (modelId == berryModel) {
             int md = world.getBlockMetadata(x, y, z);

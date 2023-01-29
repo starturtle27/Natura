@@ -1,11 +1,12 @@
 package mods.natura.client;
 
+import mods.natura.Natura;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import mods.natura.Natura;
 
 @SideOnly(Side.CLIENT)
 public class GrassColorizerAlternate {
+
     /** Color buffer for grass */
     private static int[] blueGrassBuffer = new int[65536];
 

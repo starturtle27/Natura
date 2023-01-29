@@ -1,18 +1,21 @@
 package mods.natura.items.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mantle.blocks.abstracts.MultiItemBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class NLeavesItem extends MultiItemBlock {
-    public static final String blockType[] = {
-        "redwood", "eucalyptus", "bush", "", "", "", "", "", "", "", "", "", "", "", "", ""
-    };
+
+    public static final String blockType[] = { "redwood", "eucalyptus", "bush", "", "", "", "", "", "", "", "", "", "",
+            "", "", "" };
 
     public NLeavesItem(Block i) {
         super(i, "block", "NLeaves", blockType);
@@ -25,11 +28,10 @@ public class NLeavesItem extends MultiItemBlock {
         return md | 4;
     }
 
-    /* @Override
-    public String getUnlocalizedName (ItemStack itemstack)
-    {
-        return (new StringBuilder()).append(blockType[itemstack.getItemDamage()]).append("NLeaves").toString();
-    }*/
+    /*
+     * @Override public String getUnlocalizedName (ItemStack itemstack) { return (new
+     * StringBuilder()).append(blockType[itemstack.getItemDamage()]).append("NLeaves").toString(); }
+     */
 
     @Override
     @SideOnly(Side.CLIENT)

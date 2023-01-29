@@ -1,11 +1,11 @@
 package mods.natura.blocks.crops;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.Random;
+
 import mods.natura.client.CropRender;
 import mods.natura.common.NContent;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
@@ -20,7 +20,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class CropBlock extends BlockBush implements IGrowable {
+
     public CropBlock() {
         super();
         this.setTickRandomly(true);
@@ -83,7 +87,11 @@ public class CropBlock extends BlockBush implements IGrowable {
             if (meta == 8) {
                 world.setBlock(x, y, z, this, 6, 3);
                 EntityItem entityitem = new EntityItem(
-                        world, player.posX, player.posY - 1.0D, player.posZ, new ItemStack(NContent.plantItem, 1, 3));
+                        world,
+                        player.posX,
+                        player.posY - 1.0D,
+                        player.posZ,
+                        new ItemStack(NContent.plantItem, 1, 3));
                 world.spawnEntityInWorld(entityitem);
                 entityitem.onCollideWithPlayer(player);
             }
@@ -92,10 +100,11 @@ public class CropBlock extends BlockBush implements IGrowable {
 
     /* Right-click harvests crops */
     @Override
-    public boolean onBlockActivated(
-            World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
-        /*if (world.isRemote)
-        return false;*/
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7,
+            float par8, float par9) {
+        /*
+         * if (world.isRemote) return false;
+         */
 
         int meta = world.getBlockMetadata(x, y, z);
         if (meta == 8) {
@@ -103,7 +112,11 @@ public class CropBlock extends BlockBush implements IGrowable {
 
             world.setBlock(x, y, z, this, 6, 3);
             EntityItem entityitem = new EntityItem(
-                    world, player.posX, player.posY - 1.0D, player.posZ, new ItemStack(NContent.plantItem, 1, 3));
+                    world,
+                    player.posX,
+                    player.posY - 1.0D,
+                    player.posZ,
+                    new ItemStack(NContent.plantItem, 1, 3));
             world.spawnEntityInWorld(entityitem);
             entityitem.onCollideWithPlayer(player);
             return true;
@@ -118,9 +131,8 @@ public class CropBlock extends BlockBush implements IGrowable {
     }
 
     public IIcon[] icons;
-    public String[] textureNames = new String[] {
-        "barley_1", "barley_2", "barley_3", "barley_4", "cotton_1", "cotton_2", "cotton_3", "cotton_4", "cotton_5"
-    };
+    public String[] textureNames = new String[] { "barley_1", "barley_2", "barley_3", "barley_4", "cotton_1",
+            "cotton_2", "cotton_3", "cotton_4", "cotton_5" };
 
     @Override
     @SideOnly(Side.CLIENT)
@@ -205,12 +217,10 @@ public class CropBlock extends BlockBush implements IGrowable {
         return ret;
     }
 
-    /*@Override
-    public int quantityDropped(int meta, int fortune, Random random) {
-        if (meta % 4 == 0)
-            return 1+random.nextInt(fortune+1);
-        return random.nextInt(meta/4);
-    }*/
+    /*
+     * @Override public int quantityDropped(int meta, int fortune, Random random) { if (meta % 4 == 0) return
+     * 1+random.nextInt(fortune+1); return random.nextInt(meta/4); }
+     */
 
     /* only called by clickMiddleMouseButton , and passed to inventory.setCurrentItem (along with isCreative) */
     @SideOnly(Side.CLIENT)
@@ -229,7 +239,7 @@ public class CropBlock extends BlockBush implements IGrowable {
         return EnumPlantType.Crop;
     }
 
-    /* Can this block stay at this position.  Similar to canPlaceBlockAt except gets checked often with plants. */
+    /* Can this block stay at this position. Similar to canPlaceBlockAt except gets checked often with plants. */
     @Override
     public boolean canBlockStay(World world, int x, int y, int z) {
         int meta = world.getBlockMetadata(x, y, z); // Wild crops can stay

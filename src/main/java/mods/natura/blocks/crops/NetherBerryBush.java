@@ -1,12 +1,12 @@
 package mods.natura.blocks.crops;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import mods.natura.client.BerryRender;
 import mods.natura.common.NContent;
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeavesBase;
 import net.minecraft.block.material.Material;
@@ -25,20 +25,16 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class NetherBerryBush extends BlockLeavesBase implements IPlantable {
+
     Random random;
     public IIcon[] fastIcons;
     public IIcon[] fancyIcons;
-    public static String[] textureNames = new String[] {
-        "blightberry",
-        "duskberry",
-        "skyberry",
-        "stingberry",
-        "blightberry_ripe",
-        "duskberry_ripe",
-        "skyberry_ripe",
-        "stingberry_ripe"
-    };
+    public static String[] textureNames = new String[] { "blightberry", "duskberry", "skyberry", "stingberry",
+            "blightberry_ripe", "duskberry_ripe", "skyberry_ripe", "stingberry_ripe" };
 
     public NetherBerryBush() {
         super(Material.leaves, false);
@@ -148,8 +144,8 @@ public class NetherBerryBush extends BlockLeavesBase implements IPlantable {
 
     /* Right-click harvests berries */
     @Override
-    public boolean onBlockActivated(
-            World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7,
+            float par8, float par9) {
         if (world.isRemote) return false;
 
         int meta = world.getBlockMetadata(x, y, z);

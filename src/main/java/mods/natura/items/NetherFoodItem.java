@@ -1,10 +1,10 @@
 package mods.natura.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mods.natura.Natura;
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,9 +17,13 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class NetherFoodItem extends ItemFood {
+
     public IIcon[] icons;
-    public String[] textureNames = new String[] {"potashapple"}; // , "haste"
+    public String[] textureNames = new String[] { "potashapple" }; // , "haste"
 
     public NetherFoodItem() {
         super(4, 0.4F, false);
@@ -29,15 +33,11 @@ public class NetherFoodItem extends ItemFood {
         // this.setAlwaysEdible();
     }
 
-    /*public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer player)
-    {
-        if (player.canEat(true) && player.foodStats.getSaturationLevel() < 20F)
-        {
-            player.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
-        }
-
-        return par1ItemStack;
-    }*/
+    /*
+     * public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer player) { if
+     * (player.canEat(true) && player.foodStats.getSaturationLevel() < 20F) { player.setItemInUse(par1ItemStack,
+     * this.getMaxItemUseDuration(par1ItemStack)); } return par1ItemStack; }
+     */
 
     @Override
     protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
@@ -57,11 +57,9 @@ public class NetherFoodItem extends ItemFood {
         }
     }
 
-    /*@Override
-    public int getMaxItemUseDuration(ItemStack itemstack)
-    {
-        return 24;
-    }*/
+    /*
+     * @Override public int getMaxItemUseDuration(ItemStack itemstack) { return 24; }
+     */
 
     @SideOnly(Side.CLIENT)
     @Override
@@ -83,29 +81,17 @@ public class NetherFoodItem extends ItemFood {
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
         list.add(StatCollector.translateToLocal("tooltip.netherfood"));
-        /*switch (stack.getItemDamage())
-        {
-        case 0:
-        	list.add("Killer healing");
-        	break;
-        case 1:
-        	list.add("Visible night");
-        	break;
-        case 2:
-        	list.add("Slow dive");
-        	break;
-        case 3:
-        	list.add("Hit like a truck");
-        	break;
-        }*/
+        /*
+         * switch (stack.getItemDamage()) { case 0: list.add("Killer healing"); break; case 1:
+         * list.add("Visible night"); break; case 2: list.add("Slow dive"); break; case 3: list.add("Hit like a truck");
+         * break; }
+         */
     }
 
     /* Name override */
     @Override
     public String getUnlocalizedName(ItemStack itemstack) {
-        return (new StringBuilder())
-                .append("item.food.nether.")
-                .append(textureNames[itemstack.getItemDamage()])
+        return (new StringBuilder()).append("item.food.nether.").append(textureNames[itemstack.getItemDamage()])
                 .toString();
     }
 
@@ -120,8 +106,7 @@ public class NetherFoodItem extends ItemFood {
         }
     }
 
-    /*public boolean isPotionIngredient()
-    {
-        return true;
-    }*/
+    /*
+     * public boolean isPotionIngredient() { return true; }
+     */
 }

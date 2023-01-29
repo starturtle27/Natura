@@ -1,10 +1,10 @@
 package mods.natura.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mods.natura.Natura;
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,9 +17,13 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class NetherBerryItem extends ItemFood {
+
     public IIcon[] icons;
-    public String[] textureNames = new String[] {"blight", "dusk", "sky", "sting"}; // , "haste"
+    public String[] textureNames = new String[] { "blight", "dusk", "sky", "sting" }; // , "haste"
 
     public NetherBerryItem(int healAmount) {
         super(healAmount, 0.4F, false);

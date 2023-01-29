@@ -1,12 +1,12 @@
 package mods.natura.blocks.trees;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 import mods.natura.common.NContent;
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -19,7 +19,11 @@ import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class NLeaves extends BlockLeaves {
+
     int[] adjacentTreeBlocks;
 
     public NLeaves() {
@@ -55,8 +59,7 @@ public class NLeaves extends BlockLeaves {
 
         for (int k1 = -1; k1 <= 1; ++k1) {
             for (int l1 = -1; l1 <= 1; ++l1) {
-                int i2 = p_149720_1_
-                        .getBiomeGenForCoords(p_149720_2_ + l1, p_149720_4_ + k1)
+                int i2 = p_149720_1_.getBiomeGenForCoords(p_149720_2_ + l1, p_149720_4_ + k1)
                         .getBiomeFoliageColor(p_149720_2_ + l1, p_149720_3_, p_149720_4_ + k1);
                 l += (i2 & 16711680) >> 16;
                 i1 += (i2 & 65280) >> 8;
@@ -117,8 +120,8 @@ public class NLeaves extends BlockLeaves {
     }
 
     @Override
-    public void dropBlockAsItemWithChance(
-            World par1World, int par2, int par3, int par4, int par5, float par6, int par7) {
+    public void dropBlockAsItemWithChance(World par1World, int par2, int par3, int par4, int par5, float par6,
+            int par7) {
         if (!par1World.isRemote) {
             ArrayList<ItemStack> items = getDrops(par1World, par2, par3, par4, par5, par7);
 
@@ -147,7 +150,7 @@ public class NLeaves extends BlockLeaves {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockIcons(IIconRegister iconRegister) {
-        String[] textureNames = new String[] {"redwood", "eucalyptus", "hopseed"};
+        String[] textureNames = new String[] { "redwood", "eucalyptus", "hopseed" };
         this.fastIcons = new IIcon[textureNames.length];
         this.fancyIcons = new IIcon[textureNames.length];
 
@@ -159,7 +162,7 @@ public class NLeaves extends BlockLeaves {
 
     /**
      * Returns true if the given side of this block type should be rendered, if the adjacent block is at the given
-     * coordinates.  Args: blockAccess, x, y, z, side
+     * coordinates. Args: blockAccess, x, y, z, side
      */
     @Override
     public boolean shouldSideBeRendered(IBlockAccess var1, int var2, int var3, int var4, int var5) {

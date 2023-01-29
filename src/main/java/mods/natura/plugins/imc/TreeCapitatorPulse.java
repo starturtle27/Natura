@@ -1,15 +1,17 @@
 package mods.natura.plugins.imc;
 
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.registry.GameData;
 import mantle.pulsar.pulse.Handler;
 import mantle.pulsar.pulse.Pulse;
 import mods.natura.common.NContent;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.registry.GameData;
 
 @Pulse(id = "Natura TreeCapitator Compatibility", modsRequired = TreeCapitatorPulse.modId)
 public class TreeCapitatorPulse {
@@ -55,7 +57,8 @@ public class TreeCapitatorPulse {
                 "leaves",
                 String.format(
                         "%s,2; %s,10",
-                        getUniqueName(NContent.floraLeavesNoColor), getUniqueName(NContent.floraLeavesNoColor)));
+                        getUniqueName(NContent.floraLeavesNoColor),
+                        getUniqueName(NContent.floraLeavesNoColor)));
         treeList.appendTag(treeDef);
         // darkwood
         treeDef = new NBTTagCompound();
@@ -76,7 +79,9 @@ public class TreeCapitatorPulse {
                 "logs",
                 String.format(
                         "%s,0; %s,4; %s,8",
-                        getUniqueName(NContent.tree), getUniqueName(NContent.tree), getUniqueName(NContent.tree)));
+                        getUniqueName(NContent.tree),
+                        getUniqueName(NContent.tree),
+                        getUniqueName(NContent.tree)));
         treeDef.setString(
                 "leaves",
                 String.format("%s,1; %s,9", getUniqueName(NContent.floraLeaves), getUniqueName(NContent.floraLeaves)));
@@ -88,12 +93,15 @@ public class TreeCapitatorPulse {
                 "logs",
                 String.format(
                         "%s,2; %s,6; %s,10",
-                        getUniqueName(NContent.tree), getUniqueName(NContent.tree), getUniqueName(NContent.tree)));
+                        getUniqueName(NContent.tree),
+                        getUniqueName(NContent.tree),
+                        getUniqueName(NContent.tree)));
         treeDef.setString(
                 "leaves",
                 String.format(
                         "%s,1; %s,9",
-                        getUniqueName(NContent.floraLeavesNoColor), getUniqueName(NContent.floraLeavesNoColor)));
+                        getUniqueName(NContent.floraLeavesNoColor),
+                        getUniqueName(NContent.floraLeavesNoColor)));
         treeList.appendTag(treeDef);
         // hopseed
         treeDef = new NBTTagCompound();
@@ -102,7 +110,9 @@ public class TreeCapitatorPulse {
                 "logs",
                 String.format(
                         "%s,3; %s,7; %s,11",
-                        getUniqueName(NContent.tree), getUniqueName(NContent.tree), getUniqueName(NContent.tree)));
+                        getUniqueName(NContent.tree),
+                        getUniqueName(NContent.tree),
+                        getUniqueName(NContent.tree)));
         treeDef.setString(
                 "leaves",
                 String.format("%s,2; %s,10", getUniqueName(NContent.floraLeaves), getUniqueName(NContent.floraLeaves)));
@@ -136,12 +146,15 @@ public class TreeCapitatorPulse {
                 "logs",
                 String.format(
                         "%s,1; %s,5; %s,9",
-                        getUniqueName(NContent.tree), getUniqueName(NContent.tree), getUniqueName(NContent.tree)));
+                        getUniqueName(NContent.tree),
+                        getUniqueName(NContent.tree),
+                        getUniqueName(NContent.tree)));
         treeDef.setString(
                 "leaves",
                 String.format(
                         "%s,0; %s,8",
-                        getUniqueName(NContent.floraLeavesNoColor), getUniqueName(NContent.floraLeavesNoColor)));
+                        getUniqueName(NContent.floraLeavesNoColor),
+                        getUniqueName(NContent.floraLeavesNoColor)));
         treeList.appendTag(treeDef);
         // siverbell
         treeDef = new NBTTagCompound();

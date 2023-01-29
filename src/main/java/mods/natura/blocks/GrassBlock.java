@@ -1,10 +1,10 @@
 package mods.natura.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mods.natura.client.GrassColorizerAlternate;
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -17,7 +17,11 @@ import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.biome.BiomeGenBase;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class GrassBlock extends Block {
+
     public GrassBlock() {
         super(Material.grass);
         setHardness(0.6F);
@@ -55,9 +59,9 @@ public class GrassBlock extends Block {
     @Override
     @SideOnly(Side.CLIENT)
     public int getRenderColor(int meta) {
-        /*if (par1 % 8 == 0)
-            return this.getBlockColor();
-        return 0xFFFFFF;*/
+        /*
+         * if (par1 % 8 == 0) return this.getBlockColor(); return 0xFFFFFF;
+         */
         double d0 = 0.5D;
         double d1 = 1.0D;
         switch (meta) {

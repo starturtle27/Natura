@@ -5,6 +5,7 @@ import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.world.World;
 
 public class BlazeRail extends BlockRail {
+
     public BlazeRail() {
         super();
     }

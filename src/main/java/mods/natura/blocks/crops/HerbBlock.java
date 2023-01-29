@@ -1,8 +1,10 @@
 package mods.natura.blocks.crops;
 
 import java.util.Random;
+
 import mods.natura.common.NContent;
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -12,6 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 
 public class HerbBlock extends CropBlock {
+
     protected HerbBlock() {
         super();
         this.setTickRandomly(true);
@@ -82,7 +85,7 @@ public class HerbBlock extends CropBlock {
         return EnumPlantType.Cave;
     }
 
-    /* Can this block stay at this position.  Similar to canPlaceBlockAt except gets checked often with plants. */
+    /* Can this block stay at this position. Similar to canPlaceBlockAt except gets checked often with plants. */
     @Override
     public boolean canBlockStay(World par1World, int x, int y, int z) {
         Block soil = par1World.getBlock(x, y - 1, z);

@@ -1,9 +1,9 @@
 package mods.natura.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -16,7 +16,11 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class NSlabBase extends Block {
+
     Block modelBlock;
     int startingMeta;
     int totalSize;
@@ -35,8 +39,8 @@ public class NSlabBase extends Block {
     }
 
     @Override
-    public void addCollisionBoxesToList(
-            World world, int x, int y, int z, AxisAlignedBB axisalignedbb, List arraylist, Entity entity) {
+    public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axisalignedbb, List arraylist,
+            Entity entity) {
         setBlockBoundsBasedOnState(world, x, y, z);
         super.addCollisionBoxesToList(world, x, y, z, axisalignedbb, arraylist, entity);
     }
@@ -55,16 +59,8 @@ public class NSlabBase extends Block {
     }
 
     @Override
-    public int onBlockPlaced(
-            World par1World,
-            int blockX,
-            int blockY,
-            int blockZ,
-            int side,
-            float clickX,
-            float clickY,
-            float clickZ,
-            int metadata) {
+    public int onBlockPlaced(World par1World, int blockX, int blockY, int blockZ, int side, float clickX, float clickY,
+            float clickZ, int metadata) {
         if (side == 1) return metadata;
         if (side == 0 || clickY >= 0.5F) return metadata | 8;
 

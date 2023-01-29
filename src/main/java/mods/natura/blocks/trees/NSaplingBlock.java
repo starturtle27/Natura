@@ -1,9 +1,8 @@
 package mods.natura.blocks.trees;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import mods.natura.common.NContent;
 import mods.natura.common.NaturaTab;
 import mods.natura.worldgen.BloodTreeLargeGen;
@@ -14,6 +13,7 @@ import mods.natura.worldgen.FusewoodGen;
 import mods.natura.worldgen.RedwoodTreeGen;
 import mods.natura.worldgen.SakuraTreeGen;
 import mods.natura.worldgen.WhiteTreeGen;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -28,11 +28,14 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class NSaplingBlock extends BlockSapling {
+
     public IIcon[] icons;
-    public String[] textureNames =
-            new String[] {"redwood", "eucalyptus", "hopseed", "sakura", "ghostwood", "bloodwood", "darkwood", "fusewood"
-            };
+    public String[] textureNames = new String[] { "redwood", "eucalyptus", "hopseed", "sakura", "ghostwood",
+            "bloodwood", "darkwood", "fusewood" };
 
     public NSaplingBlock() {
         super();
@@ -68,8 +71,7 @@ public class NSaplingBlock extends BlockSapling {
     }
 
     public boolean canThisPlantGrowOnThisBlock(Block id) {
-        return id == Blocks.grass
-                || id == Blocks.dirt
+        return id == Blocks.grass || id == Blocks.dirt
                 || id == Blocks.soul_sand
                 || id == Blocks.netherrack
                 || id == NContent.taintedSoil;
@@ -90,9 +92,8 @@ public class NSaplingBlock extends BlockSapling {
             case 6:
             case 7:
                 Block netherSoil = world.getBlock(x, y - 1, z);
-                return netherSoil != null
-                        && (netherSoil == Blocks.netherrack
-                                || netherSoil.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this));
+                return netherSoil != null && (netherSoil == Blocks.netherrack
+                        || netherSoil.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this));
             case 5:
                 Block nSoil = world.getBlock(x, y + 1, z);
                 return nSoil != null
@@ -163,8 +164,8 @@ public class NSaplingBlock extends BlockSapling {
         return icons[meta % 8];
     }
 
-    public void func_149879_c(
-            World p_149879_1_, int p_149879_2_, int p_149879_3_, int p_149879_4_, Random p_149879_5_) {
+    public void func_149879_c(World p_149879_1_, int p_149879_2_, int p_149879_3_, int p_149879_4_,
+            Random p_149879_5_) {
         int l = p_149879_1_.getBlockMetadata(p_149879_2_, p_149879_3_, p_149879_4_);
 
         if ((l & 8) == 0) {
@@ -203,18 +204,18 @@ public class NSaplingBlock extends BlockSapling {
         for (int i = 0; i < 8; i++) par3List.add(new ItemStack(par1, 1, i));
     }
 
-    public boolean func_149851_a(
-            World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_) {
+    public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_,
+            boolean p_149851_5_) {
         return true;
     }
 
-    public boolean func_149852_a(
-            World p_149852_1_, Random p_149852_2_, int p_149852_3_, int p_149852_4_, int p_149852_5_) {
+    public boolean func_149852_a(World p_149852_1_, Random p_149852_2_, int p_149852_3_, int p_149852_4_,
+            int p_149852_5_) {
         return (double) p_149852_1_.rand.nextFloat() < 0.45D;
     }
 
-    public void func_149853_b(
-            World p_149853_1_, Random p_149853_2_, int p_149853_3_, int p_149853_4_, int p_149853_5_) {
+    public void func_149853_b(World p_149853_1_, Random p_149853_2_, int p_149853_3_, int p_149853_4_,
+            int p_149853_5_) {
         this.func_149879_c(p_149853_1_, p_149853_3_, p_149853_4_, p_149853_5_, p_149853_2_);
     }
 }

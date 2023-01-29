@@ -1,12 +1,12 @@
 package mods.natura.blocks.crops;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import mods.natura.common.NaturaTab;
 import mods.natura.worldgen.GlowshroomGenBlueGreen;
 import mods.natura.worldgen.GlowshroomGenPurple;
+
 import net.minecraft.block.BlockMushroom;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -16,9 +16,13 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class Glowshroom extends BlockMushroom {
+
     IIcon[] icons;
-    String[] textureNames = {"green", "purple", "blue"};
+    String[] textureNames = { "green", "purple", "blue" };
 
     public Glowshroom() {
         super();

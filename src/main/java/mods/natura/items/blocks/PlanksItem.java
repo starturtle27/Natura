@@ -1,33 +1,21 @@
 package mods.natura.items.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mantle.blocks.abstracts.MultiItemBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class PlanksItem extends MultiItemBlock {
-    public static final String blockType[] = {
-        "eucalyptus",
-        "sakura",
-        "ghost",
-        "redwood",
-        "blood",
-        "bush",
-        "maple",
-        "silverbell",
-        "purpleheart",
-        "tiger",
-        "willow",
-        "darkwood",
-        "fusewood",
-        "",
-        "",
-        ""
-    };
+
+    public static final String blockType[] = { "eucalyptus", "sakura", "ghost", "redwood", "blood", "bush", "maple",
+            "silverbell", "purpleheart", "tiger", "willow", "darkwood", "fusewood", "", "", "" };
 
     public PlanksItem(Block i) {
         super(i, "block", "NPlanks", blockType);
@@ -35,11 +23,10 @@ public class PlanksItem extends MultiItemBlock {
         setHasSubtypes(true);
     }
 
-    /*    @Override
-    public String getUnlocalizedName (ItemStack itemstack)
-    {
-        return (new StringBuilder()).append(blockType[itemstack.getItemDamage()]).append("NPlanks").toString();
-    }*/
+    /*
+     * @Override public String getUnlocalizedName (ItemStack itemstack) { return (new
+     * StringBuilder()).append(blockType[itemstack.getItemDamage()]).append("NPlanks").toString(); }
+     */
 
     @Override
     @SideOnly(Side.CLIENT)

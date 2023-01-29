@@ -1,24 +1,10 @@
 package mods.natura;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.Event.Result;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
 import mantle.lib.TabTools;
 import mantle.pulsar.control.PulseManager;
 import mods.natura.common.NContent;
@@ -33,6 +19,7 @@ import mods.natura.worldgen.BaseCropWorldgen;
 import mods.natura.worldgen.BaseTreeWorldgen;
 import mods.natura.worldgen.retro.TickHandlerWorld;
 import mods.natura.worldgen.retro.WorldHandler;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
@@ -51,8 +38,25 @@ import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.world.ChunkDataEvent;
 import net.minecraftforge.oredict.OreDictionary;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.Event.Result;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(
         modid = "Natura",
@@ -61,6 +65,7 @@ import org.apache.logging.log4j.Logger;
         acceptedMinecraftVersions = "[1.7.10]",
         dependencies = "required-after:Mantle;after:TConstruct")
 public class Natura {
+
     /* Proxies for sides, used for graphics processing */
     @SidedProxy(clientSide = "mods.natura.client.NProxyClient", serverSide = "mods.natura.common.NProxyCommon")
     public static NProxyCommon proxy;
@@ -106,12 +111,12 @@ public class Natura {
     @EventHandler
     public void init(FMLInitializationEvent evt) {
         if (PHNatura.enableBerryBushes | PHNatura.enableNetherBerryBushes)
-            GameRegistry.registerWorldGenerator(
-                    crops = new BaseCropWorldgen(), 20); // TODO 1.7 Find correct weight (param 2)
-        GameRegistry.registerWorldGenerator(
-                clouds = new BaseCloudWorldgen(), 20); // TODO 1.7 Find correct weight (param 2)
-        GameRegistry.registerWorldGenerator(
-                trees = new BaseTreeWorldgen(), 20); // TODO 1.7 Find correct weight (param 2)
+            GameRegistry.registerWorldGenerator(crops = new BaseCropWorldgen(), 20); // TODO 1.7 Find correct weight
+                                                                                     // (param 2)
+        GameRegistry.registerWorldGenerator(clouds = new BaseCloudWorldgen(), 20); // TODO 1.7 Find correct weight
+                                                                                   // (param 2)
+        GameRegistry.registerWorldGenerator(trees = new BaseTreeWorldgen(), 20); // TODO 1.7 Find correct weight (param
+                                                                                 // 2)
 
         proxy.registerRenderer();
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new NGuiHandler());
@@ -147,12 +152,9 @@ public class Natura {
     /**
      * Runtime IMC Handler
      *
-     * Message tag: set-worldgen-overrides
-     * Message NBT data:
-     *  dimensions: int[] - array of dimension IDs to update
-     *  settings: int[] - array of settings to set for the corresponding dimension IDs
-     *  Both arrays must be of the same length
-     *  Settings format: integer with bitfields, enable bits: 1 = crops (berry bushes), 2 = clouds, 4 = trees
+     * Message tag: set-worldgen-overrides Message NBT data: dimensions: int[] - array of dimension IDs to update
+     * settings: int[] - array of settings to set for the corresponding dimension IDs Both arrays must be of the same
+     * length Settings format: integer with bitfields, enable bits: 1 = crops (berry bushes), 2 = clouds, 4 = trees
      */
     @SubscribeEvent
     public void tickEvent(TickEvent.ServerTickEvent event) {
@@ -214,8 +216,7 @@ public class Natura {
         if (event.target instanceof EntityCow || event.target instanceof EntitySheep) {
             ItemStack equipped = event.entityPlayer.getCurrentEquippedItem();
             EntityAnimal creature = (EntityAnimal) event.target;
-            if (equipped != null
-                    && equipped.getItem() == NContent.plantItem
+            if (equipped != null && equipped.getItem() == NContent.plantItem
                     && equipped.getItemDamage() == 0
                     && creature.getGrowingAge() == 0
                     && !creature.isInLove()) {
@@ -236,12 +237,11 @@ public class Natura {
     @SubscribeEvent
     public void spawnEvent(EntityJoinWorldEvent event) {
         if (event.entity instanceof EntityCow || event.entity instanceof EntitySheep) {
-            ((EntityLiving) event.entity)
-                    .tasks.addTask(
-                            3, new EntityAITempt((EntityCreature) event.entity, 0.25F, NContent.plantItem, false));
+            ((EntityLiving) event.entity).tasks
+                    .addTask(3, new EntityAITempt((EntityCreature) event.entity, 0.25F, NContent.plantItem, false));
         } else if (event.entity instanceof EntityChicken) {
-            ((EntityLiving) event.entity)
-                    .tasks.addTask(3, new EntityAITempt((EntityCreature) event.entity, 0.25F, NContent.seeds, false));
+            ((EntityLiving) event.entity).tasks
+                    .addTask(3, new EntityAITempt((EntityCreature) event.entity, 0.25F, NContent.seeds, false));
         }
     }
 

@@ -1,13 +1,16 @@
 package mods.natura.worldgen;
 
 import java.util.Random;
+
 import mods.natura.common.NContent;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class GlowshroomGenBlueGreen extends WorldGenerator {
+
     int mushroomType = -1;
 
     public GlowshroomGenBlueGreen(boolean doBlockNotify) {
@@ -51,8 +54,7 @@ public class GlowshroomGenBlueGreen extends WorldGenerator {
                         if (blockID >= 0 && blockID < 256) {
                             Block block = world.getBlock(posY, blockID, l1);
 
-                            if (posX != 0
-                                    && !block.isLeaves(world, posY, blockID, l1)
+                            if (posX != 0 && !block.isLeaves(world, posY, blockID, l1)
                                     && blockID != Block.getIdFromBlock(NContent.glowshroom)) {
                                 flag = false;
                             }
@@ -68,8 +70,7 @@ public class GlowshroomGenBlueGreen extends WorldGenerator {
             } else {
                 Block blockb = world.getBlock(x, y - 1, z);
 
-                if (blockb != Blocks.mycelium
-                        && blockb != Blocks.netherrack
+                if (blockb != Blocks.mycelium && blockb != Blocks.netherrack
                         && blockb != NContent.taintedSoil
                         && blockb != Blocks.soul_sand) {
                     return false;
@@ -155,9 +156,8 @@ public class GlowshroomGenBlueGreen extends WorldGenerator {
 
                                 Block block = world.getBlock(posX, posY, posZ);
 
-                                if ((meta != 0 || y >= y + height - 1)
-                                        && (block == Blocks.fire
-                                                || block.canBeReplacedByLeaves(world, posX, posY, posZ))) {
+                                if ((meta != 0 || y >= y + height - 1) && (block == Blocks.fire
+                                        || block.canBeReplacedByLeaves(world, posX, posY, posZ))) {
                                     Block localID = type == 1 ? NContent.glowshroomBlue : NContent.glowshroomGreen;
                                     setBlockAndNotifyAdequately(world, posX, posY, posZ, localID, meta);
                                 }

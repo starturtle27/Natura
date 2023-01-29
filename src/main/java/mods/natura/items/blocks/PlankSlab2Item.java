@@ -1,18 +1,22 @@
 package mods.natura.items.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mantle.blocks.abstracts.MultiItemBlock;
 import mods.natura.common.NContent;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class PlankSlab2Item extends MultiItemBlock {
-    public static final String blockType[] = {"purpleheart", "tiger", "willow", "darkwood", "fusewood", "", "", ""};
+
+    public static final String blockType[] = { "purpleheart", "tiger", "willow", "darkwood", "fusewood", "", "", "" };
     Block block;
 
     public PlankSlab2Item(Block id) {
@@ -32,11 +36,7 @@ public class PlankSlab2Item extends MultiItemBlock {
             damage %= blockType.length;
         }
 
-        return (new StringBuilder())
-                .append("block.wood.")
-                .append(blockType[damage])
-                .append(".slab")
-                .toString();
+        return (new StringBuilder()).append("block.wood.").append(blockType[damage]).append(".slab").toString();
     }
 
     @Override
@@ -63,17 +63,8 @@ public class PlankSlab2Item extends MultiItemBlock {
     }
 
     @Override
-    public boolean onItemUse(
-            ItemStack stack,
-            EntityPlayer player,
-            World world,
-            int x,
-            int y,
-            int z,
-            int side,
-            float hitX,
-            float hitY,
-            float hitZ) {
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side,
+            float hitX, float hitY, float hitZ) {
         Block id = world.getBlock(x, y, z);
         int meta = world.getBlockMetadata(x, y, z);
         int trueMeta = meta % 8;

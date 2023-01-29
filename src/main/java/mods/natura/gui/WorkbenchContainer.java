@@ -13,6 +13,7 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
 
 public class WorkbenchContainer extends Container {
+
     public InventoryCrafting craftMatrix;
     public IInventory craftResult;
     private World worldObj;
@@ -44,8 +45,8 @@ public class WorkbenchContainer extends Container {
 
     @Override
     public void onCraftMatrixChanged(IInventory iinventory) {
-        craftResult.setInventorySlotContents(
-                0, CraftingManager.getInstance().findMatchingRecipe(craftMatrix, worldObj));
+        craftResult
+                .setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(craftMatrix, worldObj));
     }
 
     @Override

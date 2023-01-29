@@ -1,13 +1,13 @@
 package mods.natura.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mods.natura.common.PHNatura;
 import mods.natura.entity.BabyHeatscarSpider;
 import mods.natura.entity.HeatscarSpider;
 import mods.natura.entity.ImpEntity;
 import mods.natura.entity.NitroCreeper;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -21,10 +21,14 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class SpawnEgg extends Item {
-    int[] primaryColor = {0xF29735, 0xE64D10, 0xF73E6C, 0xE64D10};
-    int[] secondaryColor = {0x2E1F10, 0x57B1BD, 0x9B5004, 0x57B1BD};
-    String[] mobNames = {"Natura.Imp", "Natura.FlameSpider", "Natura.NitroCreeper", "Natura.FlameSpiderBaby"};
+
+    int[] primaryColor = { 0xF29735, 0xE64D10, 0xF73E6C, 0xE64D10 };
+    int[] secondaryColor = { 0x2E1F10, 0x57B1BD, 0x9B5004, 0x57B1BD };
+    String[] mobNames = { "Natura.Imp", "Natura.FlameSpider", "Natura.NitroCreeper", "Natura.FlameSpiderBaby" };
 
     public SpawnEgg() {
         super();
@@ -75,17 +79,8 @@ public class SpawnEgg extends Item {
     }
 
     @Override
-    public boolean onItemUse(
-            ItemStack stack,
-            EntityPlayer player,
-            World world,
-            int posX,
-            int posY,
-            int posZ,
-            int par7,
-            float par8,
-            float par9,
-            float par10) {
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int posX, int posY, int posZ, int par7,
+            float par8, float par9, float par10) {
         if (!world.isRemote) {
             activateSpawnEgg(stack, world, posX, posY, posZ, par7);
             if (!player.capabilities.isCreativeMode) {
@@ -95,8 +90,8 @@ public class SpawnEgg extends Item {
         return true;
     }
 
-    public static EntityLiving activateSpawnEgg(
-            ItemStack stack, World world, double posX, double posY, double posZ, int par7) {
+    public static EntityLiving activateSpawnEgg(ItemStack stack, World world, double posX, double posY, double posZ,
+            int par7) {
         Block i1 = world.getBlock((int) posX, (int) posY, (int) posZ);
         posX += Facing.offsetsXForSide[par7];
         posY += Facing.offsetsYForSide[par7];

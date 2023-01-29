@@ -7,15 +7,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
+
 import powercrystals.minefactoryreloaded.api.IFactoryPlantable;
 import powercrystals.minefactoryreloaded.api.ReplacementBlock;
 
 /*
- * Used for directly placing blocks (ie saplings) and items (ie sugarcane). Pass in source ID to constructor,
- * so one instance per source ID.
+ * Used for directly placing blocks (ie saplings) and items (ie sugarcane). Pass in source ID to constructor, so one
+ * instance per source ID.
  */
 
 public class PlantableStandard implements IFactoryPlantable {
+
     protected Item _sourceId;
     protected Block _plantedBlockId;
 
@@ -35,8 +37,7 @@ public class PlantableStandard implements IFactoryPlantable {
             return false;
         }
         return (_plantedBlockId.canPlaceBlockAt(world, x, y, z) && _plantedBlockId.canBlockStay(world, x, y, z))
-                || (_plantedBlockId instanceof IPlantable
-                        && groundId != null
+                || (_plantedBlockId instanceof IPlantable && groundId != null
                         && groundId.canSustainPlant(world, x, y, z, ForgeDirection.UP, ((IPlantable) _plantedBlockId)));
     }
 

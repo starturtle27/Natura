@@ -1,7 +1,9 @@
 package mods.natura.worldgen;
 
 import java.util.Random;
+
 import mods.natura.common.NContent;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -54,8 +56,7 @@ public class GlowshroomGenPurple extends WorldGenerator {
             } else {
                 Block blockb = world.getBlock(x, y - 1, z);
 
-                if (blockb != Blocks.mycelium
-                        && blockb != Blocks.netherrack
+                if (blockb != Blocks.mycelium && blockb != Blocks.netherrack
                         && blockb != NContent.taintedSoil
                         && blockb != Blocks.soul_sand) {
                     return false;
@@ -144,11 +145,15 @@ public class GlowshroomGenPurple extends WorldGenerator {
 
                                 Block block = world.getBlock(posX, posY, posZ);
 
-                                if ((meta != 0 || y >= y + height - 1)
-                                        && (block == Blocks.fire
-                                                || block.canBeReplacedByLeaves(world, posX, posY, posZ))) {
+                                if ((meta != 0 || y >= y + height - 1) && (block == Blocks.fire
+                                        || block.canBeReplacedByLeaves(world, posX, posY, posZ))) {
                                     setBlockAndNotifyAdequately(
-                                            world, posX, posY, posZ, NContent.glowshroomPurple, meta);
+                                            world,
+                                            posX,
+                                            posY,
+                                            posZ,
+                                            NContent.glowshroomPurple,
+                                            meta);
                                 }
                             }
                         }

@@ -1,8 +1,10 @@
 package mods.natura.worldgen;
 
 import java.util.Random;
+
 import mods.natura.common.NContent;
 import mods.natura.common.PHNatura;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -150,7 +152,12 @@ public class BushTreeGen extends WorldGenerator {
                                     || var12 * var12 + var14 * var14 <= (var10 - 1) * (var10 - 1))
                             && (block.canBeReplacedByLeaves(world, var11, var8, var13))) {
                         this.setBlockAndNotifyAdequately(
-                                world, var11, var8, var13, NContent.floraLeaves, this.leavesMetadata);
+                                world,
+                                var11,
+                                var8,
+                                var13,
+                                NContent.floraLeaves,
+                                this.leavesMetadata);
                     }
                 }
             }

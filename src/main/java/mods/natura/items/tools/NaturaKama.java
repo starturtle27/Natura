@@ -1,11 +1,11 @@
 package mods.natura.items.tools;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
@@ -22,7 +22,11 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class NaturaKama extends ItemSword {
+
     String texture;
 
     public NaturaKama(ToolMaterial toolmaterial, String texture) {
@@ -38,13 +42,7 @@ public class NaturaKama extends ItemSword {
     }
 
     /* Shears */
-    public boolean onBlockDestroyed(
-            ItemStack par1ItemStack,
-            World par2World,
-            int par3,
-            int par4,
-            int par5,
-            int par6,
+    public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6,
             EntityLiving par7EntityLiving) {
         return true;
     }
@@ -59,7 +57,7 @@ public class NaturaKama extends ItemSword {
      */
     public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
         return par2Block != Blocks.web && par2Block != Blocks.leaves
-                ? (par2Block == Blocks.wool ? 5.0F : super.func_150893_a /*getStrVsBlock*/(par1ItemStack, par2Block))
+                ? (par2Block == Blocks.wool ? 5.0F : super.func_150893_a /* getStrVsBlock */(par1ItemStack, par2Block))
                 : 15.0F;
     }
 
@@ -70,8 +68,8 @@ public class NaturaKama extends ItemSword {
         }
         if (entity instanceof IShearable) {
             IShearable target = (IShearable) entity;
-            if (target.isShearable(
-                    itemstack, entity.worldObj, (int) entity.posX, (int) entity.posY, (int) entity.posZ)) {
+            if (target
+                    .isShearable(itemstack, entity.worldObj, (int) entity.posX, (int) entity.posY, (int) entity.posZ)) {
                 ArrayList<ItemStack> drops = target.onSheared(
                         itemstack,
                         entity.worldObj,

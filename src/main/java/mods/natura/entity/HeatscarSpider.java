@@ -1,9 +1,8 @@
 package mods.natura.entity;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import mods.natura.common.NContent;
 import mods.natura.common.PHNatura;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.Block.SoundType;
 import net.minecraft.entity.Entity;
@@ -20,7 +19,11 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class HeatscarSpider extends EntitySpider {
+
     public HeatscarSpider(World par1World) {
         super(par1World);
         this.setSize(2.7F, 1.9F);
@@ -166,9 +169,7 @@ public class HeatscarSpider extends EntitySpider {
     public boolean getCanSpawnHere() {
         return this.worldObj.difficultySetting != EnumDifficulty.PEACEFUL
                 && this.worldObj.checkNoEntityCollision(this.boundingBox)
-                && this.worldObj
-                        .getCollidingBoundingBoxes(this, this.boundingBox)
-                        .isEmpty()
+                && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty()
                 && !this.worldObj.isAnyLiquid(this.boundingBox);
     }
 
@@ -187,7 +188,11 @@ public class HeatscarSpider extends EntitySpider {
                 double f1 = rand.nextDouble() * 2;
                 BabyHeatscarSpider babyspider = this.createBabyInstance();
                 babyspider.setLocationAndAngles(
-                        this.posX + f, this.posY + 0.5D, this.posZ + f1, this.rand.nextFloat() * 360.0F, 0.0F);
+                        this.posX + f,
+                        this.posY + 0.5D,
+                        this.posZ + f1,
+                        this.rand.nextFloat() * 360.0F,
+                        0.0F);
                 this.worldObj.spawnEntityInWorld(babyspider);
             }
         }

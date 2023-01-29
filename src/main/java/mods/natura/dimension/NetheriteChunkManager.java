@@ -3,11 +3,13 @@ package mods.natura.dimension;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
 
 public class NetheriteChunkManager extends WorldChunkManager {
+
     /** The biome generator object. */
     private BiomeGenBase biomeGenerator;
 
@@ -34,8 +36,8 @@ public class NetheriteChunkManager extends WorldChunkManager {
      * Returns an array of biomes for the location input.
      */
     @Override
-    public BiomeGenBase[] getBiomesForGeneration(
-            BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5) {
+    public BiomeGenBase[] getBiomesForGeneration(BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4,
+            int par5) {
         if (par1ArrayOfBiomeGenBase == null || par1ArrayOfBiomeGenBase.length < par4 * par5) {
             par1ArrayOfBiomeGenBase = new BiomeGenBase[par4 * par5];
         }
@@ -45,7 +47,7 @@ public class NetheriteChunkManager extends WorldChunkManager {
     }
 
     /**
-     * Returns a list of temperatures to use for the specified blocks.  Args: listToReuse, x, y, width, length
+     * Returns a list of temperatures to use for the specified blocks. Args: listToReuse, x, y, width, length
      */
     public float[] getTemperatures(float[] par1ArrayOfFloat, int par2, int par3, int par4, int par5) {
         if (par1ArrayOfFloat == null || par1ArrayOfFloat.length < par4 * par5) {
@@ -74,8 +76,8 @@ public class NetheriteChunkManager extends WorldChunkManager {
      * WorldChunkManager Args: oldBiomeList, x, z, width, depth
      */
     @Override
-    public BiomeGenBase[] loadBlockGeneratorData(
-            BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5) {
+    public BiomeGenBase[] loadBlockGeneratorData(BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4,
+            int par5) {
         if (par1ArrayOfBiomeGenBase == null || par1ArrayOfBiomeGenBase.length < par4 * par5) {
             par1ArrayOfBiomeGenBase = new BiomeGenBase[par4 * par5];
         }
@@ -89,8 +91,8 @@ public class NetheriteChunkManager extends WorldChunkManager {
      * don't check biomeCache to avoid infinite loop in BiomeCacheBlock)
      */
     @Override
-    public BiomeGenBase[] getBiomeGenAt(
-            BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5, boolean par6) {
+    public BiomeGenBase[] getBiomeGenAt(BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5,
+            boolean par6) {
         return this.loadBlockGeneratorData(par1ArrayOfBiomeGenBase, par2, par3, par4, par5);
     }
 

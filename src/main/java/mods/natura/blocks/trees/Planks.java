@@ -1,9 +1,9 @@
 package mods.natura.blocks.trees;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -16,23 +16,14 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class Planks extends Block {
+
     public IIcon[] icons;
-    public static String[] textureNames = new String[] {
-        "eucalyptus",
-        "sakura",
-        "ghostwood",
-        "redwood",
-        "bloodwood",
-        "hopseed",
-        "maple",
-        "silverbell",
-        "purpleheart",
-        "tiger",
-        "willow",
-        "darkwood",
-        "fusewood"
-    };
+    public static String[] textureNames = new String[] { "eucalyptus", "sakura", "ghostwood", "redwood", "bloodwood",
+            "hopseed", "maple", "silverbell", "purpleheart", "tiger", "willow", "darkwood", "fusewood" };
 
     public Planks() {
         super(Material.wood);
@@ -59,10 +50,9 @@ public class Planks extends Block {
         }
     }
 
-    /*public boolean renderAsNormalBlock()
-    {
-        return false;
-    }*/
+    /*
+     * public boolean renderAsNormalBlock() { return false; }
+     */
 
     public int getFlammability(IBlockAccess world, int x, int y, int z, int metadata, ForgeDirection face) {
         if (metadata == 2 || metadata == 4 || metadata > 10) return 0;

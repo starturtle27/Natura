@@ -1,11 +1,14 @@
 package mods.natura.gui;
 
-import cpw.mods.fml.common.network.IGuiHandler;
 import mods.natura.blocks.tech.NetherrackFurnaceLogic;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.network.IGuiHandler;
+
 public class NGuiHandler implements IGuiHandler {
+
     public static final int craftingGui = 1;
     public static final int furnaceGui = 2;
 

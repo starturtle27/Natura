@@ -3,6 +3,7 @@ package mods.natura.blocks.nether;
 import static net.minecraftforge.common.util.ForgeDirection.UP;
 
 import mods.natura.blocks.NBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
@@ -12,8 +13,12 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class TaintedSoil extends NBlock {
+
     public TaintedSoil() {
-        super(Material.ground, 2.2f, new String[] {"tainted_soil", "tainted_farmland_dry", "tainted_farmland_heated"});
+        super(
+                Material.ground,
+                2.2f,
+                new String[] { "tainted_soil", "tainted_farmland_dry", "tainted_farmland_heated" });
         this.setStepSound(Block.soundTypeGravel);
         this.setResistance(25f);
     }

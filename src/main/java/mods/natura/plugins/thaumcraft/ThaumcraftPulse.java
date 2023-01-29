@@ -1,43 +1,46 @@
 package mods.natura.plugins.thaumcraft;
 
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import mantle.pulsar.pulse.Handler;
 import mantle.pulsar.pulse.Pulse;
 import mods.natura.Natura;
 import mods.natura.common.NContent;
 import mods.natura.common.PHNatura;
+
 import net.minecraft.item.ItemStack;
+
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 
 @Pulse(id = "Natura Thaumcraft Compatibility", modsRequired = ThaumcraftPulse.modId)
 public class ThaumcraftPulse {
+
     public static final String modId = "Thaumcraft";
 
     @Handler
     public void init(FMLInitializationEvent evt) {
         if (PHNatura.enableBerryBushes) {
-            FMLInterModComms.sendMessage(
-                    "Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.berryBush, 1, 12));
-            FMLInterModComms.sendMessage(
-                    "Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.berryBush, 1, 13));
-            FMLInterModComms.sendMessage(
-                    "Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.berryBush, 1, 14));
-            FMLInterModComms.sendMessage(
-                    "Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.berryBush, 1, 15));
+            FMLInterModComms
+                    .sendMessage("Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.berryBush, 1, 12));
+            FMLInterModComms
+                    .sendMessage("Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.berryBush, 1, 13));
+            FMLInterModComms
+                    .sendMessage("Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.berryBush, 1, 14));
+            FMLInterModComms
+                    .sendMessage("Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.berryBush, 1, 15));
         }
         if (PHNatura.enableNetherBerryBushes) {
-            FMLInterModComms.sendMessage(
-                    "Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.netherBerryBush, 1, 12));
-            FMLInterModComms.sendMessage(
-                    "Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.netherBerryBush, 1, 13));
-            FMLInterModComms.sendMessage(
-                    "Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.netherBerryBush, 1, 14));
-            FMLInterModComms.sendMessage(
-                    "Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.netherBerryBush, 1, 15));
+            FMLInterModComms
+                    .sendMessage("Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.netherBerryBush, 1, 12));
+            FMLInterModComms
+                    .sendMessage("Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.netherBerryBush, 1, 13));
+            FMLInterModComms
+                    .sendMessage("Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.netherBerryBush, 1, 14));
+            FMLInterModComms
+                    .sendMessage("Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.netherBerryBush, 1, 15));
         }
         FMLInterModComms.sendMessage("Thaumcraft", "harvestClickableCrop", new ItemStack(NContent.crops, 1, 8));
         FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(NContent.crops, 1, 3));
@@ -59,8 +62,8 @@ public class ThaumcraftPulse {
             ThaumcraftApi.registerObjectTag(
                     new ItemStack(NContent.plantItem, 0, 0),
                     new AspectList().add(Aspect.LIFE, 2).add(Aspect.CROP, 2));
-            ThaumcraftApi.registerObjectTag(
-                    new ItemStack(NContent.plantItem, 0, 3), new AspectList().add(Aspect.CLOTH, 1));
+            ThaumcraftApi
+                    .registerObjectTag(new ItemStack(NContent.plantItem, 0, 3), new AspectList().add(Aspect.CLOTH, 1));
             ThaumcraftApi.registerObjectTag(
                     new ItemStack(NContent.plantItem, 0, 4),
                     new AspectList().add(Aspect.ENTROPY, 1).add(Aspect.FIRE, 1));
@@ -69,19 +72,11 @@ public class ThaumcraftPulse {
                     new AspectList().add(Aspect.AIR, 1).add(Aspect.FLIGHT, 1));
             ThaumcraftApi.registerObjectTag(
                     new ItemStack(NContent.plantItem, 0, 6),
-                    new AspectList()
-                            .add(Aspect.BEAST, 1)
-                            .add(Aspect.FLESH, 1)
-                            .add(Aspect.CLOTH, 1)
-                            .add(Aspect.ARMOR, 1)
+                    new AspectList().add(Aspect.BEAST, 1).add(Aspect.FLESH, 1).add(Aspect.CLOTH, 1).add(Aspect.ARMOR, 1)
                             .add(Aspect.FIRE, 1));
             ThaumcraftApi.registerObjectTag(
                     new ItemStack(NContent.plantItem, 0, 7),
-                    new AspectList()
-                            .add(Aspect.BEAST, 1)
-                            .add(Aspect.CLOTH, 1)
-                            .add(Aspect.TRAP, 1)
-                            .add(Aspect.FIRE, 1));
+                    new AspectList().add(Aspect.BEAST, 1).add(Aspect.CLOTH, 1).add(Aspect.TRAP, 1).add(Aspect.FIRE, 1));
 
             // Register wood
             AspectList logTags = new AspectList();
@@ -172,14 +167,12 @@ public class ThaumcraftPulse {
             // Register cactus stuff
             ThaumcraftApi.registerObjectTag(
                     new ItemStack(NContent.saguaro, 0, 0),
-                    new AspectList()
-                            .add(Aspect.WATER, 1)
-                            .add(Aspect.PLANT, 2)
-                            .add(Aspect.WEAPON, 1)
+                    new AspectList().add(Aspect.WATER, 1).add(Aspect.PLANT, 2).add(Aspect.WEAPON, 1)
                             .add(Aspect.TREE, 2));
             if (PHNatura.enableCactusJuice) {
                 ThaumcraftApi.registerObjectTag(
-                        new ItemStack(NContent.waterDrop, 0, 0), new AspectList().add(Aspect.WATER, 1));
+                        new ItemStack(NContent.waterDrop, 0, 0),
+                        new AspectList().add(Aspect.WATER, 1));
             }
             ThaumcraftApi.registerObjectTag(
                     new ItemStack(NContent.seedFood, 0, 0),
@@ -188,10 +181,7 @@ public class ThaumcraftPulse {
             // Register overworld clouds
             ThaumcraftApi.registerObjectTag(
                     new ItemStack(NContent.cloud, 0, 0),
-                    new AspectList()
-                            .add(Aspect.AIR, 1)
-                            .add(Aspect.FLIGHT, 1)
-                            .add(Aspect.WATER, 1)
+                    new AspectList().add(Aspect.AIR, 1).add(Aspect.FLIGHT, 1).add(Aspect.WATER, 1)
                             .add(Aspect.WEATHER, 1));
 
             // Register Nether saplings
@@ -213,7 +203,8 @@ public class ThaumcraftPulse {
                     new ItemStack(NContent.heatSand, 0, 0),
                     new AspectList().add(Aspect.FIRE, 2).add(Aspect.EARTH, 1));
             ThaumcraftApi.registerObjectTag(
-                    new ItemStack(NContent.taintedSoil, 0, 0), new AspectList().add(Aspect.EARTH, 2));
+                    new ItemStack(NContent.taintedSoil, 0, 0),
+                    new AspectList().add(Aspect.EARTH, 2));
 
             // Register Nether trees and leaves
             ThaumcraftApi.registerObjectTag(
@@ -223,8 +214,8 @@ public class ThaumcraftPulse {
             ThaumcraftApi.registerObjectTag(
                     new ItemStack(NContent.planks, 0, 4),
                     new AspectList().add(Aspect.TREE, 1).add(Aspect.METAL, 1));
-            ThaumcraftApi.registerObjectTag(
-                    new ItemStack(NContent.darkTree, 0, 0), new AspectList().add(Aspect.TREE, 4));
+            ThaumcraftApi
+                    .registerObjectTag(new ItemStack(NContent.darkTree, 0, 0), new AspectList().add(Aspect.TREE, 4));
             ThaumcraftApi.registerObjectTag(
                     new ItemStack(NContent.darkTree, 0, 1),
                     new AspectList().add(Aspect.TREE, 4).add(Aspect.ENTROPY, 2));
@@ -252,75 +243,45 @@ public class ThaumcraftPulse {
             if (PHNatura.enableNetherBerryBushes) {
                 ThaumcraftApi.registerObjectTag(
                         new ItemStack(NContent.netherBerryBush, 0, 0),
-                        new AspectList()
-                                .add(Aspect.ENTROPY, 4)
-                                .add(Aspect.POISON, 4)
-                                .add(Aspect.PLANT, 1));
+                        new AspectList().add(Aspect.ENTROPY, 4).add(Aspect.POISON, 4).add(Aspect.PLANT, 1));
                 ThaumcraftApi.registerObjectTag(
                         new ItemStack(NContent.netherBerryBush, 0, 1),
-                        new AspectList()
-                                .add(Aspect.ENTROPY, 4)
-                                .add(Aspect.DARKNESS, 4)
-                                .add(Aspect.PLANT, 1));
+                        new AspectList().add(Aspect.ENTROPY, 4).add(Aspect.DARKNESS, 4).add(Aspect.PLANT, 1));
                 ThaumcraftApi.registerObjectTag(
                         new ItemStack(NContent.netherBerryBush, 0, 2),
-                        new AspectList()
-                                .add(Aspect.ENTROPY, 4)
-                                .add(Aspect.FLIGHT, 4)
-                                .add(Aspect.PLANT, 1));
+                        new AspectList().add(Aspect.ENTROPY, 4).add(Aspect.FLIGHT, 4).add(Aspect.PLANT, 1));
                 ThaumcraftApi.registerObjectTag(
                         new ItemStack(NContent.netherBerryBush, 0, 3),
                         new AspectList().add(Aspect.ENTROPY, 8).add(Aspect.PLANT, 1));
                 ThaumcraftApi.registerObjectTag(
                         new ItemStack(NContent.netherBerryItem, 0, 0),
-                        new AspectList()
-                                .add(Aspect.ENTROPY, 4)
-                                .add(Aspect.POISON, 4)
-                                .add(Aspect.LIFE, 1)
+                        new AspectList().add(Aspect.ENTROPY, 4).add(Aspect.POISON, 4).add(Aspect.LIFE, 1)
                                 .add(Aspect.CROP, 1));
                 ThaumcraftApi.registerObjectTag(
                         new ItemStack(NContent.netherBerryItem, 0, 1),
-                        new AspectList()
-                                .add(Aspect.ENTROPY, 4)
-                                .add(Aspect.DARKNESS, 4)
-                                .add(Aspect.LIFE, 1)
+                        new AspectList().add(Aspect.ENTROPY, 4).add(Aspect.DARKNESS, 4).add(Aspect.LIFE, 1)
                                 .add(Aspect.CROP, 1));
                 ThaumcraftApi.registerObjectTag(
                         new ItemStack(NContent.netherBerryItem, 0, 2),
-                        new AspectList()
-                                .add(Aspect.ENTROPY, 4)
-                                .add(Aspect.FLIGHT, 4)
-                                .add(Aspect.LIFE, 1)
+                        new AspectList().add(Aspect.ENTROPY, 4).add(Aspect.FLIGHT, 4).add(Aspect.LIFE, 1)
                                 .add(Aspect.CROP, 1));
                 ThaumcraftApi.registerObjectTag(
                         new ItemStack(NContent.netherBerryItem, 0, 3),
-                        new AspectList()
-                                .add(Aspect.ENTROPY, 8)
-                                .add(Aspect.LIFE, 1)
-                                .add(Aspect.CROP, 1));
+                        new AspectList().add(Aspect.ENTROPY, 8).add(Aspect.LIFE, 1).add(Aspect.CROP, 1));
             }
 
             // Register Nether and End clouds
             ThaumcraftApi.registerObjectTag(
                     new ItemStack(NContent.cloud, 0, 2),
-                    new AspectList()
-                            .add(Aspect.AIR, 1)
-                            .add(Aspect.FLIGHT, 1)
-                            .add(Aspect.FIRE, 1)
+                    new AspectList().add(Aspect.AIR, 1).add(Aspect.FLIGHT, 1).add(Aspect.FIRE, 1)
                             .add(Aspect.WEATHER, 1));
             ThaumcraftApi.registerObjectTag(
                     new ItemStack(NContent.cloud, 0, 3),
-                    new AspectList()
-                            .add(Aspect.AIR, 1)
-                            .add(Aspect.FLIGHT, 1)
-                            .add(Aspect.POISON, 1)
+                    new AspectList().add(Aspect.AIR, 1).add(Aspect.FLIGHT, 1).add(Aspect.POISON, 1)
                             .add(Aspect.WEATHER, 1));
             ThaumcraftApi.registerObjectTag(
                     new ItemStack(NContent.cloud, 0, 1),
-                    new AspectList()
-                            .add(Aspect.AIR, 1)
-                            .add(Aspect.FLIGHT, 1)
-                            .add(Aspect.ELDRITCH, 1)
+                    new AspectList().add(Aspect.AIR, 1).add(Aspect.FLIGHT, 1).add(Aspect.ELDRITCH, 1)
                             .add(Aspect.WEATHER, 1));
 
             // Register other Nether items/plants

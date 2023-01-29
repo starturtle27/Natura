@@ -1,13 +1,13 @@
 package mods.natura.blocks.trees;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import mods.natura.common.NContent;
 import mods.natura.common.NaturaTab;
 import mods.natura.worldgen.RareTreeGen;
 import mods.natura.worldgen.WillowGen;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -22,9 +22,13 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class OverworldSapling extends BlockSapling {
+
     public IIcon[] icons;
-    public String[] textureNames = new String[] {"maple", "silverbell", "purpleheart", "tiger", "willow"};
+    public String[] textureNames = new String[] { "maple", "silverbell", "purpleheart", "tiger", "willow" };
 
     public OverworldSapling() {
         super();
@@ -54,8 +58,7 @@ public class OverworldSapling extends BlockSapling {
     }
 
     public boolean canThisPlantGrowOnThisBlock(Block id) {
-        return id == Blocks.grass
-                || id == Blocks.dirt
+        return id == Blocks.grass || id == Blocks.dirt
                 || id == Blocks.soul_sand
                 || id == Blocks.netherrack
                 || id == NContent.taintedSoil;
@@ -72,15 +75,13 @@ public class OverworldSapling extends BlockSapling {
                 Block soil = world.getBlock(x, y - 1, z);
                 return (world.getFullBlockLightValue(x, y, z) >= 8 || world.canBlockSeeTheSky(x, y, z))
                         && (soil != null && soil.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this));
-                /*case 4:
-                case 6:
-                    int belowID = world.getBlockId(x, y - 1, z);
-                    Block netherSoil = blocksList[belowID];
-                    return netherSoil != null && (netherSoil == Block.netherrack || netherSoil.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this));
-                case 5:
-                    int aboveID = world.getBlockId(x, y + 1, z);
-                    Block nSoil = blocksList[aboveID];
-                    return nSoil != null && (nSoil == Block.netherrack || nSoil == Block.slowSand || nSoil == NContent.taintedSoil);*/
+            /*
+             * case 4: case 6: int belowID = world.getBlockId(x, y - 1, z); Block netherSoil = blocksList[belowID];
+             * return netherSoil != null && (netherSoil == Block.netherrack || netherSoil.canSustainPlant(world, x, y -
+             * 1, z, ForgeDirection.UP, this)); case 5: int aboveID = world.getBlockId(x, y + 1, z); Block nSoil =
+             * blocksList[aboveID]; return nSoil != null && (nSoil == Block.netherrack || nSoil == Block.slowSand ||
+             * nSoil == NContent.taintedSoil);
+             */
             default:
                 return true;
         }
@@ -88,11 +89,13 @@ public class OverworldSapling extends BlockSapling {
 
     @Override
     public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z) {
-        /*int meta = world.getBlockMetadata(x, y, z) % 8;
-        if (meta <= 3)*/
+        /*
+         * int meta = world.getBlockMetadata(x, y, z) % 8; if (meta <= 3)
+         */
         return EnumPlantType.Plains;
-        /*else
-        return EnumPlantType.Nether;*/
+        /*
+         * else return EnumPlantType.Nether;
+         */
     }
 
     @Override
@@ -114,8 +117,8 @@ public class OverworldSapling extends BlockSapling {
         return icons[meta % 8 % icons.length];
     }
 
-    public void func_149879_c(
-            World p_149879_1_, int p_149879_2_, int p_149879_3_, int p_149879_4_, Random p_149879_5_) {
+    public void func_149879_c(World p_149879_1_, int p_149879_2_, int p_149879_3_, int p_149879_4_,
+            Random p_149879_5_) {
         int l = p_149879_1_.getBlockMetadata(p_149879_2_, p_149879_3_, p_149879_4_);
 
         if ((l & 8) == 0) {
@@ -153,18 +156,18 @@ public class OverworldSapling extends BlockSapling {
         }
     }
 
-    public boolean func_149851_a(
-            World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_) {
+    public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_,
+            boolean p_149851_5_) {
         return true;
     }
 
-    public boolean func_149852_a(
-            World p_149852_1_, Random p_149852_2_, int p_149852_3_, int p_149852_4_, int p_149852_5_) {
+    public boolean func_149852_a(World p_149852_1_, Random p_149852_2_, int p_149852_3_, int p_149852_4_,
+            int p_149852_5_) {
         return (double) p_149852_1_.rand.nextFloat() < 0.45D;
     }
 
-    public void func_149853_b(
-            World p_149853_1_, Random p_149853_2_, int p_149853_3_, int p_149853_4_, int p_149853_5_) {
+    public void func_149853_b(World p_149853_1_, Random p_149853_2_, int p_149853_3_, int p_149853_4_,
+            int p_149853_5_) {
         this.func_149879_c(p_149853_1_, p_149853_3_, p_149853_4_, p_149853_5_, p_149853_2_);
     }
 }

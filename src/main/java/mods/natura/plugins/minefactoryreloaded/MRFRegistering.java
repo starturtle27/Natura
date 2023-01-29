@@ -12,13 +12,16 @@ import mods.natura.plugins.minefactoryreloaded.plantables.PlantableNaturaBerry;
 import mods.natura.plugins.minefactoryreloaded.plantables.PlantableNaturaCrop;
 import mods.natura.plugins.minefactoryreloaded.plantables.PlantableNaturaNetherBerry;
 import mods.natura.plugins.minefactoryreloaded.plantables.PlantableStandard;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
 import powercrystals.minefactoryreloaded.api.FactoryRegistry;
 import powercrystals.minefactoryreloaded.api.HarvestType;
 
 public class MRFRegistering {
+
     public static void registerWithMFR() {
         String registerPlantable = "registerPlantable";
         String registerHarvestable = "registerHarvestable";
@@ -30,7 +33,8 @@ public class MRFRegistering {
             FactoryRegistry.sendMessage(
                     registerPlantable,
                     new PlantableNaturaNetherBerry(
-                            Item.getItemFromBlock(NContent.netherBerryBush), NContent.netherBerryBush));
+                            Item.getItemFromBlock(NContent.netherBerryBush),
+                            NContent.netherBerryBush));
             FactoryRegistry.sendMessage(
                     registerHarvestable,
                     new HarvestableNaturaBerry(NContent.netherBerryBush, NContent.netherBerryItem));
@@ -40,7 +44,8 @@ public class MRFRegistering {
                     registerPlantable,
                     new PlantableNaturaBerry(Item.getItemFromBlock(NContent.berryBush), NContent.berryBush));
             FactoryRegistry.sendMessage(
-                    registerHarvestable, new HarvestableNaturaBerry(NContent.berryBush, NContent.berryItem));
+                    registerHarvestable,
+                    new HarvestableNaturaBerry(NContent.berryBush, NContent.berryItem));
         }
 
         // Crops
@@ -51,20 +56,22 @@ public class MRFRegistering {
                 new PlantableStandard(Item.getItemFromBlock(NContent.floraSapling), NContent.floraSapling));
 
         // misc plants
-        FactoryRegistry.sendMessage(
-                registerHarvestable, new HarvestableStandard(NContent.bluebells, HarvestType.Normal));
+        FactoryRegistry
+                .sendMessage(registerHarvestable, new HarvestableStandard(NContent.bluebells, HarvestType.Normal));
         // glowshrooms
+        FactoryRegistry
+                .sendMessage(registerHarvestable, new HarvestableStandard(NContent.glowshroom, HarvestType.Normal));
+        FactoryRegistry
+                .sendMessage(registerHarvestable, new HarvestableStandard(NContent.glowshroomBlue, HarvestType.Normal));
         FactoryRegistry.sendMessage(
-                registerHarvestable, new HarvestableStandard(NContent.glowshroom, HarvestType.Normal));
+                registerHarvestable,
+                new HarvestableStandard(NContent.glowshroomGreen, HarvestType.Normal));
         FactoryRegistry.sendMessage(
-                registerHarvestable, new HarvestableStandard(NContent.glowshroomBlue, HarvestType.Normal));
-        FactoryRegistry.sendMessage(
-                registerHarvestable, new HarvestableStandard(NContent.glowshroomGreen, HarvestType.Normal));
-        FactoryRegistry.sendMessage(
-                registerHarvestable, new HarvestableStandard(NContent.glowshroomPurple, HarvestType.Normal));
+                registerHarvestable,
+                new HarvestableStandard(NContent.glowshroomPurple, HarvestType.Normal));
         // crops
-        FactoryRegistry.sendMessage(
-                registerHarvestable, new HarvestableNaturaCropPlant(NContent.crops, NContent.plantItem));
+        FactoryRegistry
+                .sendMessage(registerHarvestable, new HarvestableNaturaCropPlant(NContent.crops, NContent.plantItem));
 
         // trees
         FactoryRegistry.sendMessage(registerHarvestable, new HarvestableStandard(NContent.tree, HarvestType.Tree));
@@ -72,8 +79,8 @@ public class MRFRegistering {
         FactoryRegistry.sendMessage(registerHarvestable, new HarvestableStandard(NContent.darkTree, HarvestType.Tree));
         FactoryRegistry.sendMessage(registerHarvestable, new HarvestableStandard(NContent.redwood, HarvestType.Tree));
         FactoryRegistry.sendMessage(registerHarvestable, new HarvestableStandard(NContent.willow, HarvestType.Tree));
-        FactoryRegistry.sendMessage(
-                registerHarvestable, new HarvestableStandard(NContent.bloodwood, HarvestType.TreeFlipped));
+        FactoryRegistry
+                .sendMessage(registerHarvestable, new HarvestableStandard(NContent.bloodwood, HarvestType.TreeFlipped));
         // Nether plants
         FactoryRegistry.sendMessage(registerHarvestable, new HarvestableNaturaTreeLeaves(NContent.thornVines));
         // leaves
@@ -87,8 +94,8 @@ public class MRFRegistering {
         FactoryRegistry.sendMessage(registerFertilizable, new FertilizableSapling(NContent.rareSapling));
 
         /*
-         *  The sludge boiler takes sludge from harvester machines and boils it to get soil-like items,
-         *  such as dirt, sand, clay, or rarely things like soulsand and mycelium.
+         * The sludge boiler takes sludge from harvester machines and boils it to get soil-like items, such as dirt,
+         * sand, clay, or rarely things like soulsand and mycelium.
          */
         NBTTagCompound heatSand = new ItemStack(NContent.heatSand).writeToNBT(new NBTTagCompound());
         heatSand.setInteger("value", 5);

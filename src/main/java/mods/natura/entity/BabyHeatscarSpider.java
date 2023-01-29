@@ -1,6 +1,7 @@
 package mods.natura.entity;
 
 import mods.natura.common.NContent;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.Block.SoundType;
 import net.minecraft.entity.Entity;
@@ -17,6 +18,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
 public class BabyHeatscarSpider extends EntitySpider {
+
     public BabyHeatscarSpider(World par1World) {
         super(par1World);
         this.setSize(1.2F, 0.8F);
@@ -152,9 +154,7 @@ public class BabyHeatscarSpider extends EntitySpider {
     public boolean getCanSpawnHere() {
         return this.worldObj.difficultySetting != EnumDifficulty.PEACEFUL
                 && this.worldObj.checkNoEntityCollision(this.boundingBox)
-                && this.worldObj
-                        .getCollidingBoundingBoxes(this, this.boundingBox)
-                        .isEmpty()
+                && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty()
                 && !this.worldObj.isAnyLiquid(this.boundingBox);
     }
 }

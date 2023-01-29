@@ -1,9 +1,9 @@
 package mods.natura.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mods.natura.common.NContent;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,9 +17,13 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class BowlStew extends ItemFood {
+
     IIcon[] icons;
-    public static String[] textureNames = new String[] {"mushroom", "glowshroom"};
+    public static String[] textureNames = new String[] { "mushroom", "glowshroom" };
 
     public BowlStew() {
         super(6, 0.6f, false);

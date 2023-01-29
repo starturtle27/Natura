@@ -1,10 +1,12 @@
 package mods.natura.plugins.waila;
 
 import java.util.List;
+
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mods.natura.blocks.crops.CropBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -28,14 +30,14 @@ public class NaturaCropDataProvider implements IWailaDataProvider {
     }
 
     @Override
-    public List<String> getWailaHead(
-            ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+    public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,
+            IWailaConfigHandler config) {
         return currenttip;
     }
 
     @Override
-    public List<String> getWailaBody(
-            ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+    public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,
+            IWailaConfigHandler config) {
         if (config.getConfig("general.showcrop")) {
             Block block = accessor.getBlock();
 
@@ -60,14 +62,14 @@ public class NaturaCropDataProvider implements IWailaDataProvider {
     }
 
     @Override
-    public List<String> getWailaTail(
-            ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+    public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,
+            IWailaConfigHandler config) {
         return currenttip;
     }
 
     @Override
-    public NBTTagCompound getNBTData(
-            EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z) {
+    public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x,
+            int y, int z) {
         return tag;
     }
 }

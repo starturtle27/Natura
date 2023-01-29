@@ -1,20 +1,23 @@
 package mods.natura.items.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mantle.blocks.abstracts.MultiItemBlock;
 import mods.natura.common.NContent;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class PlankSlab1Item extends MultiItemBlock {
-    public static final String blockType[] = {
-        "eucalyptus", "sakura", "ghost", "redwood", "blood", "bush", "maple", "silverbell"
-    };
+
+    public static final String blockType[] = { "eucalyptus", "sakura", "ghost", "redwood", "blood", "bush", "maple",
+            "silverbell" };
     Block block;
 
     public PlankSlab1Item(Block id) {
@@ -24,21 +27,11 @@ public class PlankSlab1Item extends MultiItemBlock {
         setHasSubtypes(true);
     }
 
-    /*@Override
-    public String getUnlocalizedName (ItemStack itemstack)
-    {
-        int damage = itemstack.getItemDamage();
-        if (damage >= blockType.length)
-        {
-            if (blockType.length == 0)
-            {
-                return "";
-            }
-            damage %= blockType.length;
-        }
-
-        return (new StringBuilder()).append("block.wood.").append(blockType[damage]).append(".slab").toString();
-    }*/
+    /*
+     * @Override public String getUnlocalizedName (ItemStack itemstack) { int damage = itemstack.getItemDamage(); if
+     * (damage >= blockType.length) { if (blockType.length == 0) { return ""; } damage %= blockType.length; } return
+     * (new StringBuilder()).append("block.wood.").append(blockType[damage]).append(".slab").toString(); }
+     */
 
     @Override
     @SideOnly(Side.CLIENT)
@@ -72,17 +65,8 @@ public class PlankSlab1Item extends MultiItemBlock {
     }
 
     @Override
-    public boolean onItemUse(
-            ItemStack stack,
-            EntityPlayer player,
-            World world,
-            int x,
-            int y,
-            int z,
-            int side,
-            float hitX,
-            float hitY,
-            float hitZ) {
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side,
+            float hitX, float hitY, float hitZ) {
         Block id = world.getBlock(x, y, z);
         int meta = world.getBlockMetadata(x, y, z);
         int trueMeta = meta % 8;

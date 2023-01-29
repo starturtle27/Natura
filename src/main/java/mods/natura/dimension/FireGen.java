@@ -1,13 +1,16 @@
 package mods.natura.dimension;
 
 import java.util.Random;
+
 import mods.natura.common.NContent;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class FireGen extends WorldGenerator {
+
     @Override
     public boolean generate(World world, Random random, int x, int y, int z) {
         for (int l = 0; l < 64; ++l) {

@@ -1,12 +1,14 @@
 package mods.natura.blocks;
 
 import java.util.Random;
+
 import net.minecraft.block.BlockSnow;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
 public class NaturaSnow extends BlockSnow {
+
     public NaturaSnow() {
         super();
     }

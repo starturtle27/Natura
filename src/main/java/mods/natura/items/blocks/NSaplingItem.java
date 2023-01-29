@@ -1,10 +1,10 @@
 package mods.natura.items.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mantle.blocks.abstracts.MultiItemBlock;
 import mods.natura.common.NContent;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -13,26 +13,13 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class NSaplingItem extends MultiItemBlock {
-    public static final String blockType[] = {
-        "redwood",
-        "eucalyptus",
-        "bush",
-        "sakura",
-        "ghost",
-        "blood",
-        "darkwood",
-        "fusewood",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-    };
+
+    public static final String blockType[] = { "redwood", "eucalyptus", "bush", "sakura", "ghost", "blood", "darkwood",
+            "fusewood", "", "", "", "", "", "", "", "", "" };
     private Block bID;
 
     public NSaplingItem(Block block) {
@@ -47,11 +34,10 @@ public class NSaplingItem extends MultiItemBlock {
         return NContent.floraSapling.getIcon(0, i);
     }
 
-    /*@Override
-    public String getUnlocalizedName (ItemStack itemstack)
-    {
-        return (new StringBuilder()).append("block.sapling.").append(blockType[itemstack.getItemDamage()]).toString();
-    }*/
+    /*
+     * @Override public String getUnlocalizedName (ItemStack itemstack) { return (new
+     * StringBuilder()).append("block.sapling.").append(blockType[itemstack.getItemDamage()]).toString(); }
+     */
 
     @Override
     @SideOnly(Side.CLIENT)
@@ -87,49 +73,39 @@ public class NSaplingItem extends MultiItemBlock {
     }
 
     @Override
-    public boolean onItemUse(
-            ItemStack stack,
-            EntityPlayer player,
-            World world,
-            int x,
-            int y,
-            int z,
-            int side,
-            float par8,
-            float par9,
-            float par10) {
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side,
+            float par8, float par9, float par10) {
         Block blockID = world.getBlock(x, y, z);
 
         if (blockID == Blocks.snow && (world.getBlockMetadata(x, y, z) & 7) < 1) {
             side = 1;
-        } else if (blockID != Blocks.vine
-                && blockID != Blocks.tallgrass
+        } else if (blockID != Blocks.vine && blockID != Blocks.tallgrass
                 && blockID != Blocks.deadbush
                 && (blockID == null || !blockID.isReplaceable(world, x, y, z))) {
-            if (side == 0) {
-                --y;
-            }
+                    if (side == 0) {
+                        --y;
+                    }
 
-            if (side == 1) {
-                ++y;
-            }
+                    if (side == 1) {
+                        ++y;
+                    }
 
-            if (side == 2) {
-                --z;
-            }
+                    if (side == 2) {
+                        --z;
+                    }
 
-            if (side == 3) {
-                ++z;
-            }
+                    if (side == 3) {
+                        ++z;
+                    }
 
-            if (side == 4) {
-                --x;
-            }
+                    if (side == 4) {
+                        --x;
+                    }
 
-            if (side == 5) {
-                ++x;
-            }
-        }
+                    if (side == 5) {
+                        ++x;
+                    }
+                }
 
         if (stack.getItemDamage() == 5) {
             Block block = world.getBlock(x, y + 1, z);

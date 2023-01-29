@@ -4,14 +4,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
 import powercrystals.minefactoryreloaded.api.HarvestType;
 import powercrystals.minefactoryreloaded.api.IFactoryHarvestable;
 
 public class HarvestableNaturaCropPlant implements IFactoryHarvestable {
+
     private Block _sourceId;
     private Item _cottonItemId;
 
@@ -41,10 +44,10 @@ public class HarvestableNaturaCropPlant implements IFactoryHarvestable {
     }
 
     @Override
-    public List<ItemStack> getDrops(
-            World world, Random rand, Map<String, Boolean> harvesterSettings, int x, int y, int z) {
+    public List<ItemStack> getDrops(World world, Random rand, Map<String, Boolean> harvesterSettings, int x, int y,
+            int z) {
         if (world.getBlockMetadata(x, y, z) == 8) {
-            ItemStack[] returnItems = {new ItemStack(_cottonItemId, 1, 3)};
+            ItemStack[] returnItems = { new ItemStack(_cottonItemId, 1, 3) };
             return Arrays.asList(returnItems);
         } else {
             return _sourceId.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0);

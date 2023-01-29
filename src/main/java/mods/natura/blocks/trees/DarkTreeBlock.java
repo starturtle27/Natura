@@ -1,10 +1,10 @@
 package mods.natura.blocks.trees;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -16,9 +16,14 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class DarkTreeBlock extends Block {
+
     public IIcon[] icons;
-    public String[] textureNames = new String[] {"darkwood_bark", "darkwood_heart", "fusewood_bark", "fusewood_heart"};
+    public String[] textureNames = new String[] { "darkwood_bark", "darkwood_heart", "fusewood_bark",
+            "fusewood_heart" };
 
     public DarkTreeBlock() {
         super(Material.wood);
@@ -93,8 +98,8 @@ public class DarkTreeBlock extends Block {
      * Called when a block is placed using its ItemBlock. Args: World, X, Y, Z, side, hitX, hitY, hitZ, block metadata
      */
     @Override
-    public int onBlockPlaced(
-            World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9) {
+    public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7,
+            float par8, int par9) {
         int j1 = par9 & 3;
         byte b0 = 0;
 

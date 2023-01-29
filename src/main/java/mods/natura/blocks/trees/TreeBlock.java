@@ -1,10 +1,10 @@
 package mods.natura.blocks.trees;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -16,18 +16,14 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class TreeBlock extends BlockLog {
+
     public IIcon[] icons;
-    public String[] textureNames = new String[] {
-        "eucalyptus_bark",
-        "sakura_bark",
-        "ghostwood_bark",
-        "hopseed_bark",
-        "eucalyptus_heart",
-        "sakura_heart",
-        "ghostwood_heart",
-        "hopseed_heart"
-    };
+    public String[] textureNames = new String[] { "eucalyptus_bark", "sakura_bark", "ghostwood_bark", "hopseed_bark",
+            "eucalyptus_heart", "sakura_heart", "ghostwood_heart", "hopseed_heart" };
 
     public TreeBlock() {
         super();

@@ -1,8 +1,7 @@
 package mods.natura.gui;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import mods.natura.blocks.tech.NetherrackFurnaceLogic;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -13,7 +12,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntityFurnace;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class FurnaceContainer extends Container {
+
     private NetherrackFurnaceLogic furnace;
     private int lastCookTime;
     private int lastBurnTime;

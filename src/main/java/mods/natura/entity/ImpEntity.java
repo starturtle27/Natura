@@ -1,6 +1,7 @@
 package mods.natura.entity;
 
 import mods.natura.common.NContent;
+
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
@@ -20,6 +21,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldProviderHell;
 
 public class ImpEntity extends EntityAnimal {
+
     public ImpEntity(World par1World) {
         super(par1World);
         // this.texture = "/mods/natura/textures/mob/imp.png";
@@ -127,8 +129,7 @@ public class ImpEntity extends EntityAnimal {
      */
     @Override
     public boolean isBreedingItem(ItemStack par1ItemStack) {
-        return par1ItemStack != null
-                && par1ItemStack.getItem() == NContent.bowlStew
+        return par1ItemStack != null && par1ItemStack.getItem() == NContent.bowlStew
                 && par1ItemStack.getItemDamage() >= 13;
     }
 
@@ -142,9 +143,7 @@ public class ImpEntity extends EntityAnimal {
         // return true;
         return this.worldObj.provider instanceof WorldProviderHell
                 && this.worldObj.checkNoEntityCollision(this.boundingBox)
-                && this.worldObj
-                        .getCollidingBoundingBoxes(this, this.boundingBox)
-                        .isEmpty()
+                && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty()
                 && !this.worldObj.isAnyLiquid(this.boundingBox);
     }
 }

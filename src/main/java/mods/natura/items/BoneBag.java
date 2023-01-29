@@ -1,10 +1,9 @@
 package mods.natura.items;
 
-import cpw.mods.fml.common.eventhandler.Event.Result;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCocoa;
 import net.minecraft.block.BlockCrops;
@@ -22,7 +21,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 
+import cpw.mods.fml.common.eventhandler.Event.Result;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class BoneBag extends Item {
+
     String textureName;
 
     public BoneBag(String texture) {
@@ -32,17 +36,8 @@ public class BoneBag extends Item {
     }
 
     @Override
-    public boolean onItemUse(
-            ItemStack stack,
-            EntityPlayer player,
-            World world,
-            int x,
-            int y,
-            int z,
-            int side,
-            float par8,
-            float par9,
-            float par10) {
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side,
+            float par8, float par9, float par10) {
         if (side != 1) return false;
 
         boolean planted = false;
@@ -66,8 +61,8 @@ public class BoneBag extends Item {
         return planted;
     }
 
-    public static boolean applyBonemeal(
-            ItemStack par0ItemStack, World par1World, int par2, int par3, int par4, EntityPlayer player) {
+    public static boolean applyBonemeal(ItemStack par0ItemStack, World par1World, int par2, int par3, int par4,
+            EntityPlayer player) {
         Block l = par1World.getBlock(par2, par3, par4);
 
         BonemealEvent event = new BonemealEvent(player, par1World, l, par2, par3, par4);
@@ -77,10 +72,9 @@ public class BoneBag extends Item {
 
         event.getResult();
         if (event.getResult() == Result.ALLOW) {
-            /*if (!par1World.isRemote)
-            {
-                par0ItemStack.stackSize--;
-            }*/
+            /*
+             * if (!par1World.isRemote) { par0ItemStack.stackSize--; }
+             */
             return true;
         }
 
@@ -88,7 +82,7 @@ public class BoneBag extends Item {
             if (!par1World.isRemote) {
                 if (par1World.rand.nextFloat() < 0.45D) {
                     ((BlockSapling) Blocks.sapling)
-                            .func_149879_c /*markOrGrowMarked*/(par1World, par2, par3, par4, par1World.rand);
+                            .func_149879_c /* markOrGrowMarked */(par1World, par2, par3, par4, par1World.rand);
                 }
 
                 // --par0ItemStack.stackSize;
@@ -102,7 +96,7 @@ public class BoneBag extends Item {
                         return false;
                     } else {
                         if (!par1World.isRemote) {
-                            ((BlockCrops) l).func_149863_m /*fertilize*/(par1World, par2, par3, par4);
+                            ((BlockCrops) l).func_149863_m /* fertilize */(par1World, par2, par3, par4);
                             // --par0ItemStack.stackSize;
                         }
 
@@ -134,8 +128,7 @@ public class BoneBag extends Item {
                     } else {
                         if (!par1World.isRemote) {
                             --par0ItemStack.stackSize;
-                            label102:
-                            for (i1 = 0; i1 < 128; ++i1) {
+                            label102: for (i1 = 0; i1 < 128; ++i1) {
                                 j1 = par2;
                                 k1 = par3 + 1;
                                 int l1 = par4;
@@ -171,7 +164,7 @@ public class BoneBag extends Item {
                 return false;
             } else {
                 if (!par1World.isRemote) {
-                    ((BlockStem) l).func_149874_m /*fertilizeStem*/(par1World, par2, par3, par4);
+                    ((BlockStem) l).func_149874_m /* fertilizeStem */(par1World, par2, par3, par4);
                     // --par0ItemStack.stackSize;
                 }
 
@@ -181,7 +174,7 @@ public class BoneBag extends Item {
             if (!par1World.isRemote) {
                 if (par1World.rand.nextFloat() < 0.4D) {
                     ((BlockMushroom) l)
-                            .func_149884_c /*fertilizeMushroom*/(par1World, par2, par3, par4, par1World.rand);
+                            .func_149884_c /* fertilizeMushroom */(par1World, par2, par3, par4, par1World.rand);
                 }
 
                 // --par0ItemStack.stackSize;

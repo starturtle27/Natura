@@ -1,9 +1,9 @@
 package mods.natura.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,9 +14,13 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class BerryItem extends ItemFood {
+
     public IIcon[] icons;
-    public String[] textureNames = new String[] {"rasp", "blue", "black", "geo"};
+    public String[] textureNames = new String[] { "rasp", "blue", "black", "geo" };
 
     public BerryItem(int healAmount) {
         super(healAmount, 0.4F, false);

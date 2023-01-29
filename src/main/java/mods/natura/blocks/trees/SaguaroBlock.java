@@ -1,12 +1,12 @@
 package mods.natura.blocks.trees;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
+
 import mods.natura.client.SaguaroRenderer;
 import mods.natura.common.NContent;
 import mods.natura.common.NaturaTab;
 import mods.natura.worldgen.SaguaroGen;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -22,6 +22,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class SaguaroBlock extends Block implements IPlantable {
 
     public SaguaroBlock() {
@@ -35,8 +38,7 @@ public class SaguaroBlock extends Block implements IPlantable {
     @Override
     public void updateTick(World world, int x, int y, int z, Random random) {
         int meta = world.getBlockMetadata(x, y, z);
-        if (meta == 0
-                && world.getWorldInfo().isRaining()
+        if (meta == 0 && world.getWorldInfo().isRaining()
                 && random.nextInt(20) == 0
                 && world.getBlock(x, y + 1, z) == Blocks.air) {
             switch (random.nextInt(4)) {
@@ -70,29 +72,29 @@ public class SaguaroBlock extends Block implements IPlantable {
         switch (meta) {
             case 0:
                 offset = 0.125F;
-                return AxisAlignedBB.getBoundingBox(
-                        x + offset, y, z + offset, x + 1 - offset, y + 1 - offset, z + 1 - offset);
+                return AxisAlignedBB
+                        .getBoundingBox(x + offset, y, z + offset, x + 1 - offset, y + 1 - offset, z + 1 - offset);
             case 1:
             case 2:
                 offset = 0.325F;
-                return AxisAlignedBB.getBoundingBox(
-                        x + offset, y, z + offset, x + 1 - offset, y + 1 - offset, z + 1 - offset);
+                return AxisAlignedBB
+                        .getBoundingBox(x + offset, y, z + offset, x + 1 - offset, y + 1 - offset, z + 1 - offset);
             case 3:
                 offset = 0.25F;
-                return AxisAlignedBB.getBoundingBox(
-                        x + 0.625f, y + 0.1875, z + offset, x + 1.125f, y + 0.75, z + 1 - offset);
+                return AxisAlignedBB
+                        .getBoundingBox(x + 0.625f, y + 0.1875, z + offset, x + 1.125f, y + 0.75, z + 1 - offset);
             case 4:
                 offset = 0.25F;
-                return AxisAlignedBB.getBoundingBox(
-                        x + offset, y + 0.1875, z + 0.625f, x + 1 - offset, y + 0.75, z + 1.125f);
+                return AxisAlignedBB
+                        .getBoundingBox(x + offset, y + 0.1875, z + 0.625f, x + 1 - offset, y + 0.75, z + 1.125f);
             case 5:
                 offset = 0.25F;
-                return AxisAlignedBB.getBoundingBox(
-                        x - 0.125f, y + 0.1875, z + offset, x + 0.375f, y + 0.75, z + 1 - offset);
+                return AxisAlignedBB
+                        .getBoundingBox(x - 0.125f, y + 0.1875, z + offset, x + 0.375f, y + 0.75, z + 1 - offset);
             case 6:
                 offset = 0.25F;
-                return AxisAlignedBB.getBoundingBox(
-                        x + offset, y + 0.1875, z - 0.125f, x + 1 - offset, y + 0.75, z + 0.375f);
+                return AxisAlignedBB
+                        .getBoundingBox(x + offset, y + 0.1875, z - 0.125f, x + 1 - offset, y + 0.75, z + 0.375f);
             default:
                 return null;
         }
@@ -111,28 +113,28 @@ public class SaguaroBlock extends Block implements IPlantable {
                 Block block = world.getBlock(x, y - 1, z);
                 if (!block.isOpaqueCube()) base = 0.125F;
 
-                return AxisAlignedBB.getBoundingBox(
-                        x + offset, y, z + offset, x + 1 - offset, y + 1 - height, z + 1 - offset);
+                return AxisAlignedBB
+                        .getBoundingBox(x + offset, y, z + offset, x + 1 - offset, y + 1 - height, z + 1 - offset);
             case 1:
             case 2:
                 offset = 0.325F;
                 return AxisAlignedBB.getBoundingBox(x + offset, y, z + offset, x + 1 - offset, y + 0.5, z + 1 - offset);
             case 3:
                 offset = 0.25F;
-                return AxisAlignedBB.getBoundingBox(
-                        x + 0.625f, y + 0.1875, z + offset, x + 1.125f, y + 0.75, z + 1 - offset);
+                return AxisAlignedBB
+                        .getBoundingBox(x + 0.625f, y + 0.1875, z + offset, x + 1.125f, y + 0.75, z + 1 - offset);
             case 4:
                 offset = 0.25F;
-                return AxisAlignedBB.getBoundingBox(
-                        x + offset, y + 0.1875, z + 0.625f, x + 1 - offset, y + 0.75, z + 1.125f);
+                return AxisAlignedBB
+                        .getBoundingBox(x + offset, y + 0.1875, z + 0.625f, x + 1 - offset, y + 0.75, z + 1.125f);
             case 5:
                 offset = 0.25F;
-                return AxisAlignedBB.getBoundingBox(
-                        x - 0.125f, y + 0.1875, z + offset, x + 0.375f, y + 0.75, z + 1 - offset);
+                return AxisAlignedBB
+                        .getBoundingBox(x - 0.125f, y + 0.1875, z + offset, x + 0.375f, y + 0.75, z + 1 - offset);
             case 6:
                 offset = 0.25F;
-                return AxisAlignedBB.getBoundingBox(
-                        x + offset, y + 0.1875, z - 0.125f, x + 1 - offset, y + 0.75, z + 0.375f);
+                return AxisAlignedBB
+                        .getBoundingBox(x + offset, y + 0.1875, z - 0.125f, x + 1 - offset, y + 0.75, z + 0.375f);
             default:
                 return null;
         }
@@ -153,7 +155,7 @@ public class SaguaroBlock extends Block implements IPlantable {
     }
 
     public IIcon[] icons;
-    public String[] textureNames = new String[] {"saguaro_bottom", "saguaro_top", "saguaro_side", "saguaro_fruit"};
+    public String[] textureNames = new String[] { "saguaro_bottom", "saguaro_top", "saguaro_side", "saguaro_fruit" };
 
     @Override
     @SideOnly(Side.CLIENT)

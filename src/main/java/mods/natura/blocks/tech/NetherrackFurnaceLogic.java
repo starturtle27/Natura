@@ -1,9 +1,7 @@
 package mods.natura.blocks.tech;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import mantle.blocks.BlockUtils;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.material.Material;
@@ -25,10 +23,15 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.MathHelper;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class NetherrackFurnaceLogic extends TileEntityFurnace {
-    private static final int[] slots_top = new int[] {0};
-    private static final int[] slots_bottom = new int[] {2, 1};
-    private static final int[] slots_sides = new int[] {1};
+
+    private static final int[] slots_top = new int[] { 0 };
+    private static final int[] slots_bottom = new int[] { 2, 1 };
+    private static final int[] slots_sides = new int[] { 1 };
 
     /**
      * The ItemStacks that hold the items currently being used in the furnace
@@ -385,12 +388,9 @@ public class NetherrackFurnaceLogic extends TileEntityFurnace {
                 }
             }
 
-            if (item instanceof ItemTool
-                    && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemSword
-                    && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemHoe
-                    && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 200;
             if (item == Items.stick) return 100;
             if (item == Items.coal) return 1600;
             if (item == Items.lava_bucket) return 20000;
@@ -412,8 +412,7 @@ public class NetherrackFurnaceLogic extends TileEntityFurnace {
      */
     @Override
     public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
-        return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this
-                ? false
+        return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false
                 : par1EntityPlayer.getDistanceSq(this.xCoord + 0.5D, this.yCoord + 0.5D, this.zCoord + 0.5D) <= 64.0D;
     }
 

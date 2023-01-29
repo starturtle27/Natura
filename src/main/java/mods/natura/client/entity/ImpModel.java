@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
 public class ImpModel extends ModelBase {
+
     public ModelRenderer impParts[];
 
     public ImpModel() {

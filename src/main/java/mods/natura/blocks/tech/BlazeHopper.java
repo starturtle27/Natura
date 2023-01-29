@@ -1,14 +1,17 @@
 package mods.natura.blocks.tech;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import mods.natura.client.HopperRender;
 import mods.natura.common.NContent;
+
 import net.minecraft.block.BlockHopper;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class BlazeHopper extends BlockHopper {
+
     @SideOnly(Side.CLIENT)
     private IIcon hopperIcon;
 
@@ -43,8 +46,7 @@ public class BlazeHopper extends BlockHopper {
 
     @SideOnly(Side.CLIENT)
     public static IIcon hopperIcon(String par0Str) {
-        return par0Str.equals("hopper_outside")
-                ? NContent.netherHopper.hopperIcon
+        return par0Str.equals("hopper_outside") ? NContent.netherHopper.hopperIcon
                 : (par0Str.equals("hopper_inside") ? NContent.netherHopper.hopperInsideIcon : null);
     }
 

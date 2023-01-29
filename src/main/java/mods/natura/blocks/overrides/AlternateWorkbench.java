@@ -1,11 +1,11 @@
 package mods.natura.blocks.overrides;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mods.natura.Natura;
 import mods.natura.common.NContent;
 import mods.natura.gui.NGuiHandler;
+
 import net.minecraft.block.BlockWorkbench;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,7 +15,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class AlternateWorkbench extends BlockWorkbench {
+
     IIcon[] topIcons;
     IIcon[] sideIcons;
     IIcon[] faceIcons;
@@ -66,8 +70,8 @@ public class AlternateWorkbench extends BlockWorkbench {
     }
 
     @Override
-    public boolean onBlockActivated(
-            World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7,
+            float par8, float par9) {
         if (world.isRemote) {
             return true;
         } else {

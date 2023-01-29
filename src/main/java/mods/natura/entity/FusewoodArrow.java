@@ -1,8 +1,7 @@
 package mods.natura.entity;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
@@ -22,7 +21,11 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class FusewoodArrow extends EntityArrow {
+
     private int xTile = -1;
     private int yTile = -1;
     private int zTile = -1;
@@ -60,12 +63,8 @@ public class FusewoodArrow extends EntityArrow {
         this.yOffset = 0.0F;
     }
 
-    public FusewoodArrow(
-            World par1World,
-            EntityLivingBase par2EntityLiving,
-            EntityLivingBase par3EntityLiving,
-            float par4,
-            float par5) {
+    public FusewoodArrow(World par1World, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving,
+            float par4, float par5) {
         super(par1World);
         this.renderDistanceWeight = 10.0D;
         this.shootingEntity = par2EntityLiving;
@@ -191,8 +190,8 @@ public class FusewoodArrow extends EntityArrow {
 
         if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F) {
             float f = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
-            this.prevRotationYaw =
-                    this.rotationYaw = (float) (Math.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
+            this.prevRotationYaw = this.rotationYaw = (float) (Math.atan2(this.motionX, this.motionZ) * 180.0D
+                    / Math.PI);
             this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(this.motionY, f) * 180.0D / Math.PI);
         }
 
@@ -200,8 +199,8 @@ public class FusewoodArrow extends EntityArrow {
 
         if (i != null) {
             i.setBlockBoundsBasedOnState(this.worldObj, this.xTile, this.yTile, this.zTile);
-            AxisAlignedBB axisalignedbb =
-                    i.getCollisionBoundingBoxFromPool(this.worldObj, this.xTile, this.yTile, this.zTile);
+            AxisAlignedBB axisalignedbb = i
+                    .getCollisionBoundingBoxFromPool(this.worldObj, this.xTile, this.yTile, this.zTile);
 
             if (axisalignedbb != null
                     && axisalignedbb.isVecInside(Vec3.createVectorHelper(this.posX, this.posY, this.posZ))) {
@@ -234,13 +233,13 @@ public class FusewoodArrow extends EntityArrow {
         } else {
             ++this.ticksInAir;
             Vec3 vec3 = Vec3.createVectorHelper(this.posX, this.posY, this.posZ);
-            Vec3 vec31 = Vec3.createVectorHelper(
-                    this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+            Vec3 vec31 = Vec3
+                    .createVectorHelper(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
             // TODO 1.7 May need to call overload with extra params
             MovingObjectPosition movingobjectposition = this.worldObj.rayTraceBlocks(vec3, vec31, false);
             vec3 = Vec3.createVectorHelper(this.posX, this.posY, this.posZ);
-            vec31 = Vec3.createVectorHelper(
-                    this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+            vec31 = Vec3
+                    .createVectorHelper(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 
             if (movingobjectposition != null) {
                 vec31 = Vec3.createVectorHelper(
@@ -252,9 +251,7 @@ public class FusewoodArrow extends EntityArrow {
             Entity entity = null;
             List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(
                     this,
-                    this.boundingBox
-                            .addCoord(this.motionX, this.motionY, this.motionZ)
-                            .expand(1.0D, 1.0D, 1.0D));
+                    this.boundingBox.addCoord(this.motionX, this.motionY, this.motionZ).expand(1.0D, 1.0D, 1.0D));
             double d0 = 0.0D;
             int l;
             float f1;
@@ -282,14 +279,12 @@ public class FusewoodArrow extends EntityArrow {
                 movingobjectposition = new MovingObjectPosition(entity);
             }
 
-            if (movingobjectposition != null
-                    && movingobjectposition.entityHit != null
+            if (movingobjectposition != null && movingobjectposition.entityHit != null
                     && movingobjectposition.entityHit instanceof EntityPlayer) {
                 EntityPlayer entityplayer = (EntityPlayer) movingobjectposition.entityHit;
 
-                if (entityplayer.capabilities.disableDamage
-                        || this.shootingEntity instanceof EntityPlayer
-                                && !((EntityPlayer) this.shootingEntity).canAttackPlayer(entityplayer)) {
+                if (entityplayer.capabilities.disableDamage || this.shootingEntity instanceof EntityPlayer
+                        && !((EntityPlayer) this.shootingEntity).canAttackPlayer(entityplayer)) {
                     movingobjectposition = null;
                 }
             }
@@ -301,9 +296,9 @@ public class FusewoodArrow extends EntityArrow {
                 if (movingobjectposition.entityHit != null) // && movingobjectposition.entityHit != shootingEntity)
                 {
                     if (movingobjectposition.entityHit != shootingEntity) {
-                        f2 = MathHelper.sqrt_double(this.motionX * this.motionX
-                                + this.motionY * this.motionY
-                                + this.motionZ * this.motionZ);
+                        f2 = MathHelper.sqrt_double(
+                                this.motionX * this.motionX + this.motionY * this.motionY
+                                        + this.motionZ * this.motionZ);
                         int i1 = MathHelper.ceiling_double_int(f2 * this.damage);
 
                         if (this.getIsCritical()) {
@@ -320,8 +315,14 @@ public class FusewoodArrow extends EntityArrow {
                             damagesource = DamageSource.setExplosionSource(
                                     this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 1.5f, true));
                         } else {
-                            damagesource = DamageSource.setExplosionSource(this.worldObj.createExplosion(
-                                    this.shootingEntity, this.posX, this.posY, this.posZ, 1.5f, true));
+                            damagesource = DamageSource.setExplosionSource(
+                                    this.worldObj.createExplosion(
+                                            this.shootingEntity,
+                                            this.posX,
+                                            this.posY,
+                                            this.posZ,
+                                            1.5f,
+                                            true));
                         }
 
                         // this.kill();
@@ -331,14 +332,13 @@ public class FusewoodArrow extends EntityArrow {
                                 Entity entityliving = movingobjectposition.entityHit;
 
                                 if (!this.worldObj.isRemote) {
-                                    ((EntityLivingBase) entityliving)
-                                            .setArrowCountInEntity(
-                                                    ((EntityLivingBase) entityliving).getArrowCountInEntity() + 1);
+                                    ((EntityLivingBase) entityliving).setArrowCountInEntity(
+                                            ((EntityLivingBase) entityliving).getArrowCountInEntity() + 1);
                                 }
 
                                 if (this.knockbackStrength > 0) {
-                                    f3 = MathHelper.sqrt_double(
-                                            this.motionX * this.motionX + this.motionZ * this.motionZ);
+                                    f3 = MathHelper
+                                            .sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
 
                                     if (f3 > 0.0F) {
                                         movingobjectposition.entityHit.addVelocity(
@@ -350,12 +350,11 @@ public class FusewoodArrow extends EntityArrow {
 
                                 if (this.shootingEntity != null) {
                                     // TODO 1.7 last arg is level of enchant (I think), confirm this is correct
-                                    Enchantment.thorns.func_151367_b(
-                                            (EntityLivingBase) this.shootingEntity, entityliving, 1);
+                                    Enchantment.thorns
+                                            .func_151367_b((EntityLivingBase) this.shootingEntity, entityliving, 1);
                                 }
 
-                                if (this.shootingEntity != null
-                                        && movingobjectposition.entityHit != this.shootingEntity
+                                if (this.shootingEntity != null && movingobjectposition.entityHit != this.shootingEntity
                                         && movingobjectposition.entityHit instanceof EntityPlayer
                                         && this.shootingEntity instanceof EntityPlayerMP) {
                                     // TODO 1.7 What is Packet70 now? ((EntityPlayerMP)
@@ -422,9 +421,8 @@ public class FusewoodArrow extends EntityArrow {
             f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
             this.rotationYaw = (float) (Math.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
 
-            for (this.rotationPitch = (float) (Math.atan2(this.motionY, f2) * 180.0D / Math.PI);
-                    this.rotationPitch - this.prevRotationPitch < -180.0F;
-                    this.prevRotationPitch -= 360.0F) {
+            for (this.rotationPitch = (float) (Math.atan2(this.motionY, f2) * 180.0D / Math.PI); this.rotationPitch
+                    - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F) {
                 ;
             }
 
@@ -516,8 +514,8 @@ public class FusewoodArrow extends EntityArrow {
     @Override
     public void onCollideWithPlayer(EntityPlayer par1EntityPlayer) {
         if (!this.worldObj.isRemote && this.inGround && this.arrowShake <= 0) {
-            boolean flag =
-                    this.canBePickedUp == 1 || this.canBePickedUp == 2 && par1EntityPlayer.capabilities.isCreativeMode;
+            boolean flag = this.canBePickedUp == 1
+                    || this.canBePickedUp == 2 && par1EntityPlayer.capabilities.isCreativeMode;
 
             if (this.canBePickedUp == 1
                     && !par1EntityPlayer.inventory.addItemStackToInventory(new ItemStack(Items.arrow, 1))) {
@@ -526,7 +524,9 @@ public class FusewoodArrow extends EntityArrow {
 
             if (flag) {
                 this.playSound(
-                        "random.pop", 0.2F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+                        "random.pop",
+                        0.2F,
+                        ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
                 par1EntityPlayer.onItemPickup(this, 1);
                 this.setDead();
             }

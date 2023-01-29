@@ -1,7 +1,9 @@
 package mods.natura.worldgen;
 
 import java.util.Random;
+
 import mods.natura.common.NContent;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -10,6 +12,7 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class NetherBerryBushGen extends WorldGenerator {
+
     private Block blockGen;
     private int metadata;
 
@@ -37,8 +40,7 @@ public class NetherBerryBushGen extends WorldGenerator {
     int findGround(World world, int x, int y, int z) {
         int returnHeight = -1;
         Block blockID = world.getBlock(x, y - 1, z);
-        if (!world.isAirBlock(x, y - 1, z)
-                && !world.getBlock(x, y, z).isOpaqueCube()
+        if (!world.isAirBlock(x, y - 1, z) && !world.getBlock(x, y, z).isOpaqueCube()
                 && (blockID == Blocks.netherrack
                         || blockID.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (IPlantable) blockGen))) {
             // System.out.println("Returning "+y);

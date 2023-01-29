@@ -1,11 +1,11 @@
 package mods.natura.blocks.trees;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import mods.natura.common.NContent;
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -16,7 +16,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class NLeavesDark extends NLeaves {
+
     public NLeavesDark() {
         super();
         this.setCreativeTab(NaturaTab.tab);
@@ -25,7 +29,7 @@ public class NLeavesDark extends NLeaves {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockIcons(IIconRegister iconRegister) {
-        String[] textureNames = new String[] {"darkwood", "darkwood_flowering", "darkwood_fruit", "fusewood"};
+        String[] textureNames = new String[] { "darkwood", "darkwood_flowering", "darkwood_fruit", "fusewood" };
         this.fastIcons = new IIcon[textureNames.length];
         this.fancyIcons = new IIcon[textureNames.length];
 

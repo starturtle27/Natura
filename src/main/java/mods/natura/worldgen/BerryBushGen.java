@@ -1,8 +1,10 @@
 package mods.natura.worldgen;
 
 import java.util.Random;
+
 import mods.natura.common.NContent;
 import mods.natura.common.PHNatura;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;

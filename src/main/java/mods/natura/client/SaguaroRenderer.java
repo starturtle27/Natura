@@ -1,8 +1,7 @@
 package mods.natura.client;
 
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import mods.natura.blocks.trees.SaguaroBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -10,6 +9,9 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
+
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class SaguaroRenderer implements ISimpleBlockRenderingHandler {
 
@@ -21,8 +23,8 @@ public class SaguaroRenderer implements ISimpleBlockRenderingHandler {
     }
 
     @Override
-    public boolean renderWorldBlock(
-            IBlockAccess world, int x, int y, int z, Block block, int modelID, RenderBlocks renderer) {
+    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID,
+            RenderBlocks renderer) {
         if (modelID == model) {
             int meta = world.getBlockMetadata(x, y, z);
             switch (meta) {
@@ -50,8 +52,8 @@ public class SaguaroRenderer implements ISimpleBlockRenderingHandler {
 
     /* Render methods, used for saguaro */
 
-    boolean renderCactus(
-            RenderBlocks renderblocks, IBlockAccess iblockaccess, int x, int y, int z, SaguaroBlock cactus) {
+    boolean renderCactus(RenderBlocks renderblocks, IBlockAccess iblockaccess, int x, int y, int z,
+            SaguaroBlock cactus) {
         float offset = 0.125F;
 
         float botX = offset;
@@ -149,9 +151,9 @@ public class SaguaroRenderer implements ISimpleBlockRenderingHandler {
             case 3:
                 d8 = 18.0D - offsetX;
                 d9 = 8.0D - offsetX / 2;
-                /*case 4:
-                d8 = 11.0D - (double)offsetX;
-                d9 = 8.0D - (double)(offsetX / 2);*/
+                /*
+                 * case 4: d8 = 11.0D - (double)offsetX; d9 = 8.0D - (double)(offsetX / 2);
+                 */
         }
 
         double d10 = x + d8 / 16.0D;
@@ -233,31 +235,17 @@ public class SaguaroRenderer implements ISimpleBlockRenderingHandler {
         d14 = z + d9 / 16.0D;
         d15 = z + (d9 + 4.0D) / 16.0D;
 
-        /*if (i1 != 2 && i1 != 0)
-        {
-            if (i1 == 1 || i1 == 3)
-            {
-                tessellator.addVertexWithUV(d11, d12, d14, d4, d7);
-                tessellator.addVertexWithUV(d10, d12, d14, d5, d7);
-                tessellator.addVertexWithUV(d10, d13, d14, d5, d6);
-                tessellator.addVertexWithUV(d11, d13, d14, d4, d6);
-                tessellator.addVertexWithUV(d10, d12, d14, d5, d7);
-                tessellator.addVertexWithUV(d11, d12, d14, d4, d7);
-                tessellator.addVertexWithUV(d11, d13, d14, d4, d6);
-                tessellator.addVertexWithUV(d10, d13, d14, d5, d6);
-            }
-        }
-        else
-        {
-            tessellator.addVertexWithUV(d10, d12, d14, d5, d7);
-            tessellator.addVertexWithUV(d10, d12, d15, d4, d7);
-            tessellator.addVertexWithUV(d10, d13, d15, d4, d6);
-            tessellator.addVertexWithUV(d10, d13, d14, d5, d6);
-            tessellator.addVertexWithUV(d10, d12, d15, d4, d7);
-            tessellator.addVertexWithUV(d10, d12, d14, d5, d7);
-            tessellator.addVertexWithUV(d10, d13, d14, d5, d6);
-            tessellator.addVertexWithUV(d10, d13, d15, d4, d6);
-        }*/
+        /*
+         * if (i1 != 2 && i1 != 0) { if (i1 == 1 || i1 == 3) { tessellator.addVertexWithUV(d11, d12, d14, d4, d7);
+         * tessellator.addVertexWithUV(d10, d12, d14, d5, d7); tessellator.addVertexWithUV(d10, d13, d14, d5, d6);
+         * tessellator.addVertexWithUV(d11, d13, d14, d4, d6); tessellator.addVertexWithUV(d10, d12, d14, d5, d7);
+         * tessellator.addVertexWithUV(d11, d12, d14, d4, d7); tessellator.addVertexWithUV(d11, d13, d14, d4, d6);
+         * tessellator.addVertexWithUV(d10, d13, d14, d5, d6); } } else { tessellator.addVertexWithUV(d10, d12, d14, d5,
+         * d7); tessellator.addVertexWithUV(d10, d12, d15, d4, d7); tessellator.addVertexWithUV(d10, d13, d15, d4, d6);
+         * tessellator.addVertexWithUV(d10, d13, d14, d5, d6); tessellator.addVertexWithUV(d10, d12, d15, d4, d7);
+         * tessellator.addVertexWithUV(d10, d12, d14, d5, d7); tessellator.addVertexWithUV(d10, d13, d14, d5, d6);
+         * tessellator.addVertexWithUV(d10, d13, d15, d4, d6); }
+         */
 
         return true;
     }

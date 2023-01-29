@@ -1,11 +1,13 @@
 package mods.natura.worldgen;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class FlowerGen extends WorldGenerator {
+
     /** The ID of the plant block used in this plant generator. */
     public final Block flower;
 
@@ -30,8 +32,7 @@ public class FlowerGen extends WorldGenerator {
             int posY = y + random.nextInt(4) - random.nextInt(4);
             int posZ = z + random.nextInt(8) - random.nextInt(8);
 
-            if (posY < 127
-                    && world.isAirBlock(posX, posY, posZ)
+            if (posY < 127 && world.isAirBlock(posX, posY, posZ)
                     && !world.provider.hasNoSky
                     && flower.canBlockStay(world, posX, posY, posZ)) {
                 world.setBlock(posX, posY, posZ, flower, metadata, 2);

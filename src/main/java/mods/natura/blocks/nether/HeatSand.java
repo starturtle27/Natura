@@ -1,8 +1,7 @@
 package mods.natura.blocks.nether;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -15,7 +14,11 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class HeatSand extends BlockFalling {
+
     IIcon[] icons;
 
     public HeatSand() {
@@ -46,7 +49,8 @@ public class HeatSand extends BlockFalling {
         } else if (entity instanceof EntityLiving && !entity.isImmuneToFire()) {
             entity.attackEntityFrom(DamageSource.inFire, 1);
         }
-        /*entity.motionX *= 0.4D;
-        entity.motionZ *= 0.4D;*/
+        /*
+         * entity.motionX *= 0.4D; entity.motionZ *= 0.4D;
+         */
     }
 }

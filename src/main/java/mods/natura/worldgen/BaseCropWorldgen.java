@@ -1,17 +1,20 @@
 package mods.natura.worldgen;
 
-import cpw.mods.fml.common.IWorldGenerator;
 import java.util.Random;
+
 import mods.natura.Natura;
 import mods.natura.common.NContent;
 import mods.natura.common.PHNatura;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 
-/* Adds crops to the overworld
- * Current crops: Barley, Berry bushes
+import cpw.mods.fml.common.IWorldGenerator;
+
+/*
+ * Adds crops to the overworld Current crops: Barley, Berry bushes
  */
 
 public class BaseCropWorldgen implements IWorldGenerator {
@@ -33,12 +36,7 @@ public class BaseCropWorldgen implements IWorldGenerator {
     }
 
     @Override
-    public void generate(
-            Random random,
-            int chunkX,
-            int chunkZ,
-            World world,
-            IChunkProvider chunkGenerator,
+    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
             IChunkProvider chunkProvider) {
         int dimSettings = Natura.getDimensionWorldgenOverrides(world.provider.dimensionId);
         if ((dimSettings & Natura.DIM_WORLDGEN_CROP_BIT) == 0) {
@@ -69,8 +67,7 @@ public class BaseCropWorldgen implements IWorldGenerator {
         }
 
         // Berry bushes
-        if (PHNatura.generateRaspberries
-                && random.nextInt(PHNatura.raspSpawnRarity) == 0
+        if (PHNatura.generateRaspberries && random.nextInt(PHNatura.raspSpawnRarity) == 0
                 && goodClimate(biome, 0.6f, 2.0f, 0.2f, 0.93f)) {
             xCh = xChunk + random.nextInt(16);
             yCh = random.nextInt(PHNatura.raspSpawnRange) + PHNatura.seaLevel;
@@ -78,8 +75,7 @@ public class BaseCropWorldgen implements IWorldGenerator {
             raspgen.generate(world, random, xCh, yCh, zCh);
         }
 
-        if (PHNatura.generateBlueberries
-                && random.nextInt(PHNatura.blueSpawnRarity) == 0
+        if (PHNatura.generateBlueberries && random.nextInt(PHNatura.blueSpawnRarity) == 0
                 && goodClimate(biome, 0.3f, 0.81f, 0.3f, 0.8f)) {
             xCh = xChunk + random.nextInt(16);
             yCh = random.nextInt(PHNatura.blueSpawnRange) + PHNatura.seaLevel;
@@ -87,8 +83,7 @@ public class BaseCropWorldgen implements IWorldGenerator {
             bluegen.generate(world, random, xCh, yCh, zCh);
         }
 
-        if (PHNatura.generateBlackberries
-                && random.nextInt(PHNatura.blackSpawnRarity) == 0
+        if (PHNatura.generateBlackberries && random.nextInt(PHNatura.blackSpawnRarity) == 0
                 && goodClimate(biome, 0.5f, 5.0f, 0.6f, 3.0f)) {
             xCh = xChunk + random.nextInt(16);
             yCh = random.nextInt(PHNatura.blackSpawnRange) + PHNatura.seaLevel;
@@ -96,8 +91,7 @@ public class BaseCropWorldgen implements IWorldGenerator {
             blackgen.generate(world, random, xCh, yCh, zCh);
         }
 
-        if (PHNatura.generateBlackberries
-                && random.nextInt(PHNatura.blackSpawnRarity / 3) == 0
+        if (PHNatura.generateBlackberries && random.nextInt(PHNatura.blackSpawnRarity / 3) == 0
                 && biome == BiomeGenBase.swampland) {
             xCh = xChunk + random.nextInt(16);
             yCh = random.nextInt(PHNatura.blackSpawnRange) + PHNatura.seaLevel;
@@ -105,8 +99,7 @@ public class BaseCropWorldgen implements IWorldGenerator {
             blackgen.generate(world, random, xCh, yCh, zCh);
         }
 
-        if (PHNatura.generateMaloberries
-                && random.nextInt(PHNatura.geoSpawnRarity) == 0
+        if (PHNatura.generateMaloberries && random.nextInt(PHNatura.geoSpawnRarity) == 0
                 && goodClimate(biome, 0.0f, 0.3f, 0.0f, 5.0f)) {
             xCh = xChunk + random.nextInt(16);
             yCh = random.nextInt(PHNatura.geoSpawnRange) + PHNatura.seaLevel;

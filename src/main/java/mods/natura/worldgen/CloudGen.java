@@ -1,12 +1,14 @@
 package mods.natura.worldgen;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class CloudGen extends WorldGenerator {
+
     private Block cloudBlock;
     private int cloudMeta;
     private int numberOfBlocks;

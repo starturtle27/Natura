@@ -1,13 +1,13 @@
 package mods.natura.blocks.trees;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 import mods.natura.Natura;
 import mods.natura.common.NContent;
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -19,7 +19,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class NLeavesNocolor extends NLeaves {
+
     public NLeavesNocolor() {
         super();
         this.setCreativeTab(NaturaTab.tab);
@@ -82,7 +86,7 @@ public class NLeavesNocolor extends NLeaves {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockIcons(IIconRegister iconRegister) {
-        String[] textureNames = new String[] {"sakura", "ghostwood", "bloodwood", "willow"};
+        String[] textureNames = new String[] { "sakura", "ghostwood", "bloodwood", "willow" };
         this.fastIcons = new IIcon[textureNames.length];
         this.fancyIcons = new IIcon[textureNames.length];
 

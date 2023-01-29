@@ -1,9 +1,11 @@
 package mods.natura.plugins.fmp;
 
+import mods.natura.common.NContent;
+
+import net.minecraft.block.Block;
+
 import codechicken.microblock.BlockMicroMaterial;
 import codechicken.microblock.MicroMaterialRegistry;
-import mods.natura.common.NContent;
-import net.minecraft.block.Block;
 
 public class ForgeMultiPart {
 
@@ -36,8 +38,8 @@ public class ForgeMultiPart {
     }
 
     // For blocks with metadata values and special MicroMaterial only
-    public static void registerBlock(
-            Block block, int metastart, int metaend, MicroMaterialRegistry.IMicroMaterial material) {
+    public static void registerBlock(Block block, int metastart, int metaend,
+            MicroMaterialRegistry.IMicroMaterial material) {
         for (int meta = metastart; meta <= metaend; meta++) {
             String identifier = new String(block.getUnlocalizedName());
             MicroMaterialRegistry.registerMaterial(material, identifier + meta);

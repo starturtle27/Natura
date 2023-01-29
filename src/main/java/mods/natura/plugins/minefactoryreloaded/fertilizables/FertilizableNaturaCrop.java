@@ -1,12 +1,15 @@
 package mods.natura.plugins.minefactoryreloaded.fertilizables;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
+
 import powercrystals.minefactoryreloaded.api.FertilizerType;
 import powercrystals.minefactoryreloaded.api.IFactoryFertilizable;
 
 public class FertilizableNaturaCrop implements IFactoryFertilizable {
+
     private Block _blockId;
 
     public FertilizableNaturaCrop(Block blockId) {
@@ -20,8 +23,7 @@ public class FertilizableNaturaCrop implements IFactoryFertilizable {
 
     @Override
     public boolean canFertilize(World world, int x, int y, int z, FertilizerType fertilizerType) {
-        return fertilizerType == FertilizerType.GrowPlant
-                && world.getBlockMetadata(x, y, z) != 3
+        return fertilizerType == FertilizerType.GrowPlant && world.getBlockMetadata(x, y, z) != 3
                 && world.getBlockMetadata(x, y, z) != 8;
     }
 

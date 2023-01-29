@@ -1,9 +1,9 @@
 package mods.natura.blocks.trees;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -13,8 +13,12 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class SimpleLog extends Planks {
-    public String[] textureNames = new String[] {"redwood_bark", "redwood_heart", "redwood_root"};
+
+    public String[] textureNames = new String[] { "redwood_bark", "redwood_heart", "redwood_root" };
 
     public SimpleLog() {
         super();

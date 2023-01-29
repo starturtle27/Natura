@@ -1,9 +1,9 @@
 package mods.natura.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,8 +17,12 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class NaturaSeeds extends ItemSeeds {
-    public String[] textureNames = new String[] {"barley", "cotton"};
+
+    public String[] textureNames = new String[] { "barley", "cotton" };
     public IIcon[] icons;
 
     public Block blockType;
@@ -52,35 +56,25 @@ public class NaturaSeeds extends ItemSeeds {
     }
 
     @Override
-    public boolean onItemUse(
-            ItemStack stack,
-            EntityPlayer player,
-            World world,
-            int xPos,
-            int yPos,
-            int zPos,
-            int side,
-            float xClick,
-            float yClick,
-            float zClick) {
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int xPos, int yPos, int zPos, int side,
+            float xClick, float yClick, float zClick) {
         if (side != 1) {
             return false;
         } else if (player.canPlayerEdit(xPos, yPos, zPos, side, stack)
                 && player.canPlayerEdit(xPos, yPos + 1, zPos, side, stack)) {
-            Block soil = world.getBlock(xPos, yPos, zPos);
+                    Block soil = world.getBlock(xPos, yPos, zPos);
 
-            if (soil != null
-                    && soil.canSustainPlant(world, xPos, yPos, zPos, ForgeDirection.UP, this)
-                    && world.isAirBlock(xPos, yPos + 1, zPos)) {
-                world.setBlock(xPos, yPos + 1, zPos, this.blockType, stack.getItemDamage() * 4, 3);
-                --stack.stackSize;
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+                    if (soil != null && soil.canSustainPlant(world, xPos, yPos, zPos, ForgeDirection.UP, this)
+                            && world.isAirBlock(xPos, yPos + 1, zPos)) {
+                        world.setBlock(xPos, yPos + 1, zPos, this.blockType, stack.getItemDamage() * 4, 3);
+                        --stack.stackSize;
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
     }
 
     @Override

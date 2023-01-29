@@ -1,9 +1,9 @@
 package mods.natura.blocks.tech;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
+
 import mods.natura.Natura;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -14,21 +14,31 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class RespawnObelisk extends Block {
+
     public RespawnObelisk(Material material) {
         super(material);
     }
 
     @Override
-    public boolean onBlockActivated(
-            World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
+            float hitY, float hitZ) {
         if (player.isSneaking()) return false;
         player.setSpawnChunk(new ChunkCoordinates(x, y, z), false, world.provider.dimensionId);
 
         if (!world.isRemote) player.addChatMessage(player.func_145748_c_().appendText("Spawn point set!"));
         world.setBlockMetadataWithNotify(x, y, z, 1, 3);
         world.playSound(
-                x + 0.5D, y + 0.5D, z + 0.5D, "portal.portal", 1.0F, Natura.random.nextFloat() * 0.4F + 0.8F, false);
+                x + 0.5D,
+                y + 0.5D,
+                z + 0.5D,
+                "portal.portal",
+                1.0F,
+                Natura.random.nextFloat() * 0.4F + 0.8F,
+                false);
 
         return true;
     }

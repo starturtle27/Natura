@@ -1,23 +1,27 @@
 package mods.natura.plugins.te4;
 
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.registry.GameRegistry;
 import java.util.Arrays;
 import java.util.List;
+
 import mantle.pulsar.pulse.Handler;
 import mantle.pulsar.pulse.Pulse;
 import mods.natura.blocks.trees.Planks;
 import mods.natura.common.NContent;
 import mods.natura.common.PHNatura;
 import mods.natura.items.blocks.NDoorItem;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.registry.GameRegistry;
+
 @Pulse(id = "Natura TE4 Compatibility", modsRequired = TE4Pulse.modId)
 public class TE4Pulse {
+
     private List<String> list;
 
     public static final String modId = "ThermalExpansion";
@@ -26,8 +30,8 @@ public class TE4Pulse {
         return list.indexOf(name);
     }
 
-    public void createSawmillRecipe(
-            int energy, ItemStack input, ItemStack primaryOutput, ItemStack secondaryOutput, int chance) {
+    public void createSawmillRecipe(int energy, ItemStack input, ItemStack primaryOutput, ItemStack secondaryOutput,
+            int chance) {
         NBTTagCompound toSend = new NBTTagCompound();
         toSend.setInteger("energy", energy);
         toSend.setTag("input", new NBTTagCompound());
@@ -87,7 +91,9 @@ public class TE4Pulse {
                 int plankMeta = findPlankForName(doorNames[i]);
                 if (plankMeta >= 0) {
                     createSawmillRecipe(
-                            2400, new ItemStack(NContent.doorItem, 1, i), new ItemStack(NContent.planks, 6, plankMeta));
+                            2400,
+                            new ItemStack(NContent.doorItem, 1, i),
+                            new ItemStack(NContent.planks, 6, plankMeta));
                 }
             }
         }

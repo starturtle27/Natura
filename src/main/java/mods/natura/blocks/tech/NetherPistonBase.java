@@ -1,9 +1,9 @@
 package mods.natura.blocks.tech;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mods.natura.common.NContent;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.BlockPistonMoving;
@@ -23,8 +23,12 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 // TODO 1.7 make sure this class still works (extending behavior)
 public class NetherPistonBase extends BlockPistonBase {
+
     @SideOnly(Side.CLIENT)
     private IIcon iIcon;
 
@@ -47,19 +51,15 @@ public class NetherPistonBase extends BlockPistonBase {
         return this.tIcon;
     }
 
-    /*public int getRenderType ()
-    {
-        return PistonRender.model;
-    }*/
+    /*
+     * public int getRenderType () { return PistonRender.model; }
+     */
 
     @SideOnly(Side.CLIENT)
     public static IIcon getBaseIcon(String par0Str) {
-        return par0Str == "piston_side"
-                ? NContent.piston.blockIcon
-                : (par0Str == "piston_top_normal"
-                        ? NContent.piston.tIcon
-                        : (par0Str == "piston_top_sticky"
-                                ? NContent.piston.tIcon
+        return par0Str == "piston_side" ? NContent.piston.blockIcon
+                : (par0Str == "piston_top_normal" ? NContent.piston.tIcon
+                        : (par0Str == "piston_top_sticky" ? NContent.piston.tIcon
                                 : (par0Str == "piston_inner" ? NContent.piston.iIcon : null)));
     }
 
@@ -67,8 +67,8 @@ public class NetherPistonBase extends BlockPistonBase {
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister par1IconRegister) {
         this.blockIcon = par1IconRegister.registerIcon("natura:piston_side");
-        this.tIcon =
-                par1IconRegister.registerIcon(this.sticky ? "natura:piston_top_sticky" : "natura:piston_top_normal");
+        this.tIcon = par1IconRegister
+                .registerIcon(this.sticky ? "natura:piston_top_sticky" : "natura:piston_top_normal");
         this.iIcon = par1IconRegister.registerIcon("natura:piston_inner");
         this.bIcon = par1IconRegister.registerIcon("natura:piston_bottom");
     }
@@ -77,23 +77,19 @@ public class NetherPistonBase extends BlockPistonBase {
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta) {
         int k = getOrientation(meta);
-        return k > 5
-                ? this.tIcon
+        return k > 5 ? this.tIcon
                 : (side == k
-                        ? (!isExtended(meta)
-                                        && this.minX <= 0.0D
-                                        && this.minY <= 0.0D
-                                        && this.minZ <= 0.0D
-                                        && this.maxX >= 1.0D
-                                        && this.maxY >= 1.0D
-                                        && this.maxZ >= 1.0D
-                                ? this.tIcon
-                                : this.iIcon)
+                        ? (!isExtended(meta) && this.minX <= 0.0D
+                                && this.minY <= 0.0D
+                                && this.minZ <= 0.0D
+                                && this.maxX >= 1.0D
+                                && this.maxY >= 1.0D
+                                && this.maxZ >= 1.0D ? this.tIcon : this.iIcon)
                         : (side == Facing.oppositeSide[k] ? this.bIcon : this.blockIcon));
     }
 
     /**
-     * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
+     * Is this block (a) opaque and (b) a full 1m cube? This determines whether or not to render the shared face of two
      * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
      */
     @Override
@@ -105,16 +101,8 @@ public class NetherPistonBase extends BlockPistonBase {
      * Called upon block activation (right click on the block.)
      */
     @Override
-    public boolean onBlockActivated(
-            World par1World,
-            int par2,
-            int par3,
-            int par4,
-            EntityPlayer par5EntityPlayer,
-            int par6,
-            float par7,
-            float par8,
-            float par9) {
+    public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer,
+            int par6, float par7, float par8, float par9) {
         return false;
     }
 
@@ -122,12 +110,7 @@ public class NetherPistonBase extends BlockPistonBase {
      * Called when the block is placed in the world.
      */
     @Override
-    public void onBlockPlacedBy(
-            World par1World,
-            int par2,
-            int par3,
-            int par4,
-            EntityLivingBase par5EntityLivingBase,
+    public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase,
             ItemStack par6ItemStack) {
         int l = determineOrientation(par1World, par2, par3, par4, par5EntityLivingBase);
         par1World.setBlockMetadataWithNotify(par2, par3, par4, l, 2);
@@ -182,49 +165,45 @@ public class NetherPistonBase extends BlockPistonBase {
      * checks the block to that side to see if it is indirectly powered.
      */
     private boolean isIndirectlyPowered(World par1World, int par2, int par3, int par4, int par5) {
-        return par5 != 0 && par1World.getIndirectPowerOutput(par2, par3 - 1, par4, 0)
-                ? true
-                : (par5 != 1 && par1World.getIndirectPowerOutput(par2, par3 + 1, par4, 1)
-                        ? true
-                        : (par5 != 2 && par1World.getIndirectPowerOutput(par2, par3, par4 - 1, 2)
-                                ? true
-                                : (par5 != 3 && par1World.getIndirectPowerOutput(par2, par3, par4 + 1, 3)
-                                        ? true
-                                        : (par5 != 5 && par1World.getIndirectPowerOutput(par2 + 1, par3, par4, 5)
-                                                ? true
+        return par5 != 0 && par1World.getIndirectPowerOutput(par2, par3 - 1, par4, 0) ? true
+                : (par5 != 1 && par1World.getIndirectPowerOutput(par2, par3 + 1, par4, 1) ? true
+                        : (par5 != 2 && par1World.getIndirectPowerOutput(par2, par3, par4 - 1, 2) ? true
+                                : (par5 != 3 && par1World.getIndirectPowerOutput(par2, par3, par4 + 1, 3) ? true
+                                        : (par5 != 5 && par1World.getIndirectPowerOutput(par2 + 1, par3, par4, 5) ? true
                                                 : (par5 != 4
-                                                                && par1World.getIndirectPowerOutput(
-                                                                        par2 - 1, par3, par4, 4)
-                                                        ? true
-                                                        : (par1World.getIndirectPowerOutput(par2, par3, par4, 0)
+                                                        && par1World.getIndirectPowerOutput(par2 - 1, par3, par4, 4)
                                                                 ? true
-                                                                : (par1World.getIndirectPowerOutput(
-                                                                                par2, par3 + 2, par4, 1)
+                                                                : (par1World.getIndirectPowerOutput(par2, par3, par4, 0)
                                                                         ? true
                                                                         : (par1World.getIndirectPowerOutput(
-                                                                                        par2, par3 + 1, par4 - 1, 2)
-                                                                                ? true
-                                                                                : (par1World.getIndirectPowerOutput(
-                                                                                                par2, par3 + 1,
-                                                                                                par4 + 1, 3)
-                                                                                        ? true
+                                                                                par2,
+                                                                                par3 + 2,
+                                                                                par4,
+                                                                                1) ? true
                                                                                         : (par1World
-                                                                                                        .getIndirectPowerOutput(
-                                                                                                                par2
-                                                                                                                        - 1,
-                                                                                                                par3
-                                                                                                                        + 1,
-                                                                                                                par4,
-                                                                                                                4)
-                                                                                                ? true
-                                                                                                : par1World
-                                                                                                        .getIndirectPowerOutput(
-                                                                                                                par2
-                                                                                                                        + 1,
-                                                                                                                par3
-                                                                                                                        + 1,
-                                                                                                                par4,
-                                                                                                                5)))))))))));
+                                                                                                .getIndirectPowerOutput(
+                                                                                                        par2,
+                                                                                                        par3 + 1,
+                                                                                                        par4 - 1,
+                                                                                                        2) ? true
+                                                                                                                : (par1World
+                                                                                                                        .getIndirectPowerOutput(
+                                                                                                                                par2,
+                                                                                                                                par3 + 1,
+                                                                                                                                par4 + 1,
+                                                                                                                                3) ? true
+                                                                                                                                        : (par1World
+                                                                                                                                                .getIndirectPowerOutput(
+                                                                                                                                                        par2 - 1,
+                                                                                                                                                        par3 + 1,
+                                                                                                                                                        par4,
+                                                                                                                                                        4) ? true
+                                                                                                                                                                : par1World
+                                                                                                                                                                        .getIndirectPowerOutput(
+                                                                                                                                                                                par2 + 1,
+                                                                                                                                                                                par3 + 1,
+                                                                                                                                                                                par4,
+                                                                                                                                                                                5)))))))))));
     }
 
     /**
@@ -295,8 +274,7 @@ public class NetherPistonBase extends BlockPistonBase {
                     }
                 }
 
-                if (!flag1
-                        && i2 != null
+                if (!flag1 && i2 != null
                         && canPushBlock(i2, par1World, j1, k1, l1, false)
                         && (i2.getMobilityFlag() == 0 || i2 == NContent.piston || i2 == NContent.pistonSticky)) {
                     par2 += Facing.offsetsXForSide[par6];
@@ -304,7 +282,10 @@ public class NetherPistonBase extends BlockPistonBase {
                     par4 += Facing.offsetsZForSide[par6];
                     par1World.setBlock(par2, par3, par4, Blocks.piston, j2, 3);
                     par1World.setTileEntity(
-                            par2, par3, par4, BlockPistonMoving.getTileEntity(i2, j2, par6, false, false));
+                            par2,
+                            par3,
+                            par4,
+                            BlockPistonMoving.getTileEntity(i2, j2, par6, false, false));
                     par1World.setBlockToAir(j1, k1, l1);
                 } else if (!flag1) {
                     par1World.setBlockToAir(
@@ -378,14 +359,8 @@ public class NetherPistonBase extends BlockPistonBase {
      * mask.) Parameters: World, X, Y, Z, mask, list, colliding entity
      */
     @Override
-    public void addCollisionBoxesToList(
-            World par1World,
-            int par2,
-            int par3,
-            int par4,
-            AxisAlignedBB par5AxisAlignedBB,
-            List par6List,
-            Entity par7Entity) {
+    public void addCollisionBoxesToList(World par1World, int par2, int par3, int par4, AxisAlignedBB par5AxisAlignedBB,
+            List par6List, Entity par7Entity) {
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
         super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
     }
@@ -425,8 +400,8 @@ public class NetherPistonBase extends BlockPistonBase {
     /**
      * gets the way this piston should face for that entity that placed it.
      */
-    public static int determineOrientation(
-            World par0World, int par1, int par2, int par3, EntityLivingBase par4EntityLivingBase) {
+    public static int determineOrientation(World par0World, int par1, int par2, int par3,
+            EntityLivingBase par4EntityLivingBase) {
         if (MathHelper.abs((float) par4EntityLivingBase.posX - par1) < 2.0F
                 && MathHelper.abs((float) par4EntityLivingBase.posZ - par3) < 2.0F) {
             double d0 = par4EntityLivingBase.posY + 1.82D - par4EntityLivingBase.yOffset;
@@ -554,7 +529,13 @@ public class NetherPistonBase extends BlockPistonBase {
                     // With our change to how snowballs are dropped this needs to disallow to mimic vanilla behavior.
                     float chance = (i2 instanceof BlockSnow ? -1.0f : 1.0f);
                     i2.dropBlockAsItemWithChance(
-                            par1World, newX, newY, newZ, par1World.getBlockMetadata(newX, newY, newZ), chance, 0);
+                            par1World,
+                            newX,
+                            newY,
+                            newZ,
+                            par1World.getBlockMetadata(newX, newY, newZ),
+                            chance,
+                            0);
                     par1World.setBlockToAir(newX, newY, newZ);
                 }
             }
@@ -583,11 +564,18 @@ public class NetherPistonBase extends BlockPistonBase {
                             newY,
                             newZ,
                             BlockPistonMoving.getTileEntity(
-                                    NContent.pistonExtension, par5 | (this.sticky ? 8 : 0), par5, true, false));
+                                    NContent.pistonExtension,
+                                    par5 | (this.sticky ? 8 : 0),
+                                    par5,
+                                    true,
+                                    false));
                 } else {
                     par1World.setBlock(newX, newY, newZ, Blocks.piston, l3, 4);
                     par1World.setTileEntity(
-                            newX, newY, newZ, BlockPistonMoving.getTileEntity(k3, l3, par5, true, false));
+                            newX,
+                            newY,
+                            newZ,
+                            BlockPistonMoving.getTileEntity(k3, l3, par5, true, false));
                 }
 
                 aint[k2++] = k3;

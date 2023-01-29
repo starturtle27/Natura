@@ -1,13 +1,16 @@
 package mods.natura.worldgen;
 
 import java.util.Random;
+
 import mods.natura.common.NContent;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class EucalyptusTreeGenShort extends WorldGenerator {
+
     private int mdWood;
     private int mdLeaves;
 
@@ -33,8 +36,7 @@ public class EucalyptusTreeGenShort extends WorldGenerator {
                 break;
             }
             Block j1 = world.getBlock(x, k1, z);
-            if ((j1 == Blocks.grass || j1 == Blocks.dirt)
-                    && !world.getBlock(x, k1 + 1, z).func_149730_j()) {
+            if ((j1 == Blocks.grass || j1 == Blocks.dirt) && !world.getBlock(x, k1 + 1, z).func_149730_j()) {
                 l = k1 + 1;
                 break;
             }
@@ -57,8 +59,7 @@ public class EucalyptusTreeGenShort extends WorldGenerator {
             if (i1 >= (posY + 1 + height) - 2) {
                 byte0 = 2;
             }
-            label0:
-            for (int l1 = posX - byte0; l1 <= posX + byte0 && flag; l1++) {
+            label0: for (int l1 = posX - byte0; l1 <= posX + byte0 && flag; l1++) {
                 int j2 = posZ - byte0;
                 do {
                     if (j2 > posZ + byte0 || !flag) {
@@ -95,8 +96,7 @@ public class EucalyptusTreeGenShort extends WorldGenerator {
         }
         for (int k1 = 0; k1 < height; k1++) {
             Block block = world.getBlock(posX, posY + k1, posZ);
-            if (block == Blocks.air
-                    || block.isLeaves(world, posX, posX + k1, posZ)
+            if (block == Blocks.air || block.isLeaves(world, posX, posX + k1, posZ)
                     || block.canBeReplacedByLeaves(world, posX, posX + k1, posZ)
                     || block == NContent.floraSapling) {
                 this.setBlockAndNotifyAdequately(world, posX, posY + k1, posZ, NContent.tree, mdWood);

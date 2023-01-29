@@ -1,8 +1,10 @@
 package mods.natura.worldgen;
 
 import java.util.Random;
+
 import mods.natura.common.NContent;
 import mods.natura.common.PHNatura;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
@@ -10,6 +12,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WillowGen extends WorldGenerator {
+
     public final boolean seekHeight;
 
     public WillowGen(boolean notify) {
@@ -106,8 +109,7 @@ public class WillowGen extends WorldGenerator {
                     for (j2 = 0; j2 < l; ++j2) {
                         block = world.getBlock(x, y + j2, z);
 
-                        if (block == Blocks.air
-                                || block.isLeaves(world, x, y + j2, z)
+                        if (block == Blocks.air || block.isLeaves(world, x, y + j2, z)
                                 || block.canBeReplacedByLeaves(world, x, y + j2, z)
                                 || block == Blocks.water) {
                             this.setBlockAndNotifyAdequately(world, x, y + j2, z, NContent.willow, 0);

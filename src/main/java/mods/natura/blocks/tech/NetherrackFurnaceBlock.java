@@ -1,10 +1,10 @@
 package mods.natura.blocks.tech;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
+
 import mods.natura.Natura;
 import mods.natura.gui.NGuiHandler;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -21,12 +21,16 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 /**
  * Abstract for blocks with inventories.
  *
  * @author mDiyo
  */
 public class NetherrackFurnaceBlock extends BlockContainer {
+
     protected Random rand = new Random();
 
     public NetherrackFurnaceBlock() {
@@ -48,8 +52,8 @@ public class NetherrackFurnaceBlock extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(
-            World world, int x, int y, int z, EntityPlayer player, int side, float clickX, float clickY, float clickZ) {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float clickX,
+            float clickY, float clickZ) {
         if (player.isSneaking()) return false;
 
         Integer integer = getGui(world, x, y, z, player);
@@ -93,8 +97,7 @@ public class NetherrackFurnaceBlock extends BlockContainer {
                                 new ItemStack(stack.getItem(), itemSize, stack.getItemDamage()));
 
                         if (stack.hasTagCompound()) {
-                            entityitem.getEntityItem().setTagCompound((NBTTagCompound)
-                                    stack.getTagCompound().copy());
+                            entityitem.getEntityItem().setTagCompound((NBTTagCompound) stack.getTagCompound().copy());
                         }
 
                         float offset = 0.05F;
@@ -222,8 +225,9 @@ public class NetherrackFurnaceBlock extends BlockContainer {
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
         TileEntity logic = world.getTileEntity(x, y, z);
-        int direction =
-                (logic instanceof NetherrackFurnaceLogic) ? ((NetherrackFurnaceLogic) logic).getRenderDirection() : 0;
+        int direction = (logic instanceof NetherrackFurnaceLogic)
+                ? ((NetherrackFurnaceLogic) logic).getRenderDirection()
+                : 0;
         int meta = world.getBlockMetadata(x, y, z) % 8;
 
         if (meta == 0) {
@@ -243,7 +247,7 @@ public class NetherrackFurnaceBlock extends BlockContainer {
 
     @SideOnly(Side.CLIENT)
     public String[] getTextureNames() {
-        String[] textureNames = {"nfurnace_off", "nfurnace_on", "nfurnace_side", "nfurnace_top"};
+        String[] textureNames = { "nfurnace_off", "nfurnace_on", "nfurnace_side", "nfurnace_top" };
 
         return textureNames;
     }

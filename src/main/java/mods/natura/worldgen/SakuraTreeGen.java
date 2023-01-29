@@ -1,8 +1,10 @@
 package mods.natura.worldgen;
 
 import java.util.Random;
+
 import mods.natura.common.NContent;
 import mods.natura.common.PHNatura;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.init.Blocks;
@@ -12,10 +14,11 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class SakuraTreeGen extends WorldGenAbstractTree {
-    static final byte[] otherCoordPairs = new byte[] {(byte) 2, (byte) 0, (byte) 0, (byte) 1, (byte) 2, (byte) 1};
+
+    static final byte[] otherCoordPairs = new byte[] { (byte) 2, (byte) 0, (byte) 0, (byte) 1, (byte) 2, (byte) 1 };
     Random rand = new Random();
     World worldObj;
-    int[] basePos = new int[] {0, 0, 0};
+    int[] basePos = new int[] { 0, 0, 0 };
     int heightLimit;
     int height;
     double heightAttenuation = 0.618D;
@@ -76,13 +79,14 @@ public class SakuraTreeGen extends WorldGenAbstractTree {
                     double d2 = (double) this.rand.nextFloat() * 2.0D * Math.PI;
                     int k1 = MathHelper.floor_double(d1 * Math.sin(d2) + (double) this.basePos[0] + d0);
                     int l1 = MathHelper.floor_double(d1 * Math.cos(d2) + (double) this.basePos[2] + d0);
-                    int[] aint1 = new int[] {k1, j, l1};
-                    int[] aint2 = new int[] {k1, j + this.leafDistanceLimit, l1};
+                    int[] aint1 = new int[] { k1, j, l1 };
+                    int[] aint2 = new int[] { k1, j + this.leafDistanceLimit, l1 };
 
                     if (this.checkBlockLine(aint1, aint2) == -1) {
-                        int[] aint3 = new int[] {this.basePos[0], this.basePos[1], this.basePos[2]};
-                        double d3 = Math.sqrt(Math.pow((double) Math.abs(this.basePos[0] - aint1[0]), 2.0D)
-                                + Math.pow((double) Math.abs(this.basePos[2] - aint1[2]), 2.0D));
+                        int[] aint3 = new int[] { this.basePos[0], this.basePos[1], this.basePos[2] };
+                        double d3 = Math.sqrt(
+                                Math.pow((double) Math.abs(this.basePos[0] - aint1[0]), 2.0D)
+                                        + Math.pow((double) Math.abs(this.basePos[2] - aint1[2]), 2.0D));
                         double d4 = d3 * this.branchSlope;
 
                         if ((double) aint1[1] - d4 > (double) l) {
@@ -114,8 +118,8 @@ public class SakuraTreeGen extends WorldGenAbstractTree {
         int l = (int) ((double) p_150529_4_ + 0.618D);
         byte b1 = otherCoordPairs[p_150529_5_];
         byte b2 = otherCoordPairs[p_150529_5_ + 3];
-        int[] aint = new int[] {x, y, z};
-        int[] aint1 = new int[] {0, 0, 0};
+        int[] aint = new int[] { x, y, z };
+        int[] aint1 = new int[] { 0, 0, 0 };
         int i1 = -l;
         int j1 = -l;
 
@@ -137,7 +141,12 @@ public class SakuraTreeGen extends WorldGenAbstractTree {
                         ++j1;
                     } else {
                         this.setBlockAndNotifyAdequately(
-                                this.worldObj, aint1[0], aint1[1], aint1[2], block, metaLeaves);
+                                this.worldObj,
+                                aint1[0],
+                                aint1[1],
+                                aint1[2],
+                                block,
+                                metaLeaves);
                         ++j1;
                     }
                 }
@@ -182,7 +191,7 @@ public class SakuraTreeGen extends WorldGenAbstractTree {
     }
 
     void func_150530_a(int[] p_150530_1_, int[] p_150530_2_, Block block) {
-        int[] aint2 = new int[] {0, 0, 0};
+        int[] aint2 = new int[] { 0, 0, 0 };
         byte b0 = 0;
         byte b1;
 
@@ -207,7 +216,7 @@ public class SakuraTreeGen extends WorldGenAbstractTree {
 
             double d0 = (double) aint2[b2] / (double) aint2[b1];
             double d1 = (double) aint2[b3] / (double) aint2[b1];
-            int[] aint3 = new int[] {0, 0, 0};
+            int[] aint3 = new int[] { 0, 0, 0 };
             int i = 0;
 
             for (int j = aint2[b1] + b4; i != j; i += b4) {
@@ -252,8 +261,8 @@ public class SakuraTreeGen extends WorldGenAbstractTree {
         int j = this.basePos[1];
         int k = this.basePos[1] + this.height;
         int l = this.basePos[2];
-        int[] aint = new int[] {i, j, l};
-        int[] aint1 = new int[] {i, k, l};
+        int[] aint = new int[] { i, j, l };
+        int[] aint1 = new int[] { i, k, l };
         this.func_150530_a(aint, aint1, NContent.tree);
 
         if (this.trunkSize == 2) {
@@ -273,9 +282,9 @@ public class SakuraTreeGen extends WorldGenAbstractTree {
         int i = 0;
         int j = this.leafNodes.length;
 
-        for (int[] aint = new int[] {this.basePos[0], this.basePos[1], this.basePos[2]}; i < j; ++i) {
+        for (int[] aint = new int[] { this.basePos[0], this.basePos[1], this.basePos[2] }; i < j; ++i) {
             int[] aint1 = this.leafNodes[i];
-            int[] aint2 = new int[] {aint1[0], aint1[1], aint1[2]};
+            int[] aint2 = new int[] { aint1[0], aint1[1], aint1[2] };
             aint[1] = aint1[3];
             int k = aint[1] - this.basePos[1];
 
@@ -286,7 +295,7 @@ public class SakuraTreeGen extends WorldGenAbstractTree {
     }
 
     int checkBlockLine(int[] par1ArrayOfInteger, int[] par2ArrayOfInteger) {
-        int[] aint2 = new int[] {0, 0, 0};
+        int[] aint2 = new int[] { 0, 0, 0 };
         byte b0 = 0;
         byte b1;
 
@@ -313,7 +322,7 @@ public class SakuraTreeGen extends WorldGenAbstractTree {
 
             double d0 = (double) aint2[b2] / (double) aint2[b1];
             double d1 = (double) aint2[b3] / (double) aint2[b1];
-            int[] aint3 = new int[] {0, 0, 0};
+            int[] aint3 = new int[] { 0, 0, 0 };
             int i = 0;
             int j;
 
@@ -332,12 +341,17 @@ public class SakuraTreeGen extends WorldGenAbstractTree {
     }
 
     boolean validTreeLocation() {
-        int[] aint = new int[] {this.basePos[0], this.basePos[1], this.basePos[2]};
-        int[] aint1 = new int[] {this.basePos[0], this.basePos[1] + this.heightLimit - 1, this.basePos[2]};
+        int[] aint = new int[] { this.basePos[0], this.basePos[1], this.basePos[2] };
+        int[] aint1 = new int[] { this.basePos[0], this.basePos[1] + this.heightLimit - 1, this.basePos[2] };
         Block block = this.worldObj.getBlock(this.basePos[0], this.basePos[1] - 1, this.basePos[2]);
 
         boolean isSoil = block.canSustainPlant(
-                worldObj, basePos[0], basePos[1] - 1, basePos[2], ForgeDirection.UP, (BlockSapling) Blocks.sapling);
+                worldObj,
+                basePos[0],
+                basePos[1] - 1,
+                basePos[2],
+                ForgeDirection.UP,
+                (BlockSapling) Blocks.sapling);
         if (!isSoil) {
             return false;
         } else {

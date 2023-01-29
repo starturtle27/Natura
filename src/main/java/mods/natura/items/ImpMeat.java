@@ -1,9 +1,9 @@
 package mods.natura.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mods.natura.Natura;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -11,11 +11,17 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class ImpMeat extends NSpecialFood {
+
     public ImpMeat() {
-        super(new int[] {3, 8}, new float[] {0.2f, 0.6f}, new String[] {"raw", "cooked"}, new String[] {
-            "impmeat_raw", "impmeat_cooked"
-        });
+        super(
+                new int[] { 3, 8 },
+                new float[] { 0.2f, 0.6f },
+                new String[] { "raw", "cooked" },
+                new String[] { "impmeat_raw", "impmeat_cooked" });
     }
 
     @Override

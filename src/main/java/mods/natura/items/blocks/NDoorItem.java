@@ -1,10 +1,10 @@
 package mods.natura.items.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mods.natura.common.NContent;
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,10 +17,14 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class NDoorItem extends Item {
+
     public IIcon[] icons;
-    public String[] textureNames =
-            new String[] {"redwood", "eucalyptus", "hopseed", "sakura", "ghostwood", "bloodwood", "redwoodbark"};
+    public String[] textureNames = new String[] { "redwood", "eucalyptus", "hopseed", "sakura", "ghostwood",
+            "bloodwood", "redwoodbark" };
 
     public NDoorItem() {
         super();
@@ -29,30 +33,17 @@ public class NDoorItem extends Item {
         setHasSubtypes(true);
     }
 
-    public static final String unlocalizedNames[] = {
-        "redwood", "eucalyptus", "hopseed", "sakura", "ghost", "blood", "redwoodBark"
-    };
+    public static final String unlocalizedNames[] = { "redwood", "eucalyptus", "hopseed", "sakura", "ghost", "blood",
+            "redwoodBark" };
 
     @Override
     public String getUnlocalizedName(ItemStack itemstack) {
-        return (new StringBuilder())
-                .append(unlocalizedNames[itemstack.getItemDamage()])
-                .append("NDoor")
-                .toString();
+        return (new StringBuilder()).append(unlocalizedNames[itemstack.getItemDamage()]).append("NDoor").toString();
     }
 
     @Override
-    public boolean onItemUse(
-            ItemStack itemstack,
-            EntityPlayer player,
-            World world,
-            int x,
-            int y,
-            int z,
-            int side,
-            float clickX,
-            float clickY,
-            float clickZ) {
+    public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side,
+            float clickX, float clickY, float clickZ) {
         if (side != 1) {
             return false;
         }
@@ -122,10 +113,10 @@ public class NDoorItem extends Item {
                 + (world.getBlock(x - var6, y + 1, z - var7).isNormalCube() ? 1 : 0);
         int var9 = (world.getBlock(x + var6, y, z + var7).isNormalCube() ? 1 : 0)
                 + (world.getBlock(x + var6, y + 1, z + var7).isNormalCube() ? 1 : 0);
-        boolean var10 =
-                world.getBlock(x - var6, y, z - var7) == block || world.getBlock(x - var6, y + 1, z - var7) == block;
-        boolean var11 =
-                world.getBlock(x + var6, y, z + var7) == block || world.getBlock(x + var6, y + 1, z + var7) == block;
+        boolean var10 = world.getBlock(x - var6, y, z - var7) == block
+                || world.getBlock(x - var6, y + 1, z - var7) == block;
+        boolean var11 = world.getBlock(x + var6, y, z + var7) == block
+                || world.getBlock(x + var6, y + 1, z + var7) == block;
         boolean var12 = false;
 
         if (var10 && !var11) {

@@ -1,28 +1,31 @@
 package mods.natura.client.entity;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import mods.natura.entity.FusewoodArrow;
+
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 @SideOnly(Side.CLIENT)
 public class FusewoodArrowRender extends Render {
+
     private static final ResourceLocation field_110780_a = new ResourceLocation("textures/entity/arrow.png");
 
-    public void renderArrow(
-            FusewoodArrow par1EntityArrow, double par2, double par4, double par6, float par8, float par9) {
+    public void renderArrow(FusewoodArrow par1EntityArrow, double par2, double par4, double par6, float par8,
+            float par9) {
         this.bindEntityTexture(par1EntityArrow);
         GL11.glPushMatrix();
         GL11.glTranslatef((float) par2, (float) par4, (float) par6);
         GL11.glRotatef(
-                par1EntityArrow.prevRotationYaw
-                        + (par1EntityArrow.rotationYaw - par1EntityArrow.prevRotationYaw) * par9
+                par1EntityArrow.prevRotationYaw + (par1EntityArrow.rotationYaw - par1EntityArrow.prevRotationYaw) * par9
                         - 90.0F,
                 0.0F,
                 1.0F,

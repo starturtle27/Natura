@@ -1,11 +1,11 @@
 package mods.natura.blocks.trees;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import mods.natura.common.NContent;
 import mods.natura.common.NaturaTab;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -16,15 +16,18 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 /*
  * This class is for a single tree with a 2x2 base and inside textures
  */
 
 public class LogTwoxTwo extends Block {
+
     public IIcon[] icons;
-    public String[] textureNames = new String[] {
-        "bark", "heart_small", "upper_left", "upper_right", "side_left", "side_right", "lower_left", "lower_right"
-    };
+    public String[] textureNames = new String[] { "bark", "heart_small", "upper_left", "upper_right", "side_left",
+            "side_right", "lower_left", "lower_right" };
 
     public LogTwoxTwo(float hardness, Material material) {
         super(material);
@@ -105,7 +108,7 @@ public class LogTwoxTwo extends Block {
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta) {
         if (meta == 15) // Fullbark
-        return icons[0];
+            return icons[0];
 
         // TODO: Rotating single log for 12, 13, 14
 
@@ -321,16 +324,8 @@ public class LogTwoxTwo extends Block {
 
     /* Combined stair and log placement */
     @Override
-    public int onBlockPlaced(
-            World par1World,
-            int blockX,
-            int blockY,
-            int blockZ,
-            int side,
-            float clickX,
-            float clickY,
-            float clickZ,
-            int metadata) {
+    public int onBlockPlaced(World par1World, int blockX, int blockY, int blockZ, int side, float clickX, float clickY,
+            float clickZ, int metadata) {
         if (metadata >= 12) return metadata;
 
         int meta = metadata & 3;

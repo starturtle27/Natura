@@ -1,6 +1,7 @@
 package mods.natura.items.tools;
 
 import mods.natura.entity.FusewoodArrow;
+
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,8 +18,8 @@ public class FusewoodBow extends NaturaBow {
     }
 
     @Override
-    public void onPlayerStoppedUsing(
-            ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int par4) {
+    public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer,
+            int par4) {
         int j = this.getMaxItemUseDuration(par1ItemStack) - par4;
 
         ArrowLooseEvent event = new ArrowLooseEvent(par3EntityPlayer, par1ItemStack, j);
@@ -68,7 +69,10 @@ public class FusewoodBow extends NaturaBow {
 
             par1ItemStack.damageItem(1, par3EntityPlayer);
             par2World.playSoundAtEntity(
-                    par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                    par3EntityPlayer,
+                    "random.bow",
+                    1.0F,
+                    1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
             if (flag) {
                 entityarrow.canBePickedUp = 2;

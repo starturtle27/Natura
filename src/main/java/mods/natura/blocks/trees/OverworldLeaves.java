@@ -1,10 +1,10 @@
 package mods.natura.blocks.trees;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import mods.natura.common.NContent;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -13,7 +13,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class OverworldLeaves extends NLeaves {
+
     public OverworldLeaves() {
         super();
     }
@@ -21,7 +25,7 @@ public class OverworldLeaves extends NLeaves {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockIcons(IIconRegister iconRegister) {
-        String[] textureNames = new String[] {"maple", "silverbell", "purpleheart", "tiger"};
+        String[] textureNames = new String[] { "maple", "silverbell", "purpleheart", "tiger" };
         this.fastIcons = new IIcon[textureNames.length];
         this.fancyIcons = new IIcon[textureNames.length];
 
@@ -39,10 +43,9 @@ public class OverworldLeaves extends NLeaves {
             return 0xcc5718;
         }
 
-        /*if (meta == 2)
-        {
-            return 0x451941;
-        }*/
+        /*
+         * if (meta == 2) { return 0x451941; }
+         */
 
         if (meta == 2) {
             int i1 = 0;

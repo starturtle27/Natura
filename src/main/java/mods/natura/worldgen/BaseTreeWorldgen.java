@@ -1,15 +1,18 @@
 package mods.natura.worldgen;
 
-import cpw.mods.fml.common.IWorldGenerator;
 import java.util.Random;
+
 import mods.natura.Natura;
 import mods.natura.common.NContent;
 import mods.natura.common.PHNatura;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenerator;
+
+import cpw.mods.fml.common.IWorldGenerator;
 
 public class BaseTreeWorldgen implements IWorldGenerator {
 
@@ -57,12 +60,7 @@ public class BaseTreeWorldgen implements IWorldGenerator {
     public static boolean retrogen;
 
     @Override
-    public void generate(
-            Random random,
-            int chunkX,
-            int chunkZ,
-            World world,
-            IChunkProvider chunkGenerator,
+    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
             IChunkProvider chunkProvider) {
         int dimSettings = Natura.getDimensionWorldgenOverrides(world.provider.dimensionId);
         if ((dimSettings & Natura.DIM_WORLDGEN_TREE_BIT) == 0) {
@@ -76,8 +74,7 @@ public class BaseTreeWorldgen implements IWorldGenerator {
             return;
         }
 
-        if (biomeName == "Forest"
-                || biomeName == "AutumnWoods"
+        if (biomeName == "Forest" || biomeName == "AutumnWoods"
                 || biomeName == "BirchForest"
                 || biomeName == "PineForest"
                 || biomeName == "Rainforest"
@@ -112,8 +109,7 @@ public class BaseTreeWorldgen implements IWorldGenerator {
                 eucalyptusShort.generate(world, random, xSpawn, ySpawn, zSpawn);
             }
         }
-        if (biomeName == "Extreme Hills"
-                || biomeName == "Extreme Hills Edge"
+        if (biomeName == "Extreme Hills" || biomeName == "Extreme Hills Edge"
                 || biomeName == "ForestedHills"
                 || biomeName == "GreenHills") {
             if (PHNatura.generateBush && random.nextInt(PHNatura.bushSpawnRarity) == 0) {
@@ -193,8 +189,7 @@ public class BaseTreeWorldgen implements IWorldGenerator {
         }
 
         // Nether trees
-        if (biomeName.equals("Hell")
-                || biomeName.equals("Boneyard")
+        if (biomeName.equals("Hell") || biomeName.equals("Boneyard")
                 || biomeName.equals("Phantasmagoric Inferno")
                 || biomeName.equals("Corrupted Sands")) {
             if (PHNatura.generateBloodwood && random.nextInt(PHNatura.bloodSpawnRarity) == 0) {
@@ -258,8 +253,7 @@ public class BaseTreeWorldgen implements IWorldGenerator {
         do {
             height--;
             Block underID = world.getBlock(x, height, z);
-            if (underID == Blocks.netherrack
-                    || underID == Blocks.soul_sand
+            if (underID == Blocks.netherrack || underID == Blocks.soul_sand
                     || underID == NContent.taintedSoil
                     || height < 0) {
                 foundGround = true;

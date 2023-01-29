@@ -21,13 +21,16 @@ public class PlantableNaturaCrop extends PlantableStandard {
             if (!world.isAirBlock(x, y, z)) {
                 return false;
             }
-            return (groundId == Blocks.dirt
-                    || groundId == Blocks.grass
+            return (groundId == Blocks.dirt || groundId == Blocks.grass
                     || groundId == Blocks.farmland
-                    || (_plantedBlockId instanceof IPlantable
-                            && groundId != null
+                    || (_plantedBlockId instanceof IPlantable && groundId != null
                             && groundId.canSustainPlant(
-                                    world, x, y, z, ForgeDirection.UP, ((IPlantable) _plantedBlockId))));
+                                    world,
+                                    x,
+                                    y,
+                                    z,
+                                    ForgeDirection.UP,
+                                    ((IPlantable) _plantedBlockId))));
         }
         return false;
     }

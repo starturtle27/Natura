@@ -1,16 +1,20 @@
 package mods.natura.items.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mantle.blocks.abstracts.MultiItemBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class CloudItem extends MultiItemBlock {
-    public static final String blockType[] = {"normal", "dark", "ash", "sulfur"};
+
+    public static final String blockType[] = { "normal", "dark", "ash", "sulfur" };
 
     public CloudItem(Block i) {
         super(i, "block", "cloud", blockType);
@@ -18,11 +22,10 @@ public class CloudItem extends MultiItemBlock {
         setHasSubtypes(true);
     }
 
-    /* @Override
-    public String getUnlocalizedName (ItemStack itemstack)
-    {
-        return (new StringBuilder()).append(blockType[itemstack.getItemDamage()]).append("cloud").toString();
-    }*/
+    /*
+     * @Override public String getUnlocalizedName (ItemStack itemstack) { return (new
+     * StringBuilder()).append(blockType[itemstack.getItemDamage()]).append("cloud").toString(); }
+     */
 
     @Override
     @SideOnly(Side.CLIENT)

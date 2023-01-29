@@ -1,17 +1,19 @@
 package mods.natura.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class BowlEmpty extends Item {
+
     IIcon[] icons;
-    public static String[] textureNames =
-            new String[] {"", "", "ghostwood", "", "bloodwood", "", "", "", "", "", "", "darkwood", "fusewood"};
+    public static String[] textureNames = new String[] { "", "", "ghostwood", "", "bloodwood", "", "", "", "", "", "",
+            "darkwood", "fusewood" };
 
     public BowlEmpty() {
         super();
@@ -37,7 +39,9 @@ public class BowlEmpty extends Item {
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         return Items.bowl.getUnlocalizedName(stack);
-        /*int arr = MathHelper.clamp_int(stack.getItemDamage(), 0, textureNames.length);
-        return "item.bowl." +textureNames[arr];*/
+        /*
+         * int arr = MathHelper.clamp_int(stack.getItemDamage(), 0, textureNames.length); return "item.bowl."
+         * +textureNames[arr];
+         */
     }
 }

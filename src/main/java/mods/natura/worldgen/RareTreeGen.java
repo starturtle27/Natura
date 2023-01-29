@@ -1,8 +1,10 @@
 package mods.natura.worldgen;
 
 import java.util.Random;
+
 import mods.natura.common.NContent;
 import mods.natura.common.PHNatura;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -10,6 +12,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class RareTreeGen extends WorldGenerator {
+
     public final int minTreeHeight;
     public final int treeHeightRange;
     public final int metaWood;
@@ -35,8 +38,8 @@ public class RareTreeGen extends WorldGenerator {
 
         if (yPos >= 1 && yPos + height + 1 <= 256) {
             Block soil = world.getBlock(xPos, yPos - 1, zPos);
-            boolean isSoil =
-                    (soil.canSustainPlant(world, xPos, yPos - 1, zPos, ForgeDirection.UP, NContent.rareSapling));
+            boolean isSoil = (soil
+                    .canSustainPlant(world, xPos, yPos - 1, zPos, ForgeDirection.UP, NContent.rareSapling));
 
             if (isSoil) {
                 if (!checkClear(world, xPos, yPos, zPos, height)) return false;
@@ -111,11 +114,15 @@ public class RareTreeGen extends WorldGenerator {
         for (int localHeight = 0; localHeight < height; ++localHeight) {
             Block block = world.getBlock(xPos, yPos + localHeight, zPos);
 
-            if (block == Blocks.air
-                    || block.isLeaves(world, xPos, yPos + localHeight, zPos)
+            if (block == Blocks.air || block.isLeaves(world, xPos, yPos + localHeight, zPos)
                     || block.canBeReplacedByLeaves(world, xPos, yPos + localHeight, zPos)) {
                 this.setBlockAndNotifyAdequately(
-                        world, xPos, yPos + localHeight, zPos, NContent.rareTree, this.metaWood);
+                        world,
+                        xPos,
+                        yPos + localHeight,
+                        zPos,
+                        NContent.rareTree,
+                        this.metaWood);
             }
         }
     }

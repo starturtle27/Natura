@@ -1,13 +1,16 @@
 package mods.natura.worldgen;
 
 import java.util.Random;
+
 import mods.natura.common.NContent;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class BloodTreeLargeGen extends WorldGenerator {
+
     private int mdWood;
     private int mdLeaves;
 
@@ -28,10 +31,8 @@ public class BloodTreeLargeGen extends WorldGenerator {
         int height = y;
         do {
             Block blockAtHeight = world.getBlock(x, height, z);
-            if ((blockAtHeight == Blocks.netherrack
-                            || blockAtHeight == Blocks.soul_sand
-                            || blockAtHeight == NContent.taintedSoil)
-                    && !world.getBlock(x, height - 1, z).func_149730_j()) {
+            if ((blockAtHeight == Blocks.netherrack || blockAtHeight == Blocks.soul_sand
+                    || blockAtHeight == NContent.taintedSoil) && !world.getBlock(x, height - 1, z).func_149730_j()) {
                 ret = height - 1;
                 break;
             }
@@ -43,25 +44,13 @@ public class BloodTreeLargeGen extends WorldGenerator {
     public boolean generateRandomTree(World world, Random random, int x, int y, int z) {
         int treeHeight = random.nextInt(8) + 8;
 
-        /*boolean valid = true;
-        for (int yPos = 0; yPos < treeHeight+2; yPos++) {
-            int range = 1;
-
-            if (yPos == 0)
-                range = 0;
-            else if (yPos >= treeHeight -2)
-                range = 3;
-
-            for (int xPos = 0-range; xPos < 2+range; xPos++) {
-                for (int zPos = 0-range; zPos < 2+range; zPos++) {
-                    Block block = Block.blocksList[world.getBlockId(x + xPos, y - yPos, z + zPos)];
-                    if (block == null || block.isLeaves(world, x + xPos, y - yPos, z + zPos))
-                        valid = false;
-                }
-            }
-            if (!valid)
-                return false;
-        }*/
+        /*
+         * boolean valid = true; for (int yPos = 0; yPos < treeHeight+2; yPos++) { int range = 1; if (yPos == 0) range =
+         * 0; else if (yPos >= treeHeight -2) range = 3; for (int xPos = 0-range; xPos < 2+range; xPos++) { for (int
+         * zPos = 0-range; zPos < 2+range; zPos++) { Block block = Block.blocksList[world.getBlockId(x + xPos, y - yPos,
+         * z + zPos)]; if (block == null || block.isLeaves(world, x + xPos, y - yPos, z + zPos)) valid = false; } } if
+         * (!valid) return false; }
+         */
 
         for (int heightIter = 0; heightIter < treeHeight; heightIter++) {
             Block localID = world.getBlock(x, y - heightIter, z);

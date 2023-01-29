@@ -1,18 +1,19 @@
 package mods.natura.worldgen;
 
-import cpw.mods.fml.common.IWorldGenerator;
 import java.util.Random;
+
 import mods.natura.Natura;
 import mods.natura.common.NContent;
 import mods.natura.common.PHNatura;
+
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 
-/* Generates clouds in every dimension
- * Current clouds: Normal, Dark, Sulfur, Ash
- * Overworld: Normal
- * Nether: Sulfur, Ash
+import cpw.mods.fml.common.IWorldGenerator;
+
+/*
+ * Generates clouds in every dimension Current clouds: Normal, Dark, Sulfur, Ash Overworld: Normal Nether: Sulfur, Ash
  * End: Normal, Dark
  */
 
@@ -59,12 +60,7 @@ public class BaseCloudWorldgen implements IWorldGenerator {
     }
 
     @Override
-    public void generate(
-            Random random,
-            int chunkX,
-            int chunkZ,
-            World world,
-            IChunkProvider chunkGenerator,
+    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
             IChunkProvider chunkProvider) {
         int dimSettings = Natura.getDimensionWorldgenOverrides(world.provider.dimensionId);
         if ((dimSettings & Natura.DIM_WORLDGEN_CLOUD_BIT) == 0) {
@@ -75,8 +71,7 @@ public class BaseCloudWorldgen implements IWorldGenerator {
         int xChunk = chunkX * 16 + 8, zChunk = chunkZ * 16 + 8;
         BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(xChunk + 16, zChunk + 16);
 
-        if (PHNatura.generateOverworldClouds
-                && biome.rainfall > 0.15f
+        if (PHNatura.generateOverworldClouds && biome.rainfall > 0.15f
                 && random.nextInt(PHNatura.cloudSpawnRarity) == 0
                 && world.provider.dimensionId != 1
                 && shouldGenerateInDim(world.provider.dimensionId)) {
@@ -96,8 +91,7 @@ public class BaseCloudWorldgen implements IWorldGenerator {
         }
 
         // End Generation
-        if (PHNatura.generateDarkClouds
-                && biome == BiomeGenBase.sky
+        if (PHNatura.generateDarkClouds && biome == BiomeGenBase.sky
                 && world.provider.dimensionId == 1
                 && random.nextInt(4) == 0
                 && shouldGenerateDarkInDim(world.provider.dimensionId)) {
@@ -136,8 +130,7 @@ public class BaseCloudWorldgen implements IWorldGenerator {
                 }
             }
 
-            if (PHNatura.generateSulfurClouds
-                    && random.nextInt(PHNatura.sulfurSpawnRarity) == 0
+            if (PHNatura.generateSulfurClouds && random.nextInt(PHNatura.sulfurSpawnRarity) == 0
                     && shouldGenerateSulfurInDim(world.provider.dimensionId)) {
                 xCh = xChunk + random.nextInt(16);
                 yCh = random.nextInt(PHNatura.sulfurSpawnRange) + PHNatura.sulfurSpawnHeight;

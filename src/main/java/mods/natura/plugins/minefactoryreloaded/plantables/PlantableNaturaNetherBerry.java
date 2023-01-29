@@ -1,6 +1,7 @@
 package mods.natura.plugins.minefactoryreloaded.plantables;
 
 import mods.natura.common.NContent;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -20,8 +21,8 @@ public class PlantableNaturaNetherBerry extends PlantableStandard {
         Block groundBlock = world.getBlock(x, y - 1, z);
 
         return (groundBlock != null
-                && (groundBlock.canSustainPlant(
-                                world, x, y - 1, z, ForgeDirection.UP, (IPlantable) NContent.netherBerryBush)
+                && (groundBlock
+                        .canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (IPlantable) NContent.netherBerryBush)
                         || groundBlock == Blocks.netherrack)
                 && world.isAirBlock(x, y, z));
     }

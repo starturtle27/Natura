@@ -1,8 +1,10 @@
 package mods.natura.worldgen;
 
 import java.util.Random;
+
 import mods.natura.blocks.trees.NSaplingBlock;
 import mods.natura.common.NContent;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -10,6 +12,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class FusewoodGen extends WorldGenerator {
+
     /** The minimum height of a generated tree. */
     private final int minTreeHeight;
 
@@ -35,10 +38,10 @@ public class FusewoodGen extends WorldGenerator {
         do {
             height--;
             Block underID = world.getBlock(x, height, z);
-            if (underID == Blocks.netherrack
-                    || underID == Blocks.soul_sand
+            if (underID == Blocks.netherrack || underID == Blocks.soul_sand
                     || underID == NContent.taintedSoil
-                    || height < 0) foundGround = true;
+                    || height < 0)
+                foundGround = true;
         } while (!foundGround);
         return height + 1;
     }
@@ -72,8 +75,7 @@ public class FusewoodGen extends WorldGenerator {
                         if (i1 >= 0 && i1 < 256) {
                             Block block = world.getBlock(l1, i1, j1);
 
-                            if (block != Blocks.air
-                                    && !block.isLeaves(world, l1, i1, j1)
+                            if (block != Blocks.air && !block.isLeaves(world, l1, i1, j1)
                                     && block != Blocks.netherrack
                                     && block != Blocks.soul_sand
                                     && block != NContent.taintedSoil
@@ -92,8 +94,12 @@ public class FusewoodGen extends WorldGenerator {
             } else {
                 Block soil = world.getBlock(xPos, yPos - 1, zPos);
                 boolean isSoil = (soil.canSustainPlant(
-                                world, xPos, yPos - 1, zPos, ForgeDirection.UP, (NSaplingBlock) NContent.floraSapling))
-                        || soil == Blocks.netherrack;
+                        world,
+                        xPos,
+                        yPos - 1,
+                        zPos,
+                        ForgeDirection.UP,
+                        (NSaplingBlock) NContent.floraSapling)) || soil == Blocks.netherrack;
 
                 if (isSoil && yPos < 256 - treeHeight - 1) {
                     soil.onPlantGrow(world, xPos, yPos - 1, zPos, xPos, yPos, zPos);
@@ -127,11 +133,15 @@ public class FusewoodGen extends WorldGenerator {
                     for (j1 = 0; j1 < treeHeight; ++j1) {
                         Block block = world.getBlock(xPos, yPos + j1, zPos);
 
-                        if (block == Blocks.air
-                                || block.isLeaves(world, xPos, yPos + j1, zPos)
+                        if (block == Blocks.air || block.isLeaves(world, xPos, yPos + j1, zPos)
                                 || block.canBeReplacedByLeaves(world, xPos, yPos + j1, zPos)) {
                             this.setBlockAndNotifyAdequately(
-                                    world, xPos, yPos + j1, zPos, NContent.darkTree, this.metaWood);
+                                    world,
+                                    xPos,
+                                    yPos + j1,
+                                    zPos,
+                                    NContent.darkTree,
+                                    this.metaWood);
                         }
                     }
 

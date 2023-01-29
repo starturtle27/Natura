@@ -1,8 +1,7 @@
 package mods.natura.client;
 
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import mods.natura.blocks.tech.BlazeHopper;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHopper;
 import net.minecraft.client.renderer.EntityRenderer;
@@ -11,12 +10,16 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+
 public class HopperRender implements ISimpleBlockRenderingHandler {
+
     public static int model = RenderingRegistry.getNextAvailableRenderId();
 
     @Override
-    public boolean renderWorldBlock(
-            IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
+    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
+            RenderBlocks renderer) {
         if (modelId == model) {
             return renderBlockHopper((BlazeHopper) block, x, y, z, renderer);
         }
@@ -61,8 +64,8 @@ public class HopperRender implements ISimpleBlockRenderingHandler {
                 renderer);
     }
 
-    public boolean renderBlockHopperMetadata(
-            BlazeHopper par1BlockHopper, int par2, int par3, int par4, int par5, boolean par6, RenderBlocks renderer) {
+    public boolean renderBlockHopperMetadata(BlazeHopper par1BlockHopper, int par2, int par3, int par4, int par5,
+            boolean par6, RenderBlocks renderer) {
         Tessellator tessellator = Tessellator.instance;
         int i1 = BlockHopper.getDirectionFromMetadata(par5);
         double d0 = 0.625D;
@@ -130,8 +133,8 @@ public class HopperRender implements ISimpleBlockRenderingHandler {
         float f;
 
         if (!par6) {
-            tessellator.setBrightness(
-                    par1BlockHopper.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3, par4));
+            tessellator
+                    .setBrightness(par1BlockHopper.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3, par4));
             float f1 = 1.0F;
             int j1 = par1BlockHopper.colorMultiplier(renderer.blockAccess, par2, par3, par4);
             f = (j1 >> 16 & 255) / 255.0F;
