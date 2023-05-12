@@ -3,8 +3,6 @@ package mods.natura.blocks.trees;
 import java.util.List;
 import java.util.Random;
 
-import mods.natura.common.NaturaTab;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -18,6 +16,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import mods.natura.common.NaturaTab;
+import mods.natura.util.Util;
 
 public class TreeBlock extends BlockLog {
 
@@ -44,17 +44,23 @@ public class TreeBlock extends BlockLog {
         // Ends of logs
         {
             case 0:
-                if (side == 0 || side == 1) return icons[tex + 4];
+                if (side == 0 || side == 1) {
+                    return Util.getWithFallback(icons, tex + 4);
+                }
                 break;
             case 1:
-                if (side == 4 || side == 5) return icons[tex + 4];
+                if (side == 4 || side == 5) {
+                    return Util.getWithFallback(icons, tex + 4);
+                }
                 break;
             case 2:
-                if (side == 2 || side == 3) return icons[tex + 4];
+                if (side == 2 || side == 3) {
+                    return Util.getWithFallback(icons, tex + 4);
+                }
                 break;
         }
 
-        return icons[tex];
+        return Util.getWithFallback(icons, tex);
     }
 
     @Override
