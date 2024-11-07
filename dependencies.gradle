@@ -1,7 +1,7 @@
 // Add your dependencies here
 
 dependencies {
-	api("com.github.GTNewHorizons:Mantle:0.4.1:dev")
+	api("com.github.GTNewHorizons:Mantle:0.4.2:dev")
 
 	compileOnly("com.github.GTNewHorizons:waila:1.8.1:dev") {
 		transitive = false
@@ -9,8 +9,8 @@ dependencies {
 	compileOnly("com.github.GTNewHorizons:ForgeMultipart:1.5.0:dev") {
 		transitive = false
 	}
-	devOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.6.40-GTNH:dev")
-	compileOnly("com.github.GTNewHorizons:TinkersConstruct:1.12.10-GTNH:dev") {
+	devOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.6.44-GTNH:dev")
+	compileOnly("com.github.GTNewHorizons:TinkersConstruct:1.12.12-GTNH:dev") {
 		transitive = false
 	}
 	compileOnly("curse.maven:minefactory-reloaded-66672:2366150") {
