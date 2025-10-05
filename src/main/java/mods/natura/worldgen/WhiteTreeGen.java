@@ -401,10 +401,7 @@ public class WhiteTreeGen extends WorldGenAbstractTree {
         do {
             height--;
             Block blockBelow = world.getBlock(x, height, z);
-            if (blockBelow == Blocks.netherrack || blockBelow == Blocks.soul_sand
-                    || blockBelow == NContent.taintedSoil
-                    || height < 0)
-                foundGround = true;
+            if (blockBelow == Blocks.netherrack || blockBelow == Blocks.soul_sand || height < 0) foundGround = true;
         } while (!foundGround);
         return height + 1;
     }

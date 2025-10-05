@@ -70,10 +70,7 @@ public class NSaplingBlock extends BlockSapling {
     }
 
     public boolean canThisPlantGrowOnThisBlock(Block id) {
-        return id == Blocks.grass || id == Blocks.dirt
-                || id == Blocks.soul_sand
-                || id == Blocks.netherrack
-                || id == NContent.taintedSoil;
+        return id == Blocks.grass || id == Blocks.dirt || id == Blocks.soul_sand || id == Blocks.netherrack;
     }
 
     @Override
@@ -95,8 +92,7 @@ public class NSaplingBlock extends BlockSapling {
                         || netherSoil.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this));
             case 5:
                 Block nSoil = world.getBlock(x, y + 1, z);
-                return nSoil != null
-                        && (nSoil == Blocks.netherrack || nSoil == Blocks.soul_sand || nSoil == NContent.taintedSoil);
+                return nSoil != null && (nSoil == Blocks.netherrack || nSoil == Blocks.soul_sand);
             default:
                 return true;
         }

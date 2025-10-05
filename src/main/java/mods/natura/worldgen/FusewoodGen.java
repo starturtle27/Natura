@@ -38,10 +38,7 @@ public class FusewoodGen extends WorldGenerator {
         do {
             height--;
             Block underID = world.getBlock(x, height, z);
-            if (underID == Blocks.netherrack || underID == Blocks.soul_sand
-                    || underID == NContent.taintedSoil
-                    || height < 0)
-                foundGround = true;
+            if (underID == Blocks.netherrack || underID == Blocks.soul_sand || height < 0) foundGround = true;
         } while (!foundGround);
         return height + 1;
     }
@@ -78,7 +75,6 @@ public class FusewoodGen extends WorldGenerator {
                             if (block != Blocks.air && !block.isLeaves(world, l1, i1, j1)
                                     && block != Blocks.netherrack
                                     && block != Blocks.soul_sand
-                                    && block != NContent.taintedSoil
                                     && !block.isWood(world, l1, i1, j1)) {
                                 flag = false;
                             }

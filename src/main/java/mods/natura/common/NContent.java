@@ -54,7 +54,6 @@ import mods.natura.blocks.crops.NetherBerryBush;
 import mods.natura.blocks.crops.ThornVines;
 import mods.natura.blocks.nether.HeatSand;
 import mods.natura.blocks.nether.NetherGlass;
-import mods.natura.blocks.nether.TaintedSoil;
 import mods.natura.blocks.overrides.AlternateBookshelf;
 import mods.natura.blocks.overrides.AlternateFence;
 import mods.natura.blocks.overrides.AlternatePressurePlate;
@@ -153,9 +152,6 @@ public class NContent implements IFuelHandler {
          * infernalStone = new NBlock(PHNatura.infernalStone, Material.rock, 1.5f, new String[] { "infernal_stone"
          * }).setBlockName("infernalStone"); GameRegistry.registerBlock(infernalStone, "infernalStone");
          */
-        taintedSoil = new TaintedSoil().setBlockName("TaintedSoil");
-        taintedSoil.setHarvestLevel("shovel", 0);
-        GameRegistry.registerBlock(taintedSoil, "soil.tainted");
         heatSand = new HeatSand().setBlockName("HeatSand"); // .setLightLevel(0.375f);
         heatSand.setHarvestLevel("shovel", 0);
         GameRegistry.registerBlock(heatSand, "heatsand");
@@ -924,7 +920,7 @@ public class NContent implements IFuelHandler {
         ItemStack stackSingleAutumnalGrass = new ItemStack(grassBlock, 1, 2);
 
         // Nether blocks
-        GameRegistry.addShapelessRecipe(new ItemStack(Blocks.soul_sand, 1, 0), heatSand, taintedSoil);
+        GameRegistry.addShapelessRecipe(new ItemStack(Blocks.soul_sand, 1, 0), heatSand, Blocks.netherrack);
 
         if (PHNatura.enableNetherFurnaces) {
             GameRegistry.addRecipe(new ItemStack(netherrackFurnace), "###", "# #", "###", '#', Blocks.netherrack);
@@ -1752,7 +1748,6 @@ public class NContent implements IFuelHandler {
         OreDictionary.registerOre("bowlWood", new ItemStack(Items.bowl, 1));
 
         // Nether blocks
-        OreDictionary.registerOre("taintedSoil", new ItemStack(taintedSoil, 1));
         if (PHNatura.enableNetherGlass) {
             OreDictionary.registerOre("glassSoul", new ItemStack(netherGlass, 1, 0));
             OreDictionary.registerOre("glass", new ItemStack(netherGlass, 1, 0));
@@ -2019,7 +2014,6 @@ public class NContent implements IFuelHandler {
 
     // Nether blocks
     // public static Block infernalStone;
-    public static Block taintedSoil;
     public static Block heatSand;
 
     public static Block netherrackFurnace;

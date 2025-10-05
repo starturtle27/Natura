@@ -38,9 +38,7 @@ public class DarkwoodGen extends WorldGenerator {
         do {
             height--;
             Block blockBelow = world.getBlock(x, height, z);
-            if (blockBelow == Blocks.netherrack || blockBelow == Blocks.soul_sand
-                    || blockBelow == NContent.taintedSoil
-                    || height < 0) {
+            if (blockBelow == Blocks.netherrack || blockBelow == Blocks.soul_sand || height < 0) {
                 foundGround = true;
             }
         } while (!foundGround);
@@ -84,7 +82,6 @@ public class DarkwoodGen extends WorldGenerator {
                             if (block != Blocks.air && !block.isLeaves(world, l1, i1, j1)
                                     && block != Blocks.netherrack
                                     && block != Blocks.soul_sand
-                                    && block != NContent.taintedSoil
                                     && !block.isWood(world, l1, i1, j1)) {
                                 flag = false;
                             }

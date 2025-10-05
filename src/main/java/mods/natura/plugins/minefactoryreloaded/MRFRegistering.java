@@ -99,9 +99,5 @@ public class MRFRegistering {
         NBTTagCompound heatSand = new ItemStack(NContent.heatSand).writeToNBT(new NBTTagCompound());
         heatSand.setInteger("value", 5);
         FactoryRegistry.sendMessage(registerSludgeDrop, heatSand);
-
-        NBTTagCompound taintedSoil = new ItemStack(NContent.taintedSoil).writeToNBT(new NBTTagCompound());
-        taintedSoil.setInteger("value", 5);
-        FactoryRegistry.sendMessage(registerSludgeDrop, taintedSoil);
     }
 }

@@ -31,8 +31,8 @@ public class BloodTreeLargeGen extends WorldGenerator {
         int height = y;
         do {
             Block blockAtHeight = world.getBlock(x, height, z);
-            if ((blockAtHeight == Blocks.netherrack || blockAtHeight == Blocks.soul_sand
-                    || blockAtHeight == NContent.taintedSoil) && !world.getBlock(x, height - 1, z).func_149730_j()) {
+            if ((blockAtHeight == Blocks.netherrack || blockAtHeight == Blocks.soul_sand)
+                    && !world.getBlock(x, height - 1, z).func_149730_j()) {
                 ret = height - 1;
                 break;
             }

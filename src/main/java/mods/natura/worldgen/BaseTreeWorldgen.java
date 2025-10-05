@@ -255,9 +255,7 @@ public class BaseTreeWorldgen implements IWorldGenerator {
         do {
             height--;
             Block underID = world.getBlock(x, height, z);
-            if (underID == Blocks.netherrack || underID == Blocks.soul_sand
-                    || underID == NContent.taintedSoil
-                    || height < 0) {
+            if (underID == Blocks.netherrack || underID == Blocks.soul_sand || height < 0) {
                 foundGround = true;
             }
         } while (!foundGround);

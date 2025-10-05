@@ -173,7 +173,7 @@ public class NetheriteChunkProvider implements IChunkProvider {
                                 }
 
                                 if (lValue > 56.0D) {
-                                    blockID = NContent.taintedSoil;
+                                    blockID = Blocks.netherrack;
                                 }
 
                                 lowerIDs[layerPos] = blockID;
@@ -225,7 +225,7 @@ public class NetheriteChunkProvider implements IChunkProvider {
                         + this.hellRNG.nextDouble() * 0.25D);
                 int j1 = -1;
                 Block b1 = Blocks.netherrack;
-                Block b2 = NContent.taintedSoil;
+                Block b2 = Blocks.netherrack;
 
                 for (int k1 = 127; k1 >= 0; --k1) {
                     int l1 = (iterZ * 16 + iterX) * 128 + k1;
@@ -242,7 +242,7 @@ public class NetheriteChunkProvider implements IChunkProvider {
                                     b2 = Blocks.netherrack;
                                 } else if (k1 >= seaLevel - 4 && k1 <= seaLevel + 1) {
                                     b1 = Blocks.netherrack;
-                                    b2 = NContent.taintedSoil;
+                                    b2 = Blocks.netherrack;
 
                                     if (flag1) {
                                         b1 = Blocks.gravel;

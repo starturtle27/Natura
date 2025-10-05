@@ -19,7 +19,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import mods.natura.common.NContent;
 import mods.natura.common.NaturaTab;
 import mods.natura.worldgen.RareTreeGen;
 import mods.natura.worldgen.WillowGen;
@@ -57,10 +56,7 @@ public class OverworldSapling extends BlockSapling {
     }
 
     public boolean canThisPlantGrowOnThisBlock(Block id) {
-        return id == Blocks.grass || id == Blocks.dirt
-                || id == Blocks.soul_sand
-                || id == Blocks.netherrack
-                || id == NContent.taintedSoil;
+        return id == Blocks.grass || id == Blocks.dirt || id == Blocks.soul_sand || id == Blocks.netherrack;
     }
 
     @Override

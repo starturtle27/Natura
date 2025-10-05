@@ -7,8 +7,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-import mods.natura.common.NContent;
-
 public class FireGen extends WorldGenerator {
 
     @Override
@@ -20,8 +18,7 @@ public class FireGen extends WorldGenerator {
 
             if (world.isAirBlock(xPos, yPos, zPos)) {
                 Block blockID = world.getBlock(xPos, yPos - 1, zPos);
-                if (blockID == Blocks.netherrack || blockID == NContent.taintedSoil)
-                    world.setBlock(xPos, yPos, zPos, Blocks.fire, 0, 2);
+                if (blockID == Blocks.netherrack) world.setBlock(xPos, yPos, zPos, Blocks.fire, 0, 2);
             }
         }
 

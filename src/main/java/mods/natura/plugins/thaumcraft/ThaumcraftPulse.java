@@ -201,9 +201,6 @@ public class ThaumcraftPulse {
             ThaumcraftApi.registerObjectTag(
                     new ItemStack(NContent.heatSand, 0, 0),
                     new AspectList().add(Aspect.FIRE, 2).add(Aspect.EARTH, 1));
-            ThaumcraftApi.registerObjectTag(
-                    new ItemStack(NContent.taintedSoil, 0, 0),
-                    new AspectList().add(Aspect.EARTH, 2));
 
             // Register Nether trees and leaves
             ThaumcraftApi.registerObjectTag(
